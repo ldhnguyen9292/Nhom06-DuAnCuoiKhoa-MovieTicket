@@ -17,9 +17,5 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
-    width: "75%",
-    [theme.breakpoints.up("md")]: {
-      display: "none",
-    },
   },
 }));

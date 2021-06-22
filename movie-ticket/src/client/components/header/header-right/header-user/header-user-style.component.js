@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
+    display: "none",
     border: "1px solid black",
     borderRadius: 10,
     background: "black",
@@ -16,42 +17,91 @@ export const useStyles = makeStyles((theme) => ({
       border: "1px solid white",
       backgroundSize: "100% 100%",
     },
+    [theme.breakpoints.up("lg")]: {
+      display: "block",
+    },
+  },
+  rootCol: {
+    display: "block",
+    border: "1px solid black",
+    borderRadius: 10,
+    background: "black",
+    backgroundImage:
+      "linear-gradient(rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 0.9))",
+    backgroundSize: "100% 0",
+    backgroundPosition: "50% 50%",
+    textDecoration: "none",
+    backgroundRepeat: "no-repeat",
+    margin: 10,
+    marginTop: 20,
+    transition: "all 0.5s",
+    overflow: "hidden",
+    textAlign: "center",
+    "&:hover": {
+      border: "1px solid black",
+      backgroundSize: "100% 100%",
+      "& p": { color: "black" },
+    },
   },
   title: {
     color: "white",
-    padding: "5px 10px",
+    padding: "8px 20px",
     textTransform: "uppercase",
   },
   IconFlex: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
+    flexDirection: "row",
+    justifyContent: "space-around",
     alignItems: "flex-start",
     padding: 10,
-    [theme.breakpoints.up("md")]: {
-      flexDirection: "row",
-    },
+  },
+  IconFlexCol: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
+    padding: 10,
+    marginTop: 15,
+    background: "gainsboro",
   },
   userMenu: {
     position: "relative",
   },
   menu: {
-    position: "absolute !important",
-    top: "10% !important",
-    [theme.breakpoints.up("md")]: {
-      top: "12% !important",
-    },
+    background: "white",
+    borderRadius: 10,
+    textTransform: "Capitalize",
     "&::after": {
-      content: "unset",
+      content: '""',
       borderRight: "13px solid transparent",
-      borderBottom: "13px solid #fff",
+      borderBottom: "13px solid white",
       borderLeft: "13px solid transparent",
       position: "absolute",
-      right: 25,
-      top: "1.1%",
-      [theme.breakpoints.up("md")]: {
-        content: '""',
-      },
+      right: "50%",
+      top: "-25%",
+      transform: "translate(50%,50%)",
+    },
+  },
+  menuMobile: {
+    background: "white",
+    borderRadius: 10,
+    textTransform: "Capitalize",
+    left: "-20px !important",
+    zIndex: 1400,
+    "&::after": {
+      content: '""',
+      borderTop: "13px solid transparent",
+      borderLeft: "13px solid white",
+      borderBottom: "13px solid transparent",
+      position: "absolute",
+      right: "0",
+      top: "50%",
+      transform: "translate(50%,-50%)",
+    },
+  },
+  menuTitle: {
+    "&:hover": {
+      color: "#b446ff",
     },
   },
 }));

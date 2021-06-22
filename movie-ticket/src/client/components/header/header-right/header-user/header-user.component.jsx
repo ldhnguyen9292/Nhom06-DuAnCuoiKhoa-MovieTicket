@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Typography } from "@material-ui/core";
+import { Typography, Popper } from "@material-ui/core";
 import { useStyles } from "./header-user-style.component";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import MailIcon from "@material-ui/icons/Mail";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-function HeaderUser() {
+function HeaderUser(props) {
   const classes = useStyles();
   const [isLogin, setIsLogin] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleIsLogin = () => {
     setIsLogin(true);
@@ -25,35 +25,52 @@ function HeaderUser() {
     setAnchorEl(null);
   };
 
-  const handleOpen = (event) => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = (event) => {
-    setAnchorEl(null);
-    //Stop calling handleOpen...
-    event.stopPropagation();
+    setOpen(!open);
   };
 
   const renderUserInfo = () => {
     return (
-      <Menu
+      <Popper
         id="userInfo"
         anchorEl={anchorEl}
         keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-        className={classes.menu}
+        open={open}
+        onClose={handleClick}
+        className={
+          props.placement === "bottom" ? classes.menu : classes.menuMobile
+        }
+        placement={props.placement === "bottom" ? "bottom" : "left"}
       >
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleIsLogout}>Logout</MenuItem>
-      </Menu>
+        <MenuItem className={classes.menuTitle} onClick={handleClick}>
+          Tài khoản
+        </MenuItem>
+        <MenuItem className={classes.menuTitle} onClick={handleIsLogout}>
+          Đăng xuất
+        </MenuItem>
+      </Popper>
     );
   };
 
   const renderUserIcon = () => {
     return (
-      <div className={classes.IconFlex}>
+      <div
+        className={
+          props.flexDirection === "row" ? classes.IconFlex : classes.IconFlexCol
+        }
+      >
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="userInfo"
+          aria-haspopup="true"
+          color="inherit"
+          onClick={handleClick}
+          className={classes.userMenu}
+        >
+          <AccountCircle />
+          {renderUserInfo()}
+        </IconButton>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
             <MailIcon />
@@ -64,24 +81,19 @@ function HeaderUser() {
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="userInfo"
-          aria-haspopup="true"
-          color="inherit"
-          onClick={handleOpen}
-          className={classes.userMenu}
-        >
-          <AccountCircle />
-          {renderUserInfo()}
-        </IconButton>
       </div>
     );
   };
 
   const renderUserButton = () => {
     return (
-      <NavLink to="" className={classes.root} onClick={handleIsLogin}>
+      <NavLink
+        to=""
+        className={
+          props.flexDirection === "row" ? classes.root : classes.rootCol
+        }
+        onClick={handleIsLogin}
+      >
         <Typography className={classes.title}>Đăng nhập</Typography>
       </NavLink>
     );

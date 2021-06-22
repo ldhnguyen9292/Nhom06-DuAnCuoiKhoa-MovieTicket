@@ -10,11 +10,10 @@ function HeaderRight() {
     <>
       <div className={classes.headerRight}>
         <Menu />
-        <div className={classes.flexG} />
-        <HeaderUser />
+        <HeaderUser flexDirection={"row"} placement={"bottom"} />
       </div>
       <div className={classes.mobile}>
-      <MenuMobile />
+        <MenuMobile />
       </div>
     </>
   );

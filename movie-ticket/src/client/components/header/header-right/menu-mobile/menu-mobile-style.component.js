@@ -6,12 +6,11 @@ export const useStyles = makeStyles((theme) => ({
     margin: 10,
   },
   drawer: {
-    width: 180,
-    height: "70%",
+    width: 200,
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
-    paddingTop: 70,
   },
   title: {
     textDecoration: "none",
@@ -30,5 +29,41 @@ export const useStyles = makeStyles((theme) => ({
   },
   text: {
     marginLeft: 10,
+  },
+  socialNetwork: {
+    display: "flex",
+    fontSize: "11px",
+    textAlign: "center",
+    color: "gray",
+    alignItems: "center",
+    justifyContent: "space-around",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    cursor: "pointer",
+    transition: "all 0.5s",
+    paddingTop: 20,
+    "&:hover": {
+      color: "#b446ff",
+    },
+  },
+  logo: {
+    margin: "50px 0 30px 20px",
+    color: "black",
+    display: "flex",
+    alignItems: "center",
+    textDecoration: "none",
+    transition: "all 0.5s",
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    "&:hover": {
+      color: "#b446ff",
+    },
+  },
+  iconLogo: {
+    width: 30,
+    height: 30,
+    borderRadius: "50%",
+    borderBottomRightRadius: "0",
+    padding: 5,
   },
 }));
