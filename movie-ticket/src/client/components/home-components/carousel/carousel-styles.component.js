@@ -1,8 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 
 const imgSetting = {
-  width: "85%",
-  height: "85%",
+  width: "85% !important",
+  height: "85% !important",
   margin: "5% auto",
   transition: "all 0.5s",
   cursor: "pointer",
