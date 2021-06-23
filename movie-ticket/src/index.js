@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import { store } from "./store/config";
 import { ThemeProvider } from "@material-ui/core";
 import { theme } from "./assets/css/theme/my-theme";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 ReactDOM.render(
   <Provider store={store}>

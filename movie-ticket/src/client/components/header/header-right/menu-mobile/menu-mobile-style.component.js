@@ -4,6 +4,12 @@ export const useStyles = makeStyles((theme) => ({
   iconBtn: {
     background: "linear-gradient(to right, #4c46e6, #6d68fe, rgb(151, 0, 255))",
     margin: 10,
+    [theme.breakpoints.up("md")]: {
+      margin: 15,
+    },
+    [theme.breakpoints.up("lg")]: {
+      margin: 20,
+    },
   },
   drawer: {
     width: 200,

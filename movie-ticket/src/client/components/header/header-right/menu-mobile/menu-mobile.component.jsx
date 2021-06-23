@@ -103,7 +103,7 @@ function MenuMobile() {
     );
   };
 
-  return <div>{renderButton()}</div>;
+  return <>{renderButton()}</>;
 }
 
 export default MenuMobile;
