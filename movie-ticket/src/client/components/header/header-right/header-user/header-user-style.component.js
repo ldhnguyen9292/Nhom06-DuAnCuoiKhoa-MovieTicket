@@ -6,7 +6,7 @@ export const useStyles = makeStyles((theme) => ({
     border: "1px solid black",
     borderRadius: 10,
     background: "black",
-    backgroundImage: "linear-gradient(#b446ff,#b446ff)",
+    backgroundImage: "linear-gradient(#b446ffad,#b446ff)",
     backgroundSize: "100% 0",
     backgroundPosition: "50% 50%",
     textDecoration: "none",
