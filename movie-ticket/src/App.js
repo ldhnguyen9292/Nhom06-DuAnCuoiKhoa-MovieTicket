@@ -1,7 +1,9 @@
+import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router-dom";
 import Admin from "./admin/admin.module";
 import Client from "./client/client.module";
+
 
 function App() {
   return (
