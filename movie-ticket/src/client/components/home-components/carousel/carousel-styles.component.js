@@ -6,7 +6,7 @@ const imgSetting = {
   transition: "all 0.5s",
   cursor: "pointer",
   backgroundRepeat: "no-repeat",
-  backgroundSize: "85% 85%",
+  backgroundSize: "85% 85% !important",
   backgroundPosition: "center",
 };
 
