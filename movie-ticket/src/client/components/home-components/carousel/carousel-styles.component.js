@@ -35,7 +35,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "inherit",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "100% 100%",
+    backgroundSize: "100% 100% !important",
     backgroundPosition: "center",
   },
   bot: {
