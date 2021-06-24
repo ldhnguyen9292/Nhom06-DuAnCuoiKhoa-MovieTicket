@@ -3,7 +3,7 @@ import { useStyles } from "./carousel-styles.component";
 import Slider from "react-slick";
 import { CardMedia } from "@material-ui/core";
 import clsx from "clsx";
-import PlayCard from "./play-card/play-card.component";
+import PlayCard from "./../../play-card/play-card.component";
 
 function CarouselComponent() {
   const classes = useStyles();
@@ -15,7 +15,7 @@ function CarouselComponent() {
       maTinTuc: -1,
       trailer: "https://www.youtube.com/embed/jox0zmGyHLU",
       hinhAnh:
-        "https://cdnmedia.thethaovanhoa.vn/Upload/O5NP4aFt6GVwE7JTFAOaA/files/2021/01/phim-lat-mat-24h-02.jpg",
+        "https://bloganchoi.com/wp-content/uploads/2021/04/review-phim-lat-mat-48h-9.jpg",
     },
     {
       id: 1,
@@ -83,8 +83,8 @@ function CarouselComponent() {
             <div className={classes.top} key={index}>
               <CardMedia
                 className={classes.imgTop}
-                component="img"
-                src={slider.hinhAnh}
+                component="image"
+                image={slider.hinhAnh}
               />
               <div className={classes.btnTopMore}>
                 <PlayCard slider={slider} />
@@ -108,21 +108,9 @@ function CarouselComponent() {
       arrows: false,
       responsive: [
         {
-          breakpoint: 1200,
-          settings: {
-            slidesToShow: 4,
-          },
-        },
-        {
-          breakpoint: 992,
-          settings: {
-            slidesToShow: 3,
-          },
-        },
-        {
           breakpoint: 768,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 3,
           },
         },
         {
@@ -150,8 +138,8 @@ function CarouselComponent() {
                   classes.imgSetting,
                   active === slider.id ? classes.active : classes.imgBot
                 )}
-                component="img"
-                src={slider.hinhAnh}
+                component="image"
+                image={slider.hinhAnh}
               />
             </div>
           );

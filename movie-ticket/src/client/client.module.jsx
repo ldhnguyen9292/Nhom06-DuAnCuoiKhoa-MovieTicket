@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 import Header from "./components/header/header.component";
@@ -8,11 +8,23 @@ import Movie from "./pages/movie/movie.page";
 import Contact from "./pages/contact/contact.page";
 import News from "./pages/news/news.page";
 import User from "./pages/user/user.page";
+import BackToTop from "./components/back-to-top/back-to-top.component";
 
 function Client() {
+  const [position, setPosition] = useState(0);
+
+  const handlePosition = () => {
+    setPosition(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handlePosition);
+  }, [position]);
+
   return (
     <>
-      <Header />
+      <Header pos={position} />
+      <BackToTop pos={position} handlePosition={handlePosition} />
       <Switch>
         <Route path="/" exact>
           <Home />

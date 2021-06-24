@@ -1,11 +1,13 @@
 import { makeStyles } from "@material-ui/core";
 
 const imgSetting = {
-  width: "85% !important",
-  height: "85% !important",
-  margin: "5% auto",
+  width: "100% !important",
+  height: "100% !important",
   transition: "all 0.5s",
   cursor: "pointer",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "85% 85%",
+  backgroundPosition: "center",
 };
 
 export const useStyles = makeStyles((theme) => ({
@@ -16,29 +18,34 @@ export const useStyles = makeStyles((theme) => ({
   },
   top: {
     width: "100%",
-    height: 400,
+    height: 200,
     position: "relative",
+    [theme.breakpoints.up("sm")]: {
+      height: 300,
+    },
     [theme.breakpoints.up("md")]: {
-      height: 500,
+      height: 350,
     },
     [theme.breakpoints.up("lg")]: {
-      height: 600,
+      height: 400,
     },
     marginBottom: 20,
   },
   imgTop: {
     width: "100%",
-    height: "100%",
-    margin: "0 auto",
+    height: "inherit",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "100% 100%",
+    backgroundPosition: "center",
   },
   bot: {
     width: "100%",
-    height: 150,
+    height: 100,
     [theme.breakpoints.up("md")]: {
-      height: 170,
+      height: 125,
     },
     [theme.breakpoints.up("lg")]: {
-      height: 200,
+      height: 150,
     },
     marginBottom: 10,
   },

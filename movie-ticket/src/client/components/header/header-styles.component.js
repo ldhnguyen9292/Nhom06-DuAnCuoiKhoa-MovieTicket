@@ -10,4 +10,22 @@ export const useStyles = makeStyles((theme) => ({
   flexG: {
     flexGrow: 1,
   },
+  header: {
+    position: "relative",
+    animation: `$fadeIn 2000ms`,
+  },
+  headerFix: {
+    position: "fixed",
+    top: 0,
+    zIndex: 2000,
+    animation: `$fadeDown 2000ms`,
+  },
+  "@keyframes fadeDown": {
+    "0%": { top: "-200px" },
+    "100%": { top: "0" },
+  },
+  "@keyframes fadeIn": {
+    "0%": { opacity: 0 },
+    "100%": { opacity: 1 },
+  },
 }));
