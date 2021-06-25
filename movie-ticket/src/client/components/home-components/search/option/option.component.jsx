@@ -1,44 +1,48 @@
 import React, { useState } from "react";
-import { FormControl, Select, InputLabel } from "@material-ui/core";
+import { FormControl } from "@material-ui/core";
 import { useStyles } from "./option-styles.component";
+import clsx from "clsx";
 
 function OptionSearch(props) {
   const classes = useStyles();
   const { array } = props;
-  const [state, setState] = useState({ [array.id]: "" });
+  const [open, setOpen] = useState(false);
+  const [text, setText] = useState(array.option[0].text);
 
-  const handleChangeMore = (event) => {
-    const name = event.target.name;
-    setState({ [name]: event.target.value });
-    props.handleChange(name, event);
+  const handleOptionChoose = (event) => {
+    setOpen(false);
+    setText(event.target.innerHTML);
+    props.handleChange(array.id, event);
+  };
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  const renderOptions = (array) => {
+    return (
+      <ul className={classes.list} onClick={handleOptionChoose}>
+        {array.option.map((opt, index) => (
+          <li key={index} value={index}>
+            {opt.text}
+          </li>
+        ))}
+      </ul>
+    );
   };
 
   if (array) {
     return (
       <FormControl className={classes.formControl}>
-        <InputLabel className={classes.input} htmlFor={array.helper.id}>
-          {array.helper.text}
-        </InputLabel>
-        <Select
-          value={state[array.id]}
-          onChange={handleChangeMore}
-          className={classes.select}
-          classes={{
-            icon: classes.icon,
-          }}
-          MenuProps={{
-            className: classes.menu,
-          }}
-          inputProps={{
-            name: array.id,
-            id: array.helper.id,
-          }}
-        >
-          <option aria-label="None" value="" />
-          {array.option.map((opt) => (
-            <option value={opt.value}>{opt.text}</option>
-          ))}
-        </Select>
+        <div className={classes.options}>
+          <p
+            className={clsx(classes.p, open ? classes.up : classes.down)}
+            onClick={handleOpen}
+          >
+            <span className={classes.text}> {text}</span>
+          </p>
+          {open ? renderOptions(array) : <></>}
+        </div>
       </FormControl>
     );
   }

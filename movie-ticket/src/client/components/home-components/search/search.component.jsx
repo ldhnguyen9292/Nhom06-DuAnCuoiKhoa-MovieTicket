@@ -28,37 +28,40 @@ function SearchHome() {
       imgUrl: cityIcon,
       helper: { id: "cityHelper", text: "Chọn thành phố" },
       option: [
-        { value: "hcm", text: "Hồ Chí Minh" },
-        { value: "hn", text: "Hà Nội" },
-        { value: "hcm", text: "Hồ Chí Minh" },
-        { value: "hn", text: "Hà Nội" },
-        { value: "hcm", text: "Hồ Chí Minh" },
-        { value: "hn", text: "Hà Nội" },
-        { value: "hcm", text: "Hồ Chí Minh" },
-        { value: "hn", text: "Hà Nội" },
-        { value: "hcm", text: "Hồ Chí Minh" },
-        { value: "hn", text: "Hà Nội" },
+        { text: "Chọn thành phố" },
+        { text: "Hồ Chí Minh" },
+        { text: "Hà Nội" },
+        { text: "Hồ Chí Minh" },
+        { text: "Hà Nội" },
+        { text: "Hồ Chí Minh" },
+        { text: "Hà Nội" },
+        { text: "Hồ Chí Minh" },
+        { text: "Hà Nội" },
+        { text: "Hồ Chí Minh" },
+        { text: "Hà Nội" },
       ],
     },
     {
       id: "date",
-      name: "Date",
+      name: "Ngày",
       imgUrl: dateIcon,
       helper: { id: "dateHelper", text: "Chọn ngày" },
       option: [
-        { value: "24062021", text: "24/06/2021" },
-        { value: "25062021", text: "25/06/2021" },
+        { text: "Chọn ngày" },
+        { text: "24/06/2021" },
+        { text: "25/06/2021" },
       ],
     },
     {
       id: "cinema",
-      name: "Cinema",
+      name: "Rạp",
       imgUrl: cinemaIcon,
       helper: { id: "cinemaHelper", text: "Chọn rạp" },
       option: [
-        { value: "galaxy", text: "Galaxy" },
-        { value: "cgv", text: "CGV" },
-        { value: "cine", text: "Cinebox" },
+        { text: "Chọn rạp" },
+        { text: "Galaxy" },
+        { text: "CGV" },
+        { text: "Cinebox" },
       ],
     },
   ];
@@ -71,7 +74,11 @@ function SearchHome() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSearchList(initialSearchList);
-    history.push("/movie");
+    const { name, city, date, cinema } = searchList;
+    history.push({
+      pathname: "/movie",
+      search: `?maPhim=${name}?city=${city}?date=${date}?cinema=${cinema}`,
+    });
   };
 
   const renderMore = (array, index) => {
@@ -123,7 +130,7 @@ function SearchHome() {
               <SearchIcon />
             </IconButton>
           </Grid>
-          {moreArray?.map((value, index) => renderMore(value, index))}
+          {moreArray?.map((id, index) => renderMore(id, index))}
         </Grid>
       </form>
     );

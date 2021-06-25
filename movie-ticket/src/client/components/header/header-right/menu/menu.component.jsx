@@ -12,7 +12,7 @@ function Menu() {
       <NavLink to="/" className={classes.title}>
         <Box fontSize={fontSize}>Trang chủ</Box>
       </NavLink>
-      <NavLink to="/movie" className={classes.title}>
+      <NavLink to={`/movie`} className={classes.title}>
         <Box fontSize={fontSize}>Danh sách phim</Box>
       </NavLink>
       <NavLink to="/news" className={classes.title}>
