@@ -72,7 +72,7 @@ function SearchHome() {
 
   const renderMore = (array) => {
     return (
-      <Grid item xs={12} sm={6} md={4} xl={3} className={classes.moreSetting}>
+      <Grid item xs={12} md={6} lg={4} xl={3} className={classes.moreSetting}>
         <CardMedia
           component="img"
           src={array.imgUrl}
@@ -96,8 +96,8 @@ function SearchHome() {
           <Grid
             item
             xs={12}
-            sm={6}
-            md={12}
+            md={6}
+            lg={12}
             xl={3}
             className={classes.inputSetting}
           >
