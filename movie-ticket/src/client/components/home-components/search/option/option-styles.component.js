@@ -24,6 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     top: 45,
     left: 0,
     borderRadius: 5,
+    zIndex: 1,
     border: "1px solid black",
     overflowY: "scroll",
     overflowX: "hidden",
