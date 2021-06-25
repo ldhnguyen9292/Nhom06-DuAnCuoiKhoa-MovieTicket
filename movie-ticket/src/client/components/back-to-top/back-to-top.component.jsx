@@ -23,7 +23,9 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   displayB: {
-    display: "block",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     animation: `$fadeIn 3000ms`,
   },
   "@keyframes fadeIn": {

@@ -10,6 +10,10 @@ import { useStyles } from "./search-styles.component";
 import Grid from "@material-ui/core/Grid";
 import OptionSearch from "./option/option.component";
 import { useHistory } from "react-router-dom";
+import cityIcon from "./../../../../assets/images/city.png";
+import dateIcon from "./../../../../assets/images/date.png";
+import cinemaIcon from "./../../../../assets/images/cinema.png";
+import searchBG from "./../../../../assets/images/searchBG.jpg";
 
 const initialSearchList = { name: "", city: "", date: "", cinema: "" };
 
@@ -21,7 +25,7 @@ function SearchHome() {
     {
       id: "city",
       name: "Thành phố",
-      imgUrl: "http://pixner.net/boleto/demo/assets/images/ticket/city.png",
+      imgUrl: cityIcon,
       helper: { id: "cityHelper", text: "Chọn thành phố" },
       option: [
         { value: "hcm", text: "Hồ Chí Minh" },
@@ -39,7 +43,7 @@ function SearchHome() {
     {
       id: "date",
       name: "Date",
-      imgUrl: "http://pixner.net/boleto/demo/assets/images/ticket/date.png",
+      imgUrl: dateIcon,
       helper: { id: "dateHelper", text: "Chọn ngày" },
       option: [
         { value: "24062021", text: "24/06/2021" },
@@ -49,7 +53,7 @@ function SearchHome() {
     {
       id: "cinema",
       name: "Cinema",
-      imgUrl: "http://pixner.net/boleto/demo/assets/images/ticket/cinema.png",
+      imgUrl: cinemaIcon,
       helper: { id: "cinemaHelper", text: "Chọn rạp" },
       option: [
         { value: "galaxy", text: "Galaxy" },
@@ -70,9 +74,17 @@ function SearchHome() {
     history.push("/movie");
   };
 
-  const renderMore = (array) => {
+  const renderMore = (array, index) => {
     return (
-      <Grid item xs={12} md={6} lg={4} xl={3} className={classes.moreSetting}>
+      <Grid
+        key={index}
+        item
+        xs={12}
+        md={6}
+        lg={4}
+        xl={3}
+        className={classes.moreSetting}
+      >
         <CardMedia
           component="img"
           src={array.imgUrl}
@@ -111,7 +123,7 @@ function SearchHome() {
               <SearchIcon />
             </IconButton>
           </Grid>
-          {moreArray?.map((value) => renderMore(value))}
+          {moreArray?.map((value, index) => renderMore(value, index))}
         </Grid>
       </form>
     );
@@ -119,11 +131,7 @@ function SearchHome() {
 
   return (
     <div className={classes.root}>
-      <CardMedia
-        component="image"
-        image="http://pixner.net/boleto/demo/assets/images/ticket/ticket-bg01.jpg"
-        className={classes.content}
-      >
+      <CardMedia component="image" image={searchBG} className={classes.content}>
         <div className={classes.top}>
           <div className={classes.contentLeft}>
             <Typography className={classes.text}>

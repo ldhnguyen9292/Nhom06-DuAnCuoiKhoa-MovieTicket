@@ -28,7 +28,14 @@ function MenuMobile() {
 
   const renderMenu = () => {
     return (
-      <Drawer anchor="right" open={open} onClose={handleClose}>
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={handleClose}
+        style={{
+          zIndex: 2001,
+        }}
+      >
         <div className={classes.drawer}>
           <Box fontSize="20px">
             <NavLink to="/" className={classes.logo}>
