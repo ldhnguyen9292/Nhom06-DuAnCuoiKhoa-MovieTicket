@@ -7,37 +7,49 @@ export const useStyles = makeStyles((theme) => ({
       border: "none",
     },
   },
-  icon: {
-    color: "white",
-    top: "calc(50% - 18px)",
+  options: {
+    position: "relative",
   },
-  input: {
-    color: "white",
-    fontSize: 16,
-  },
-  select: {
-    color: "white",
-    fontSize: 16,
-    borderRadius: 10,
-    "&::after": {
-      display: "none",
-    },
-    "&::before": {
-      display: "none",
-    },
-  },
-  menu: {
+  list: {
+    position: "absolute",
     color: "black",
+    fontSize: 14,
+    listStyleType: "none",
+    background: "white",
     cursor: "pointer",
-    height: 300,
-    "& ul": {
-      background: "rgba(255, 255, 255, 0.9)",
-      "&::-webkit-scrollbar": {
-        witdh: 5,
-      },
-    },
-    "& option:hover": {
+    height: "fit-content",
+    padding: 10,
+    margin: 0,
+    maxHeight: 150,
+    top: 45,
+    left: 0,
+    borderRadius: 5,
+    border: "1px solid black",
+    overflowY: "scroll",
+    overflowX: "hidden",
+    "& li:hover": {
       background: "#80808026",
     },
+  },
+  p: {
+    cursor: "pointer",
+    textAlign: "center",
+    "&::after": {
+      content: '""',
+      border: "solid white",
+      borderWidth: "0 3px 3px 0",
+      display: "inline-block",
+      padding: 3,
+      transform: "rotate(45deg)",
+    },
+  },
+  up: {
+    "&::after": { transform: "rotate(-135deg)" },
+  },
+  text: {
+    color: "white !important",
+    paddingRight: "10px !important",
+    fontSize: 14,
+    textTransform: "Capitalize",
   },
 }));

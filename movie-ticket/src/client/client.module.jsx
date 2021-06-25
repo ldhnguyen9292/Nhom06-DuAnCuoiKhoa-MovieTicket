@@ -26,9 +26,6 @@ function Client() {
       <Header pos={position} />
       <BackToTop pos={position} handlePosition={handlePosition} />
       <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
         <Route path="/movie" exact>
           <Movie />
         </Route>
@@ -40,6 +37,9 @@ function Client() {
         </Route>
         <Route path="/user" exact>
           <User />
+        </Route>
+        <Route path="/" exact>
+          <Home />
         </Route>
         <Route path="">
           <Redirect to="/" />
