@@ -87,7 +87,7 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     textTransform: "Capitalize",
     left: "-20px !important",
-    zIndex: 1400,
+    zIndex: 2001,
     "&::after": {
       content: '""',
       borderTop: "13px solid transparent",

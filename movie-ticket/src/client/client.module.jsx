@@ -5,6 +5,7 @@ import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
 import Home from "./pages/home/home.page";
 import Movie from "./pages/movie/movie.page";
+import MovieDetail from "./pages/movie/movie-detail/movie-detail.page";
 import Contact from "./pages/contact/contact.page";
 import News from "./pages/news/news.page";
 import User from "./pages/user/user.page";
@@ -26,21 +27,16 @@ function Client() {
       <Header pos={position} />
       <BackToTop pos={position} handlePosition={handlePosition} />
       <Switch>
-        <Route path="/movie" exact>
-          <Movie />
-        </Route>
-        <Route path="/news" exact>
-          <News />
-        </Route>
-        <Route path="/contact" exact>
-          <Contact />
-        </Route>
-        <Route path="/user" exact>
-          <User />
-        </Route>
-        <Route path="/" exact>
-          <Home />
-        </Route>
+        <Route path="/movie" exact component={Movie} />
+        <Route
+          path="/movie/movie-detail:maPhim"
+          exact
+          component={MovieDetail}
+        />
+        <Route path="/news" exact component={News} />
+        <Route path="/contact" exact component={Contact} />
+        <Route path="/user" exact component={User} />
+        <Route path="/" exact component={Home} />
         <Route path="">
           <Redirect to="/" />
         </Route>

@@ -76,8 +76,8 @@ function SearchHome() {
     setSearchList(initialSearchList);
     const { name, city, date, cinema } = searchList;
     history.push({
-      pathname: "/movie",
-      search: `?maPhim=${name}?city=${city}?date=${date}?cinema=${cinema}`,
+      pathname: `/movie/movie-detail:${name}`,
+      search: `?city=${city}?date=${date}?cinema=${cinema}`,
     });
   };
 
