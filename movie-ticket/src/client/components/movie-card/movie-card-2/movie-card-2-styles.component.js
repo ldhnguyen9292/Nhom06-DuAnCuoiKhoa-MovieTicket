@@ -8,6 +8,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   left: {
     minHeight: 250,
+    minWidth: 150,
   },
   imgSetting: {
     width: "100%",

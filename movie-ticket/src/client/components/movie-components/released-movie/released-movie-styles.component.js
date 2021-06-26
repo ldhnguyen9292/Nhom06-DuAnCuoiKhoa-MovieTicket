@@ -48,6 +48,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   cardItem2: {
     marginBottom: 10,
+    width: "-webkit-fill-available",
   },
   pagination: {
     padding: "20px 10px",
