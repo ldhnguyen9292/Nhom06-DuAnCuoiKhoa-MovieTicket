@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { CardMedia, Grid } from "@material-ui/core";
+import { CardMedia, Grid, SvgIcon } from "@material-ui/core";
 import { useStyles } from "./movie-card-2-styles.component";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
-import MoreIcon from "@material-ui/icons/More";
 import clsx from "clsx";
 import ModalVideo from "../../modal-video/modal-video.component";
+import TicketIcon from "./../../../../assets/svg/TicketIcon";
 
 function CardMovie2(props) {
   const classes = useStyles();
@@ -65,7 +64,7 @@ function CardMovie2(props) {
           </Grid>
           <Grid item xs={3}>
             <Button size="small" className={classes.morebtn}>
-              <MoreIcon />
+              <TicketIcon />
             </Button>
           </Grid>
           <Grid item xs={12}>

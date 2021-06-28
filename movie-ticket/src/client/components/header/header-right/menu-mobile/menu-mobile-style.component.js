@@ -53,7 +53,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   logo: {
-    margin: "50px 0 30px 20px",
+    margin: "50px 0 30px 10px",
     color: "black",
     display: "flex",
     alignItems: "center",
@@ -66,8 +66,8 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   iconLogo: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
     borderRadius: "50%",
     borderBottomRightRadius: "0",
     padding: 5,

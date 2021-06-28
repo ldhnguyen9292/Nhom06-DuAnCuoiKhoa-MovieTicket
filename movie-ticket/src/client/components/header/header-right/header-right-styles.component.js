@@ -1,6 +1,12 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    height: "100%",
+  },
   headerRight: {
     width: "100%",
     display: "none",
@@ -15,7 +21,5 @@ export const useStyles = makeStyles((theme) => ({
   },
   mobile: {
     display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
   },
 }));

@@ -46,7 +46,8 @@ export const useStyles = makeStyles((theme) => ({
     position: "absolute",
   },
   trailer: {
-    background: "#b446ff",
+    background:
+      "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
     color: "white",
     border: "1px solid #b446ff",
     marginBottom: 10,
@@ -62,7 +63,8 @@ export const useStyles = makeStyles((theme) => ({
     color: "white",
     border: "1px solid #b446ff",
     "&:hover": {
-      background: "#b446ff",
+      background:
+        "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
     },
     left: "100%",
     top: "60%",
@@ -72,7 +74,7 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     fontWeight: "bold",
     textTransform: "capitalize",
-    color: "black",
+    color: "#b446ff",
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
@@ -90,13 +92,21 @@ export const useStyles = makeStyles((theme) => ({
   },
   morebtn: {
     border: "1px solid #eeeeee",
-    color: "#b446ff",
     width: 50,
     height: 50,
     transition: "all 0.5s",
     "&:hover": {
-      background: "#b446ff",
-      color: "white",
+      background:
+        "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
+    },
+    "& svg": {
+      width: 60,
+      padding: 5,
+      transition: "all 0.5s",
+      fill: "#b446ff",
+      "&:hover": {
+        fill: "white",
+      },
     },
   },
 }));

@@ -138,7 +138,7 @@ function SearchHome() {
 
   return (
     <div className={classes.root}>
-      <CardMedia component="image" image={searchBG} className={classes.content}>
+      <CardMedia image={searchBG} className={classes.content}>
         <div className={classes.top}>
           <div className={classes.contentLeft}>
             <Typography className={classes.text}>

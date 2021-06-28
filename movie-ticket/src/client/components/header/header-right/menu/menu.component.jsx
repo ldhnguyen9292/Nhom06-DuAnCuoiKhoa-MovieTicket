@@ -5,14 +5,14 @@ import { Box } from "@material-ui/core";
 
 function Menu() {
   const classes = useStyles();
-  const fontSize = "16px";
+  const fontSize = "14px";
 
   return (
     <div className={classes.root}>
       <NavLink to="/" className={classes.title}>
         <Box fontSize={fontSize}>Trang chủ</Box>
       </NavLink>
-      <NavLink to={`/movie`} className={classes.title}>
+      <NavLink to="/movie" className={classes.title}>
         <Box fontSize={fontSize}>Danh sách phim</Box>
       </NavLink>
       <NavLink to="/news" className={classes.title}>

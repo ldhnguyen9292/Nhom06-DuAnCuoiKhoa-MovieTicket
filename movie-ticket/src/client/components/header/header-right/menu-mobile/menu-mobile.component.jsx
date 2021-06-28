@@ -87,9 +87,9 @@ function MenuMobile() {
   const renderSocialNetworks = () => {
     return (
       <div className={classes.socialNetwork}>
-        {["Facebook", "Twitter", "Youtube"].map((icon) => {
+        {["Facebook", "Twitter", "Youtube"].map((icon, i) => {
           return (
-            <div className={classes.socialNetwork}>
+            <div key={i} className={classes.socialNetwork}>
               <Box>
                 {icon === "Facebook" ? (
                   <FacebookIcon fontSize="medium" />

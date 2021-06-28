@@ -56,4 +56,10 @@ export const useStyles = makeStyles((theme) => ({
       background: "#b446ff",
     },
   },
+  options: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "block",
+    },
+  },
 }));
