@@ -6,7 +6,7 @@ import { Grid } from "@material-ui/core";
 import TrangTi from "./../../../assets/images/trang-ti.jpg";
 import HungThanTrang from "./../../../assets/images/hung-than-trang.png";
 import BanTayDietQuy from "./../../../assets/images/ban-tay-diet-quy.png";
-import SearchService from "./../../../services/search.service";
+import { SearchService } from "./../../../services/search.service";
 import { useStyles } from "./movie-styles.page";
 
 const initialArray = [
