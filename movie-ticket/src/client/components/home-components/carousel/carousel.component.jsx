@@ -69,7 +69,7 @@ function CarouselComponent() {
   useEffect(() => {
     setNav1(slider1);
     setNav2(slider2);
-  }, [active]);
+  }, [slider1, slider2]);
 
   const renderTop = () => {
     return (
@@ -81,11 +81,7 @@ function CarouselComponent() {
         {carouselList.map((slider, index) => {
           return (
             <div className={classes.top} key={index}>
-              <CardMedia
-                className={classes.imgTop}
-                component="image"
-                image={slider.hinhAnh}
-              />
+              <CardMedia className={classes.imgTop} image={slider.hinhAnh} />
               <div className={classes.btnTopMore}>
                 <PlayCard slider={slider} />
               </div>
@@ -138,7 +134,6 @@ function CarouselComponent() {
                   classes.imgSetting,
                   active === slider.id ? classes.active : classes.imgBot
                 )}
-                component="image"
                 image={slider.hinhAnh}
               />
             </div>

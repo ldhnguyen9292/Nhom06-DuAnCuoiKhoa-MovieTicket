@@ -7,7 +7,7 @@ import { useStyles } from "./movie-card-styles.component";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarHalfIcon from "@material-ui/icons/StarHalf";
-import MoreIcon from "@material-ui/icons/More";
+import TicketIcon from "./../../../../assets/svg/TicketIcon";
 import clsx from "clsx";
 import ModalVideo from "../../modal-video/modal-video.component";
 
@@ -29,13 +29,13 @@ function CardMovie(props) {
     const starArray = [];
     for (let index = 0; index <= 4; index++) {
       if (star > 2) {
-        starArray.push(<StarIcon className={classes.star} />);
+        starArray.push(<StarIcon key={index} className={classes.star} />);
         star -= 2;
       } else if (star >= 1) {
-        starArray.push(<StarHalfIcon className={classes.star} />);
+        starArray.push(<StarHalfIcon key={index} className={classes.star} />);
         star = 0;
       } else {
-        starArray.push(<StarBorderIcon className={classes.star} />);
+        starArray.push(<StarBorderIcon key={index} className={classes.star} />);
       }
     }
     return starArray;
@@ -76,7 +76,7 @@ function CardMovie(props) {
         </Grid>
         <Grid item xs={4}>
           <Button size="small" className={classes.morebtn}>
-            <MoreIcon />
+            <TicketIcon />
           </Button>
         </Grid>
       </Grid>

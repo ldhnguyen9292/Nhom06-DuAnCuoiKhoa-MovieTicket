@@ -16,7 +16,7 @@ export const useStyles = makeStyles((theme) => ({
     border: "none",
     cursor: "pointer",
     background:
-      "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
+      "linear-gradient(to right, #4c46e6bf, #6d68fead, #b446ff9c, rgb(151, 0, 255,0.74))",
     zIndex: 2000,
     "& svg": {
       fontSize: 35,

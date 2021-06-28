@@ -7,7 +7,7 @@ import MenuMobile from "./menu-mobile/menu-mobile.component";
 function HeaderRight() {
   const classes = useStyles();
   return (
-    <>
+    <div className={classes.root}>
       <div className={classes.headerRight}>
         <Menu />
         <HeaderUser flexDirection={"row"} placement={"bottom"} />
@@ -15,7 +15,7 @@ function HeaderRight() {
       <div className={classes.mobile}>
         <MenuMobile />
       </div>
-    </>
+    </div>
   );
 }
 

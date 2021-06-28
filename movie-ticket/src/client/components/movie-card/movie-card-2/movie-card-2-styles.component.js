@@ -2,13 +2,13 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    borderRadius: 10,
-    background: "white",
-    overflow: "hidden",
+    padding: 10,
   },
   left: {
     minHeight: 250,
     minWidth: 150,
+    borderRadius: "10px 0 0 10px",
+    overflow: "hidden",
   },
   imgSetting: {
     width: "100%",
@@ -21,6 +21,8 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     padding: 30,
+    background: "white",
+    borderRadius: "0 10px 10px 0",
   },
   rightBot: {
     display: "flex",
@@ -38,7 +40,8 @@ export const useStyles = makeStyles((theme) => ({
     margin: 10,
   },
   trailer: {
-    background: "#b446ff",
+    background:
+      "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
     color: "white",
     border: "1px solid #b446ff",
     "&:hover": {
@@ -51,15 +54,16 @@ export const useStyles = makeStyles((theme) => ({
     color: "black",
     border: "1px solid #b446ff",
     "&:hover": {
-      background: "#b446ff",
+      background:
+        "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
       color: "white",
     },
   },
   title: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "bold",
     textTransform: "capitalize",
-    color: "black",
+    color: "#b446ff",
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
@@ -83,8 +87,17 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "right",
     transition: "all 0.5s",
     "&:hover": {
-      background: "#b446ff",
-      color: "white",
+      background:
+        "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
+    },
+    "& svg": {
+      width: 60,
+      padding: 5,
+      transition: "all 0.5s",
+      fill: "#b446ff",
+      "&:hover": {
+        fill: "white",
+      },
     },
   },
   text: {
