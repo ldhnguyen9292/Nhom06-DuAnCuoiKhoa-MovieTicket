@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 
 function MovieName(props) {
   const classes = useStyles();
-  const [name, setName] = useState();
+  const [name, setName] = useState("");
 
   const handleChange = (event) => {
     setName({ tenPhim: event.target.value });

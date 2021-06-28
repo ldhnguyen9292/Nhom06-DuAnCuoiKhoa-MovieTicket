@@ -37,9 +37,9 @@ function filterDataByName(array, keyName) {
   });
 }
 
-module.exports = {
-  createQPString,
-  QPGetValue,
-  QPUpdateValue,
-  filterDataByName,
-};
+export const SearchService = {
+    createQPString,
+    QPGetValue,
+    QPUpdateValue,
+    filterDataByName,
+}
