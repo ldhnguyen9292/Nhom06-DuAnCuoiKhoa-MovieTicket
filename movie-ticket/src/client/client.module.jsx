@@ -10,6 +10,9 @@ import Contact from "./pages/contact/contact.page";
 import News from "./pages/news/news.page";
 import User from "./pages/user/user.page";
 import BackToTop from "./components/back-to-top/back-to-top.component";
+import SeatBooking from "./pages/movie/seat-booking/seat-booking.page";
+import BookingSummary from "./pages/movie/booking-summary/booking-summary";
+import BookingConfirmation from "./pages/movie/booking-confirmation/booking-confirmation.page";
 
 function Client() {
   const [position, setPosition] = useState(0);
@@ -32,6 +35,13 @@ function Client() {
           path="/movie/movie-detail:maPhim"
           exact
           component={MovieDetail}
+        />
+        <Route path="/movie/seat-booking" exact component={SeatBooking} />
+        <Route path="/movie/booking-summary" exact component={BookingSummary} />
+        <Route
+          path="/movie/booking-confirmation"
+          exact
+          component={BookingConfirmation}
         />
         <Route path="/news" exact component={News} />
         <Route path="/contact" exact component={Contact} />
