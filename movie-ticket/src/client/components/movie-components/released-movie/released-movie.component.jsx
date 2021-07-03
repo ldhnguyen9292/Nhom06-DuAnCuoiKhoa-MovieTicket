@@ -29,24 +29,12 @@ function ReleasedMovie(props) {
   const changeState = (pageV) => {
     const newObject = { ...pageLoad, page: pageV };
     pageLoad = newObject;
+    console.log(queryParams);
     props.handleChange({ ...queryParams, page: pageV, submit: true });
   };
 
-  const handleChangePage = (event) => {
-    const value = event.target.innerText;
-    if (value) {
-      changeState(parseInt(event.target.innerText));
-    } else {
-      const text = event.target.innerHTML;
-      const next = text.includes("M10");
-      const prev = text.includes("M15");
-      if (next && pageLoad.page < pageTotal) {
-        changeState(pageLoad.page + 1);
-      }
-      if (prev && pageLoad.page > 1) {
-        changeState(pageLoad.page - 1);
-      }
-    }
+  const handleChangePage = (event, value) => {
+    changeState(value);
   };
 
   const renderMovieList1 = () => {
@@ -128,10 +116,9 @@ function ReleasedMovie(props) {
         count={pageTotal}
         variant="outlined"
         shape="rounded"
-        size="large"
         page={pageLoad.page}
         className={classes.pagination}
-        onClick={handleChangePage}
+        onChange={handleChangePage}
       />
     </Grid>
   );
