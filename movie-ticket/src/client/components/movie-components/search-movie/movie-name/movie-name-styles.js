@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 
+const color = "#707070";
+
 export const useStyles = makeStyles(() => ({
   searchTitle: {
     display: "flex",
@@ -8,6 +10,7 @@ export const useStyles = makeStyles(() => ({
     background: "#f8f8f8",
     borderRadius: 10,
     overflow: "hidden",
+    color: color,
     "& input": {
       padding: 10,
       background: "#f8f8f8",

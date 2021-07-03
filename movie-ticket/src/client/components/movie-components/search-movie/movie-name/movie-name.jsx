@@ -5,6 +5,7 @@ import SearchIcon from "@material-ui/icons/Search";
 function MovieName(props) {
   const classes = useStyles();
   const [name, setName] = useState("");
+  const { placeHolder } = props;
 
   const handleChange = (event) => {
     setName({ tenPhim: event.target.value });
@@ -19,7 +20,7 @@ function MovieName(props) {
     <form onSubmit={handleSubmit} className={classes.searchTitle}>
       <input
         type="text"
-        placeholder="Tìm tên phim"
+        placeholder={placeHolder}
         value={name.tenPhim}
         onChange={handleChange}
       />

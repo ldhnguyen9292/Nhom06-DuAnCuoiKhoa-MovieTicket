@@ -5,7 +5,7 @@ import BCTopHeader from "../../../components/movie-components/booking-confirmati
 function BookingConfirmation() {
   return (
     <>
-      <BCTopHeader />
+      <BCTopHeader title="Xác nhận" />
       <BCContent />
     </>
   );

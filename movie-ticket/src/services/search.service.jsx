@@ -10,17 +10,16 @@ function createQPString(queryParams) {
 }
 
 function QPGetValue(query, key, error) {
-  let result = query.get(key) ? query.get(key) : error;
-  if (isFinite(result)) {
+  let result = query.get(key);
+  if (!result) {
+    result = error;
+  } else if (isFinite(result)) {
     result = parseInt(result);
   }
   return result;
 }
 
 function QPUpdateValue(query, queryParams) {
-  if (!queryParams) {
-    return;
-  }
   let object = {};
   for (const [key, value] of Object.entries(queryParams)) {
     object = { ...object, [key]: QPGetValue(query, key, value) };
@@ -38,8 +37,8 @@ function filterDataByName(array, keyName) {
 }
 
 export const SearchService = {
-    createQPString,
-    QPGetValue,
-    QPUpdateValue,
-    filterDataByName,
-}
+  createQPString,
+  QPGetValue,
+  QPUpdateValue,
+  filterDataByName,
+};
