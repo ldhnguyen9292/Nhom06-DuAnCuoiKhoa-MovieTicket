@@ -14,7 +14,21 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   content: {
-    padding: "4%",
+    padding: "4% 4% 0",
+    display: "-webkit-box",
+    "-webkit-line-clamp": 5,
+    "-webkit-box-orient": "vertical",
+    overflow: "hidden",
+    transition: "all 0.5s",
+  },
+  contentUnlock: {
+    padding: "4% 4% 0",
+    transition: "all 0.5s",
+  },
+  lockBtn: {
+    color: "#b446ff",
+    cursor: "pointer",
+    padding: "0 4%",
   },
   titleRed: {
     color: "#b446ff",

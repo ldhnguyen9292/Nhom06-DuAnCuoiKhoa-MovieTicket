@@ -9,6 +9,8 @@ import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 
 function NewsCard() {
   const classes = useStyles();
+  const [lock, setLock] = useState(true);
+  const [open, setOpen] = useState(false);
   //   const [mess, setMess] = useState("");
 
   const handleChange = (event) => {
@@ -87,10 +89,18 @@ function NewsCard() {
     );
   };
 
+  const handleLock = () => {
+    setLock(!lock);
+  };
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <Paper className={classes.root}>
       <CardMedia component="img" src={NewsDemo} className={classes.imgTop} />
-      <div className={classes.content}>
+      <div className={lock ? classes.content : classes.contentUnlock}>
         <p className={classes.titleRed}>02/07/2021 | Admin</p>
         <h3 className={classes.title}>Tên bài báo</h3>
         <p>
@@ -139,6 +149,9 @@ function NewsCard() {
           autem odit nam aliquam possimus natus voluptas consequatur.
         </p>
       </div>
+      <div onClick={handleLock} className={classes.lockBtn}>
+        {lock ? <p>Xem thêm</p> : <p>Rút gọn</p>}
+      </div>
       <div className={classes.footer}>
         <Grid container spacing={3} alignItems="center" justify="space-between">
           <Grid item xs={4} style={{ padding: "2%" }}>
@@ -147,7 +160,7 @@ function NewsCard() {
               <span className={classes.text}>10 thích</span>
             </Grid>
           </Grid>
-          <Grid item xs={4} style={{ padding: "2%" }}>
+          <Grid item xs={4} style={{ padding: "2%" }} onClick={handleOpen}>
             <Grid container justify="center" className={classes.iconBox}>
               <QuestionAnswerIcon className={classes.icon} />
               <span className={classes.text}>10 ý kiến</span>
@@ -161,7 +174,7 @@ function NewsCard() {
           </Grid>
         </Grid>
       </div>
-      <div>{renderMesseges()}</div>
+      {open ? <div>{renderMesseges()}</div> : <></>}
     </Paper>
   );
 }

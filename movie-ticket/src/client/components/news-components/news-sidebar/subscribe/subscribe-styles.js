@@ -17,7 +17,7 @@ export const useStyles = makeStyles(() => ({
     width: "100%",
     padding: "5%",
     borderRadius: 10,
-    background: "#b446ff",
+    background: "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
     border: "1px solid #b446ff",
     color: "white",
     fontSize: 18,
