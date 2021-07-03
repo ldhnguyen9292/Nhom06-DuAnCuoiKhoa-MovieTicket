@@ -15,9 +15,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   content: {
     padding: "4% 4% 0",
-    display: "-webkit-box",
-    "-webkit-line-clamp": 5,
-    "-webkit-box-orient": "vertical",
+    display: "box",
+    lineClamp: 5,
+    boxOrient: "vertical",
     overflow: "hidden",
     transition: "all 0.5s",
   },
