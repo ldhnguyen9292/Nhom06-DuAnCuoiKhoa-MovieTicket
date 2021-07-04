@@ -15,6 +15,12 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       display: "flex",
     },
+    [theme.breakpoints.down("1100")]: {
+      width: "80%",
+    },
+    [theme.breakpoints.down("830")]: {
+      width: "70%",
+    },
   },
   flexG: {
     flexGrow: "1",
