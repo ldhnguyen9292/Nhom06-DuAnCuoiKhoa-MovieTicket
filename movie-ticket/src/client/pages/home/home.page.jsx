@@ -8,7 +8,7 @@ function Home() {
   return (
     <div>
       <CarouselComponent />
-      <SearchHome />
+      {/* <SearchHome /> */}
       <MovieComponent />
       <NewsComponent />
     </div>

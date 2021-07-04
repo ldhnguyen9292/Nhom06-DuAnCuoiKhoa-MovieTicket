@@ -2,8 +2,14 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   headerLeft: {
-    width: 300,
+    width: 400,
     padding: 20,
+    fontSize: '20px',
+    [theme.breakpoints.up("md")]: {
+      width: 400,
+      padding: '20px 10px',
+      fontSize: '20px',
+    },
   },
   logo: {
     color: "white",
@@ -24,8 +30,8 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   iconLogo: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
     borderRadius: "50%",
     borderBottomRightRadius: "0",
     padding: 5,
