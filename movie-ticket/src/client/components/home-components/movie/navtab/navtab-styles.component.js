@@ -14,12 +14,16 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor: 'white',
         color: '#797979',
         width: '320px',
+        [theme.breakpoints.down('xs')]: {
+            width: '296px',
+        },
         borderRadius: '5px',
     },
     tabs: {
         "& .MuiTab-textColorInherit.Mui-selected": {
             background: 'linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))',
             color: 'white',
+            borderBottom: 'none',
         },
         "& .MuiTab-textColorInherit": {
             '&:hover': {
@@ -28,5 +32,6 @@ export const useStyles = makeStyles((theme) => ({
             }
         },
         borderRadius: '5px',
+        
     },
 }));

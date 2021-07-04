@@ -53,7 +53,7 @@ export default function SimpleTabs() {
         <div className={classes.root}>
             <div className={classes.container}>
                 <AppBar position="static" className={classes.appbar}>
-                    <Tabs className={classes.tabs} value={value} onChange={handleChange} aria-label="simple tabs example">
+                    <Tabs indicatorColor="none"  className={classes.tabs} value={value} onChange={handleChange} aria-label="simple tabs example">
                     <Tab className={classes.tabs} label="Upcoming Movies" {...a11yProps(0)} />
                     <Tab className={classes.tabs} label="Relesed Movies" {...a11yProps(1)} />
                     </Tabs>

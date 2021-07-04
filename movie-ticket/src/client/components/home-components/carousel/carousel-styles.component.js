@@ -12,9 +12,10 @@ const imgSetting = {
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    background: "black",
+    background: "white",
     color: "white",
     height: "fit-content",
+    borderBottom: '2px solid #333',
   },
   top: {
     width: "100%",
@@ -24,12 +25,12 @@ export const useStyles = makeStyles((theme) => ({
       height: 300,
     },
     [theme.breakpoints.up("md")]: {
-      height: 350,
+      height: 450,
     },
     [theme.breakpoints.up("lg")]: {
-      height: 400,
+      height: 670,
     },
-    marginBottom: 20,
+    marginBottom: 0,
   },
   imgTop: {
     width: "100%",
@@ -47,16 +48,21 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("lg")]: {
       height: 150,
     },
-    marginBottom: 10,
+    marginBottom: 0,
+    backgroundColor: '#00B4DB',
+    backgroundColor: 'black',
   },
   imgSetting,
   imgBot: {
     "&:hover": {
       transform: "scale(1.1)",
+      opacity: '1',
     },
+    opacity: '0.7',
   },
   active: {
     transform: "scale(1.1)",
+    opacity: '1',
   },
   btnTopMore: {
     position: "absolute",
