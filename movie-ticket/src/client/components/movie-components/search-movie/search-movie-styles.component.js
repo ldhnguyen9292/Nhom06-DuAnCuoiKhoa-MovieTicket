@@ -3,7 +3,7 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     background: "white",
     borderRadius: 10,
-    padding: 10,
+    padding: 20,
     margin: 20,
   },
   searchTitle: {

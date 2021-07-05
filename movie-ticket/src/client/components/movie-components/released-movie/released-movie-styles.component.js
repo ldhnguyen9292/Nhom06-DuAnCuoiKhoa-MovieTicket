@@ -3,8 +3,11 @@ import { makeStyles } from "@material-ui/core";
 export const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
+    margin: '0px',
   },
   title: {
+    padding: '20px 10px',
+    margin: '0px',
     display: "flex",
     justifyContent: "space-between",
     fontSize: 26,
@@ -16,9 +19,9 @@ export const useStyles = makeStyles((theme) => ({
     "&::after": {
       content: '""',
       position: "absolute",
-      width: "100%",
+      width: "97.5%",
       bottom: 0,
-      left: 0,
+      left: 10,
       border: "1px solid #dddddd",
     },
     "&::before": {
@@ -26,7 +29,7 @@ export const useStyles = makeStyles((theme) => ({
       position: "absolute",
       width: "5%",
       bottom: -1,
-      left: 0,
+      left: 10,
       border: "2px solid #b446ff",
       zIndex: 1,
     },

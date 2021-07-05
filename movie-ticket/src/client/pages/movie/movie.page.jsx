@@ -8,6 +8,8 @@ import HungThanTrang from "./../../../assets/images/hung-than-trang.png";
 import BanTayDietQuy from "./../../../assets/images/ban-tay-diet-quy.png";
 import { SearchService } from "./../../../services/search.service";
 import { useStyles } from "./movie-styles.page";
+import UpcomingMovie from "../../components/movie-components/upcoming/upcoming.component";
+import TopMovie from './../../components/movie-components/top-movie/topMovie.component'
 
 const initialArray = [
   {
@@ -203,6 +205,8 @@ function Movie() {
   return (
     <>
       {(queryParams.submit = false)}
+      <TopMovie />
+      <UpcomingMovie />
       <Grid container justify="center" className={classes.root}>
         <Grid item xs={12} md={3}>
           <SearchMovie queryParams={queryParams} handleChange={handleChange} />
