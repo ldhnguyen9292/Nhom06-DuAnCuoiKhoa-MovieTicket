@@ -13,6 +13,7 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import CountUp from "react-countup";
 import Logo from "./../../../../../assets/images/logo.gif";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 function MenuMobile() {
   const classes = useStyles();
@@ -37,11 +38,17 @@ function MenuMobile() {
         }}
       >
         <div className={classes.drawer}>
-          <Box fontSize="20px">
+          <Box
+            fontSize="20px"
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
             <NavLink to="/" className={classes.logo}>
               <img src={Logo} alt="logo" className={classes.iconLogo} />
               <span className={classes.titleLogo}>Movie Ticket</span>
             </NavLink>
+            <HighlightOffIcon fontSize="large" onClick={handleClose} className={classes.closeBtn}/>
           </Box>
           <NavLink to="/movie" className={classes.title}>
             <div className={classes.iconFlex}>

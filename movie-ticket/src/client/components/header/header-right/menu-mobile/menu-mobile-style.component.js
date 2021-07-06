@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import Image from './../../../../../assets/images/bg.jpeg';
+// import Image from './../../../../../assets/images/bg.jpeg';
 
 export const useStyles = makeStyles((theme) => ({
   iconBtn: {
@@ -11,18 +11,19 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("lg")]: {
       margin: 20,
     },
-    color: 'white',
-    borderRadius: '10px',
+    color: "white",
+    borderRadius: "10px",
   },
   drawer: {
-    borderBottom: '1px solid #333',
+    borderBottom: "1px solid #333",
     width: 400,
     height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
-    padding: '0 30px',
-    backgroundImage: 'linear-gradient(to bottom, #4c46e630, #6d68fe30, #b446ff30)',
+    padding: "0 30px",
+    backgroundImage:
+      "linear-gradient(to bottom, #4c46e630, #6d68fe30, #b446ff30)",
   },
   title: {
     textDecoration: "none",
@@ -57,10 +58,10 @@ export const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#6d68fe",
     },
-    borderTop: '1px solid #333',
+    borderTop: "1px solid #333",
   },
   logo: {
-    margin: "50px 0 30px 10px",
+    margin: "30px 0 30px 10px",
     color: "black",
     display: "flex",
     alignItems: "center",
@@ -68,7 +69,7 @@ export const useStyles = makeStyles((theme) => ({
     transition: "all 0.5s",
     textTransform: "uppercase",
     fontWeight: "bold",
-    fontSize: '24px',
+    fontSize: "24px",
     "&:hover": {
       color: "#6d68fe",
     },
@@ -78,14 +79,23 @@ export const useStyles = makeStyles((theme) => ({
     height: 60,
     borderRadius: "50%",
     borderBottomRightRadius: "0",
-    padding: '0',
+    padding: "0",
   },
   titleLogo: {
-    padding: '0 10px',
+    padding: "0 10px",
   },
   line: {
-    width: '100%',
-    height: '1px',
-    backgroundColor: '#333',
+    width: "100%",
+    height: "1px",
+    backgroundColor: "#333",
+  },
+  closeBtn: {
+    color: "black",
+    cursor: "pointer",
+    transition: "all 0.5s",
+    "&:hover": {
+      color: "#6d68fe",
+      transform: "scale(1.2)",
+    },
   },
 }));
