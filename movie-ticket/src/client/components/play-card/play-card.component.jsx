@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import { IconButton } from "@material-ui/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
@@ -7,7 +8,7 @@ import ModalVideo from "./../modal-video/modal-video.component";
 
 function PlayCard(props) {
   const classes = useStyles();
-  const { slider } = props;
+  const { slider, link } = props;
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -30,7 +31,9 @@ function PlayCard(props) {
         <></>
       )}
       <IconButton className={classes.moreBtn}>
-        <Typography>Chi tiết</Typography>
+        <NavLink to={link}>
+          <Typography>Chi tiết</Typography>
+        </NavLink>
       </IconButton>
       <ModalVideo slider={slider} open={open} handleClose={handleClose} />
     </>

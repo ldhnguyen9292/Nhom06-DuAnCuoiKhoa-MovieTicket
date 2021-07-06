@@ -34,5 +34,8 @@ export const useStyles = makeStyles({
       background:
         "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
     },
+    "& a": {
+      color: "#ffffffcf",
+    },
   },
 });

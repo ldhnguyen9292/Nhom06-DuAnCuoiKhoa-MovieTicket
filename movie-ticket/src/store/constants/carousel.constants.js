@@ -1,0 +1,1 @@
+export const GET_CAROUSEL_LIST = "GET_CAROUSEL_LIST";
