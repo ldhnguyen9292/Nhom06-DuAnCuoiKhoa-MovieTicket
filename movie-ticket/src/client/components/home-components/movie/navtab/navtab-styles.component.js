@@ -12,15 +12,15 @@ export const useStyles = makeStyles((theme) => ({
   },
   appbar: {
     backgroundColor: "white",
-    width: "320px",
+    width: "320px !important",
       [theme.breakpoints.down("xs")]: {
-        width: "296px",
+        width: "296px !important",
       },
     color: "#797979",
     "& .MuiAppBar-root": {
-      width: "320px",
+      width: "320px !important",
       [theme.breakpoints.down("xs")]: {
-        width: "296px",
+        width: "296px !important",
       },
     },
     borderRadius: "5px",
