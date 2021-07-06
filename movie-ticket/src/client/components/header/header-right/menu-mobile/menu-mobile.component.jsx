@@ -40,7 +40,7 @@ function MenuMobile() {
           <Box fontSize="20px">
             <NavLink to="/" className={classes.logo}>
               <img src={Logo} alt="logo" className={classes.iconLogo} />
-              <span>Movie Ticket</span>
+              <span className={classes.titleLogo}>Movie Ticket</span>
             </NavLink>
           </Box>
           <NavLink to="/movie" className={classes.title}>
@@ -61,6 +61,7 @@ function MenuMobile() {
               <Typography className={classes.text}>Liên hệ</Typography>
             </div>
           </NavLink>
+          <div className={classes.line}></div>
           <HeaderUser />
           {renderSocialNetworks()}
         </div>

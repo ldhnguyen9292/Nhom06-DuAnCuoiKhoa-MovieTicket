@@ -32,7 +32,7 @@ function PlayCard(props) {
       )}
       <IconButton className={classes.moreBtn}>
         <NavLink to={link}>
-          <Typography>Chi tiết</Typography>
+          <Typography className={classes.p}>Chi tiết</Typography>
         </NavLink>
       </IconButton>
       <ModalVideo slider={slider} open={open} handleClose={handleClose} />

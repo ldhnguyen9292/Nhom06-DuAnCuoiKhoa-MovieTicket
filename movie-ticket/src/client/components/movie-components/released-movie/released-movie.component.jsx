@@ -42,7 +42,7 @@ function ReleasedMovie(props) {
     const begin = 1 * (pageSize * (page - 1));
     const end = pageSize * page;
     return (
-      <Grid container>
+      <Grid container className={classes.root}>
         {array.map((movie, index) => {
           if (index + 1 >= begin && index + 1 <= end) {
             return (
@@ -68,7 +68,7 @@ function ReleasedMovie(props) {
     const begin = 1 * (pageSize * (page - 1));
     const end = pageSize * page;
     return (
-      <Grid container>
+      <Grid container className={classes.root}>
         {array.map((movie, index) => {
           if (index + 1 >= begin && index + 1 <= end) {
             return (
@@ -85,7 +85,7 @@ function ReleasedMovie(props) {
   return (
     <Grid>
       <div className={classes.title}>
-        <span>Phim đang chiếu</span>
+        <span>PHIM DANG CHIEU</span>
         <div className={classes.options}>
           <ViewModuleIcon
             className={clsx(

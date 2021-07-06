@@ -16,10 +16,10 @@ function Header(props) {
         props.pos > 200 ? classes.headerFix : classes.header
       )}
     >
-      <Grid item xs={8} md={4}>
+      <Grid item xs={8} md={2}>
         <HeaderLeft />
       </Grid>
-      <Grid item xs={4} md={8}>
+      <Grid item xs={4} md={10}>
         <HeaderRight />
       </Grid>
     </Grid>

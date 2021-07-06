@@ -68,7 +68,7 @@ function HeaderUser(props) {
           onClick={handleClick}
           className={classes.userMenu}
         >
-          <AccountCircle />
+        <AccountCircle />
           {renderUserInfo()}
         </IconButton>
         <IconButton aria-label="show 4 new mails" color="inherit">
