@@ -108,7 +108,7 @@ function Contact() {
 
   const renderBot = () => {
     return (
-      <div>
+      <div className={classes.botBox}>
         <Grid container justify="space-around" alignItems="center">
           {arrayContact.map((value, index) => {
             const last = arrayContact.length - 1;

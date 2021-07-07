@@ -8,7 +8,7 @@ function News() {
   return (
     <div>
       <TopHeader title="Tin tức" />
-      <Grid container style={{ padding: "5%" }}>
+      <Grid container style={{ padding: "5%", maxWidth: 1200, margin:"0 auto" }}>
         <Grid item xs={12} md={8}>
           <NewsContent />
         </Grid>

@@ -1,10 +1,10 @@
 import React from "react";
-import DashBoard from "./dashboard/dashboard.page";
+import Management from "./pages/management.page";
 
 function Admin() {
   return (
     <>
-      <DashBoard />
+      <Management />
     </>
   );
 }

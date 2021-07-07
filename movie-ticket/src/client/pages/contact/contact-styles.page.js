@@ -10,7 +10,9 @@ const lineSetting = {
 
 export const useStyles = makeStyles((theme) => ({
   topBox: {
+    maxWidth: 1200,
     padding: "5% 8%",
+    margin: "0 auto",
     [theme.breakpoints.up("lg")]: {
       padding: "2% 2% 5%",
     },
@@ -119,5 +121,9 @@ export const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#b446ff",
     },
+  },
+  botBox: {
+    maxWidth: 1200,
+    margin: "0 auto",
   },
 }));
