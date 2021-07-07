@@ -11,12 +11,12 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   appbar: {
-    backgroundColor: "white",
+    backgroundColor: "white !important",
     width: "320px !important",
       [theme.breakpoints.down("xs")]: {
         width: "296px !important",
       },
-    color: "#797979",
+    color: "#797979 !important",
     "& .MuiAppBar-root": {
       width: "320px !important",
       [theme.breakpoints.down("xs")]: {

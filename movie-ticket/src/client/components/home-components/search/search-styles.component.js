@@ -41,6 +41,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   content: {
     width: "90%",
+    maxWidth: 1200,
     margin: "0 auto",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
