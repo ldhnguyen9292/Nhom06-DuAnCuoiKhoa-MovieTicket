@@ -17,7 +17,7 @@ function CarouselComponent() {
   let slider1, slider2;
 
   useEffect(() => {
-    dispatch(getCarouselListAction());
+    dispatch(getCarouselListAction(""));
   }, []);
 
   useEffect(() => {

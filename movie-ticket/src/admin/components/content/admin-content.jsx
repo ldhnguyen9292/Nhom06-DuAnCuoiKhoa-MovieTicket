@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Paper } from "@material-ui/core";
 import React, { memo } from "react";
 import { lazy } from "react";
 import { Suspense } from "react";
@@ -9,8 +9,12 @@ const useStyles = makeStyles(() => ({
   root: {
     background: "#060818",
     padding: 10,
-    color: "#506690",
     height: "100%",
+  },
+  box: {
+    background: "#0e1726",
+    border: "1px solid #0e1726",
+    color: "#506690",
   },
 }));
 
@@ -57,7 +61,9 @@ function AdminContent() {
 
   return (
     <div className={classes.root}>
-      {!key || key === "Dashboard" ? <Dashboard /> : <>{lazyLoading()}</>}
+      <Paper className={classes.box}>
+        {!key || key === "Dashboard" ? <Dashboard /> : <>{lazyLoading()}</>}
+      </Paper>
     </div>
   );
 }

@@ -27,7 +27,7 @@ function Management() {
           item
           className={open ? classes.contentUnSpread : classes.contentSpread}
         >
-          <AdminContent />;
+          <AdminContent />
         </Grid>
       </Grid>
     </div>

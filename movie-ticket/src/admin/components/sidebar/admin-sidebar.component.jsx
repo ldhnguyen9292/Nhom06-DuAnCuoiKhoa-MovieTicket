@@ -26,7 +26,7 @@ function AdminSidebar() {
       ],
     },
   ];
-  
+
   return (
     <List component="nav" className={classes.root}>
       {menuItems.map((item, index) => {
