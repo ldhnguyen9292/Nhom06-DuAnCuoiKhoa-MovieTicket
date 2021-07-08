@@ -1,11 +1,31 @@
 import { makeStyles } from "@material-ui/core";
+import BackGround from './../../../../assets/images/background.jpg'
 
 export const useStyles = makeStyles((theme) => ({
     root: {
-        height: '450px',
+        // width: '100%',
+        height: '670px',
+        background: `url(${BackGround}) no-repeat center top`,
+        backgroundSize: 'cover',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        '&::before': {
+            content: '""',
+            width: '100%',
+            height: '100%',
+            display: 'block',
+            position: 'absolute',
+            backgroundColor: 'rgba(0,0,0,0.4)',
+        },
+        [theme.breakpoints.down('768')]: {
+            height: '500px',
+        },
     },
     container: {
         maxWidth: '1200px',
+        position: 'absolute',
     },
     Box: {
         height: '408px',
@@ -23,7 +43,7 @@ export const useStyles = makeStyles((theme) => ({
             width: '100%',
         },
         border: '5px solid white',
-        margin: '30px auto 20px',
+        margin: '0px auto 20px',
         position: 'relative',
     },
     backGround: {
