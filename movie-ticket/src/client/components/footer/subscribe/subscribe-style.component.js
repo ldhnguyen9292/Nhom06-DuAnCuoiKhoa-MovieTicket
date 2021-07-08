@@ -9,13 +9,13 @@ export const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         [theme.breakpoints.down("sm")]: {
             height: '270px',
-        }
+        },
     },
     container: {
-        maxWidth: '1140px',
+        maxWidth: '1200px',
     },
     box: {
-        width: '100%',
+        width: '98.5%',
         height: '345px',
         background: `url(${Image}) no-repeat center center`,
         borderRadius: '30px',
