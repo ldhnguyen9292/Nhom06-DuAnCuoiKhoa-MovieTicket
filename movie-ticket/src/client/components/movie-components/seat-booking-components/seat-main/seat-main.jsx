@@ -51,41 +51,43 @@ function SeatMain(props) {
 
   return (
     <div className={classes.root}>
-      <h3>Rạp 1</h3>
-      <div className="st_seat_full_container">
-        <div className="st_seat_lay_economy_wrapper float_left">
-          <CardMedia component="img" src={Screen} />
-          <Grid container justify="space-between" direction="row">
-            <Grid item xs={6}>
-              <Grid
-                container
-                justify="space-around"
-                className={classes.seatMain}
-              >
-                {renderSeat(1, 60)}
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <h3>Rạp 1</h3>
+        <div className="st_seat_full_container">
+          <div className="st_seat_lay_economy_wrapper float_left">
+            <CardMedia component="img" src={Screen} />
+            <Grid container justify="space-between" direction="row">
+              <Grid item xs={6}>
+                <Grid
+                  container
+                  justify="space-around"
+                  className={classes.seatMain}
+                >
+                  {renderSeat(1, 60)}
+                </Grid>
+              </Grid>
+              <Grid item xs={6}>
+                <Grid
+                  container
+                  justify="space-around"
+                  className={classes.seatMain}
+                >
+                  {renderSeat(61, 120)}
+                </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <Grid
-                container
-                justify="space-around"
-                className={classes.seatMain}
-              >
-                {renderSeat(61, 120)}
+            <Grid container justify="center" className={classes.seatInfo}>
+              <Grid className={classes.seat}>
+                <span>Trống</span>
+              </Grid>
+              <Grid className={clsx(classes.seat, classes.seatActive)}>
+                <span>Chọn</span>
+              </Grid>
+              <Grid className={clsx(classes.seat, classes.seatDisabled)}>
+                <span>Đã đặt</span>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid container justify="center" className={classes.seatInfo}>
-            <Grid className={classes.seat}>
-              <span>Trống</span>
-            </Grid>
-            <Grid className={clsx(classes.seat, classes.seatActive)}>
-              <span>Chọn</span>
-            </Grid>
-            <Grid className={clsx(classes.seat, classes.seatDisabled)}>
-              <span>Đã đặt</span>
-            </Grid>
-          </Grid>
+          </div>
         </div>
       </div>
     </div>

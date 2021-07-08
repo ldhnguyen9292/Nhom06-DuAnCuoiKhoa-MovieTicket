@@ -25,6 +25,7 @@ export const useStyles = makeStyles((theme) => ({
     transition: "all 0.5s",
     marginTop: 104,
     padding: 10,
+    maxWidth: "100vw",
   },
   contentUnSpread: {
     flexGrow: 1,
@@ -32,5 +33,6 @@ export const useStyles = makeStyles((theme) => ({
     margin: "0 0 0 210px",
     transition: "all 0.5s",
     padding: 10,
+    maxWidth: "calc(100vw - 210px)",
   },
 }));
