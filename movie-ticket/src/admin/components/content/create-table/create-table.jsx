@@ -3,11 +3,16 @@ import TableTop from "./table-top/table-top";
 import TableBottom from "./table-bottom/table-bottom";
 
 function CreateTable(props) {
-  console.log("create table");
+  const { array, arrayTableHead, handleDelete, handleEdit } = props;
   return (
     <div>
       <TableTop />
-      <TableBottom array={props.array} />
+      <TableBottom
+        array={array}
+        arrayTableHead={arrayTableHead}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+      />
     </div>
   );
 }

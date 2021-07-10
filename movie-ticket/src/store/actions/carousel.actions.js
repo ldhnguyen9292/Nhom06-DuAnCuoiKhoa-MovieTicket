@@ -25,3 +25,47 @@ export const getCarouselListAction = (querParams) => {
 export const putCarouselKeyAction = (data) => {
   return { type: PUT_CAROUSEL_KEY, payload: data };
 };
+
+export const postNewCarouselAction = (data) => {
+  return async () => {
+    try {
+      const res = await axios({
+        method: "POST",
+        url: "https://mock-apis-test.herokuapp.com/carouselList",
+        data,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const carouselByIdActions = (method, id) => {
+  return async () => {
+    try {
+      const res = await axios({
+        method,
+        url: `https://mock-apis-test.herokuapp.com/carouselList/${id}`,
+      });
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const putCarouselByIdAction = (data) => {
+  return async () => {
+    try {
+      const res = await axios({
+        method: "PUT",
+        url: `https://mock-apis-test.herokuapp.com/carouselList/${data.id}`,
+        data,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

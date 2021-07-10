@@ -17,7 +17,7 @@ import { putCarouselKeyAction } from "./../../../../../store/actions/carousel.ac
 function TableBottom(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { array } = props;
+  const { array, arrayTableHead } = props;
   const keys = useSelector((state) => state.carousel.carouselKeys);
   const { arrayLength, pageSize, page, sort, order } = keys;
   const pageNum = Math.round(arrayLength / pageSize);
@@ -33,6 +33,14 @@ function TableBottom(props) {
     dispatch(putCarouselKeyAction({ page: value }));
   };
 
+  const handleDelete = (id) => {
+    props.handleDelete(id);
+  };
+
+  const handleEdit = (id) => {
+    props.handleEdit(id);
+  };
+
   const renderBottom = () => {
     return (
       <>
@@ -45,26 +53,26 @@ function TableBottom(props) {
                     Tuy chon
                   </Typography>
                 </TableCell>
-                {Object.entries(array[0]).map((title) => (
-                  <TableCell key={title[0]} className={classes.title}>
+                {arrayTableHead.map((title) => (
+                  <TableCell key={title} className={classes.title}>
                     <Typography className={classes.textTitle}>
-                      {title[0].split(/(?=[A-Z])/).join(" ")}
+                      {title.split(/(?=[A-Z])/).join(" ")}
                       <Typography className={classes.sortIcon}>
                         <ExpandLessIcon
                           className={
-                            title[0] === sort && order === "asc"
+                            title === sort && order === "asc"
                               ? classes.sortIconActive
                               : null
                           }
-                          onClick={() => handleSortAsc(title[0])}
+                          onClick={() => handleSortAsc(title)}
                         />
                         <ExpandMoreIcon
                           className={
-                            title[0] === sort && order === "desc"
+                            title === sort && order === "desc"
                               ? classes.sortIconActive
                               : null
                           }
-                          onClick={() => handleSortDesc(title[0])}
+                          onClick={() => handleSortDesc(title)}
                         />
                       </Typography>
                     </Typography>
@@ -76,13 +84,19 @@ function TableBottom(props) {
               {array.map((row) => (
                 <TableRow key={row.name}>
                   <TableCell className={classes.textBody}>
-                    <EditIcon className={classes.iconButton} />
-                    <DeleteIcon className={classes.iconButton} />
+                    <EditIcon
+                      className={classes.iconButton}
+                      onClick={() => handleEdit(row.id)}
+                    />
+                    <DeleteIcon
+                      className={classes.iconButton}
+                      onClick={() => handleDelete(row.id)}
+                    />
                   </TableCell>
-                  {Object.entries(row).map((element) => {
+                  {arrayTableHead.map((element, index) => {
                     return (
-                      <TableCell key={element[1]} className={classes.textBody}>
-                        {element[1]}
+                      <TableCell key={index} className={classes.textBody}>
+                        {row[element]}
                       </TableCell>
                     );
                   })}
