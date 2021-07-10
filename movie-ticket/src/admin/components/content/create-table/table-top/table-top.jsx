@@ -19,7 +19,6 @@ function TableTop() {
   };
 
   const renderTop = () => {
-    console.log("renderTop");
     return (
       <div className={classes.top}>
         <div className={classes.resultBox}>
