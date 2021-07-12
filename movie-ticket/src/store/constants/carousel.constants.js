@@ -1,1 +1,2 @@
 export const GET_CAROUSEL_LIST = "GET_CAROUSEL_LIST";
+export const PUT_CAROUSEL_KEY = "PUT_CAROUSEL_KEY";

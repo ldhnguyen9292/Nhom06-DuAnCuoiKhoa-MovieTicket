@@ -152,6 +152,7 @@ export const useStyles = makeStyles((theme) => ({
       "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
     color: "white",
     padding: "15px 20px",
+    marginBottom: 15,
     borderRadius: 5,
     textTransform: "uppercase",
     cursor: "pointer",

@@ -11,7 +11,7 @@ function BCContent() {
   const classes = useStyles();
   return (
     <div>
-      <Grid container>
+      <Grid container style={{ maxWidth: 1200, margin: "0 auto" }}>
         <Grid item xs={12}>
           <div className={classes.topBox}>
             {" "}
