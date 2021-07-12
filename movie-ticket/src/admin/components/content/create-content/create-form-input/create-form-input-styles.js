@@ -8,13 +8,13 @@ export const useStyles = makeStyles(() => ({
     margin: 0,
     backgroundImage: "linear-gradient(to bottom, #0e1726, #191e3a)",
   },
-  id:{
-    width:20,
-    background:"transparent",
-    outline:"none",
-    border:"transparent",
+  id: {
+    width: 20,
+    background: "transparent",
+    outline: "none",
+    border: "transparent",
     color: "#009688",
-    fontSize:16,
+    fontSize: 16,
   },
   input: {
     outline: "none",
@@ -57,5 +57,32 @@ export const useStyles = makeStyles(() => ({
       width: 20,
     },
     margin: "0 5px",
+  },
+  date: {
+    margin: 0,
+    border: "1px solid #1b2e4b",
+    borderRadius: 6,
+    background: "#1b2e4b",
+    padding: 10,
+    width: "100%",
+    "& label": {
+      color: "#506690",
+    },
+    "& input": {
+      color: "#009688",
+      fontSize: 14,
+    },
+    "& svg": {
+      color: "#009688",
+    },
+  },
+  textEditor: {
+    color: "#009688",
+    "& img": {
+      maxWidth: "200px !important",
+      maxHeight: "200px !important",
+      borderRadius: 5,
+      margin: 5,
+    },
   },
 }));

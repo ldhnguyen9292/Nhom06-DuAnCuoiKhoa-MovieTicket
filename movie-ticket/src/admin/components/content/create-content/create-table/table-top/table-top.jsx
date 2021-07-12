@@ -3,19 +3,19 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
 import { useStyles } from "./table-top-styles";
-import { putCarouselKeyAction } from "../../../../../store/actions/carousel.actions";
 
-function TableTop() {
+function TableTop(props) {
   const classes = useStyles();
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const { putKey, typePutKey } = props;
 
   const handleChange = (event) => {
-    dispatch(putCarouselKeyAction({ pageSize: parseInt(event.target.value) }));
+    dispatch(putKey(typePutKey, { pageSize: parseInt(event.target.value) }));
   };
 
   const onSubmit = (data) => {
-    dispatch(putCarouselKeyAction({ keySearch: data.keySearch }));
+    dispatch(putKey(typePutKey, { keySearch: data.keySearch }));
   };
 
   const renderTop = () => {

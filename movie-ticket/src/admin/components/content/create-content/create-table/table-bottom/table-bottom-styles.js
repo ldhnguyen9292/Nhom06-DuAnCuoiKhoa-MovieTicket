@@ -56,4 +56,9 @@ export const useStyles = makeStyles(() => ({
       fontSize: 13,
     },
   },
+  ul: {
+    "& button.MuiPaginationItem-page.Mui-selected": {
+      background: "#4361ee",
+    }
+  }
 }));
