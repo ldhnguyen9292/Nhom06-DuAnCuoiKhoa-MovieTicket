@@ -6,10 +6,6 @@ import { Box } from "@material-ui/core";
 import MyArrowIcon from "./../../../../assets/svg/MyArrowIcon";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Button } from "@material-ui/core";
-import FacebookIcon from "./../../../../assets/svg/facebookIcon";
-import TwitterIcon from '@material-ui/icons/Twitter';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import InstagramIcon from '@material-ui/icons/Instagram';
 
 function MovieInfoBooking(props) {
   const classes = useStyles();
@@ -56,10 +52,7 @@ function MovieInfoBooking(props) {
                 <div className={classes.right}></div>
               </div>
               <div className={classes.middle}>
-                  <Button className={classes.icon}><FacebookIcon/></Button>
-                  <Button className={classes.icon}><TwitterIcon/></Button>
-                  <Button className={classes.icon}><InstagramIcon/></Button>
-                  <Button className={classes.icon}><YouTubeIcon/></Button>
+                  <Button className={classes.thongtin}>Thong tin</Button>
               </div>
               <div className={classes.bottom}>
                   <p>14 Dec, 20182 hrs 23 mins</p>

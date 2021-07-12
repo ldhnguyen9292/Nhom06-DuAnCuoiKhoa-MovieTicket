@@ -197,18 +197,8 @@ export const useStyles = makeStyles((theme) => ({
         left: '50%',
         transform: 'translate(-50%,-50%)',
     },
-    icon: {
-        width: '35px',
-        minWidth: '35px',
-        height: '35px',
-        '& svg': {
-            width: '20px',
-            fill: '#eee',
-        },
-        border: '1px solid #eee',
-        borderRadius: '50%',
-        padding: '0px',
-        marginRight: '10px',
-        
+    thongtin: {
+        color: 'white',
+        border: '1px solid #aaa',
     },
 }));
