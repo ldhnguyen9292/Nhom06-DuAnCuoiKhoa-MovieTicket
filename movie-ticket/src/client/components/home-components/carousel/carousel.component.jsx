@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useStyles } from "./carousel-styles.component";
 import Slider from "react-slick";
 import { CardMedia } from "@material-ui/core";
 import clsx from "clsx";
 import PlayCard from "./../../play-card/play-card.component";
-import { getCarouselListAction } from "./../../../../store/actions/carousel.actions";
+import { callAPIactions } from "./../../../../store/actions/mock-api-main.actions";
+import { GET_CAROUSEL_LIST } from "../../../../store/constants/carousel.constants";
 
 function CarouselComponent() {
   const classes = useStyles();
@@ -15,9 +16,10 @@ function CarouselComponent() {
   const [nav2, setNav2] = useState(null);
   const [active, setActive] = useState(0);
   let slider1, slider2;
+  const type = GET_CAROUSEL_LIST;
 
   useEffect(() => {
-    dispatch(getCarouselListAction(""));
+    dispatch(callAPIactions.getListAction("carouselList", type, ""));
   }, []);
 
   useEffect(() => {
@@ -111,4 +113,4 @@ function CarouselComponent() {
   );
 }
 
-export default CarouselComponent;
+export default memo(CarouselComponent);
