@@ -22,11 +22,25 @@ const arrayInput = [
     validation: "",
   },
   {
+    type: "radio",
+    name: "loai",
+    placeHolder: ["tinTuc","khuyenMai"],
+    width: 50,
+    validation: "",
+  },
+  {
     type: "text",
     name: "hinhAnh",
     placeHolder: "Nhập URL hình ảnh",
     width: 50,
     validation: { required: "Vui lòng url" },
+  },
+  {
+    type: "text",
+    name: "trailer",
+    placeHolder: "Nhập URL trailer",
+    width: 50,
+    validation: { required: "Vui lòng link trailer" },
   },
   {
     type: "text",
@@ -45,10 +59,12 @@ const arrayInput = [
 ];
 const arrayTableHead = [
   "id",
-  "hinhAnh",
   "ngayDang",
   "tacGia",
+  "loai",
   "tenBai",
+  "hinhAnh",
+  "trailer",
   "noiDung",
 ];
 const name = "news";

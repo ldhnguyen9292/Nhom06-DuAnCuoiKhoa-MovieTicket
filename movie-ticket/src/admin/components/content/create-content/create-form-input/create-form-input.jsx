@@ -21,7 +21,7 @@ const modules = {
       { indent: "-1" },
       { indent: "+1" },
     ],
-    ["image"],
+    ["link", "image", "video"],
   ],
 };
 
@@ -35,7 +35,9 @@ const formats = [
   "list",
   "bullet",
   "indent",
+  "link",
   "image",
+  "video",
 ];
 
 function CreateFormInput(props) {

@@ -1,23 +1,22 @@
 import React from "react";
-import { useStyles } from "./news-type-styles";
+import { useStyles } from "./news-archives-styles";
 import { Grid } from "@material-ui/core";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import { PUT_NEWS_KEY } from "../../../../../store/constants/news.contants";
 import { callAPIactions } from "../../../../../store/actions/mock-api-main.actions";
 import { useDispatch } from "react-redux";
 
-function NewsType(props) {
+function NewsArchives(props) {
   const classes = useStyles();
-  const { array, keyName } = props;
+  const { array } = props;
   const { putKeyAction } = callAPIactions;
   const dispatch = useDispatch();
 
   const handleClick = (value) => {
-    let key = keyName;
-    if (value === "") {
-      key = "";
+    if (value.length === 1) {
+      value = "0" + value;
     }
-    dispatch(putKeyAction(PUT_NEWS_KEY, { filter: { key, value } }));
+    dispatch(putKeyAction(PUT_NEWS_KEY, { keySearch: `2021-${value}` }));
   };
 
   const renderArray = () => {
@@ -46,4 +45,4 @@ function NewsType(props) {
   return <div>{renderArray()}</div>;
 }
 
-export default NewsType;
+export default NewsArchives;

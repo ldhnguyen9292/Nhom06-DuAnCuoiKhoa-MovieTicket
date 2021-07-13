@@ -9,20 +9,30 @@ export const useStyles = makeStyles((theme) => ({
   },
   imgTop: {
     height: 300,
+    objectFit: "fill",
     "& img": {
       height: "100%",
     },
   },
   content: {
-    padding: "4% 4% 0",
+    padding: "2% 4%",
+    transition: "all 0.5s",
+    "& img, & iframe": {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      margin: "10px auto",
+      maxHeight: 300,
+      maxWidth: 450,
+      borderRadius: 5,
+      overflow: "hidden",
+    },
+  },
+  contentLock: {
     display: "box",
-    lineClamp: 5,
+    lineClamp: 4,
     boxOrient: "vertical",
     overflow: "hidden",
-    transition: "all 0.5s",
-  },
-  contentUnlock: {
-    padding: "4% 4% 0",
     transition: "all 0.5s",
   },
   lockBtn: {
@@ -33,24 +43,13 @@ export const useStyles = makeStyles((theme) => ({
   titleRed: {
     color: "#b446ff",
     padding: "10px 0",
+    padding: "0 4%",
   },
   title: {
     textTransform: "uppercase",
     color: "black",
-  },
-  imgContent: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: "0 auto",
-    maxHeight: 300,
-  },
-  img: {
-    display: "inline-flex",
-    maxWidth: 200,
-    borderRadius: 5,
-    overflow: "hidden",
-    margin: 5,
+    padding: "2% 4%",
+    margin: 0,
   },
   quote: {
     border: "1px solid #dddddd",
