@@ -3,18 +3,18 @@ import BackGround from './../../../../assets/images/background.jpg'
 
 export const useStyles = makeStyles((theme) => ({
     root: {
-        // width: '100%',
         height: '670px',
+        overflowY: 'scroll',
+        scrollBehavior: 'smooth',
         background: `url(${BackGround}) no-repeat center top`,
         backgroundSize: 'cover',
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
         '&::before': {
             content: '""',
             width: '100%',
-            height: '100%',
+            height: '',
             display: 'block',
             position: 'absolute',
             backgroundColor: 'rgba(0,0,0,0.4)',
@@ -28,6 +28,7 @@ export const useStyles = makeStyles((theme) => ({
         position: 'absolute',
     },
     Box: {
+        marginTop: '125px',
         height: '408px',
         width: '1140px',
         [theme.breakpoints.down('1200')]: {
@@ -218,7 +219,8 @@ export const useStyles = makeStyles((theme) => ({
         transform: 'translate(-50%,-50%)',
     },
     thongtin: {
-        color: 'white',
-        border: '1px solid #aaa',
+        color: '#ddd',
+        border: '1px solid rgba(255,255,255,0.25)',
+        borderRadius: '5px',
     },
 }));

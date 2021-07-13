@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Image from "./../../../../assets/images/bg-img.jpg";
 import { useStyles } from "./movie-info-styles.component";
 import { Container } from "@material-ui/core";
@@ -6,14 +6,24 @@ import { Box } from "@material-ui/core";
 import MyArrowIcon from "./../../../../assets/svg/MyArrowIcon";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Button } from "@material-ui/core";
+import InfoFilm from "../infoFilm/infoFilm.component";
 
 function MovieInfoBooking(props) {
   const classes = useStyles();
+  const [info, setInfo] = useState(false);
+  const handleShowInfo = () => {
+    setInfo(!info);
+  }
+
+  useEffect(() => {
+    const root = document.getElementById('information');
+    root.scrollTop = root.scrollHeight;
+  }, [info])
 
   return (
-    <div className={classes.root}>
-      <Container className={classes.container}>
-        <Box boxShadow={10} className={classes.Box}>
+    <div className={classes.root} id="information">
+      <Container className={classes.container} >
+        <Box boxShadow={10} className={classes.Box} id="information">
           <div className={classes.backGround}>
             <img src={Image}></img>
           </div>
@@ -52,7 +62,7 @@ function MovieInfoBooking(props) {
                 <div className={classes.right}></div>
               </div>
               <div className={classes.middle}>
-                  <Button className={classes.thongtin}>Thong tin</Button>
+                  <Button className={classes.thongtin} onClick={handleShowInfo}>chi tiết</Button>
               </div>
               <div className={classes.bottom}>
                   <p>14 Dec, 20182 hrs 23 mins</p>
@@ -60,6 +70,9 @@ function MovieInfoBooking(props) {
             </div>
           </div>
         </Box>
+        <div className={classes.infoFile}>
+        {(info == true) ? (<InfoFilm />) : ''}
+        </div>
       </Container>
     </div>
   );
