@@ -16,8 +16,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 function TableBottom(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { array, arrayTableHead, putKey, typePutKey } = props;
-  const keys = useSelector((state) => state.carousel.carouselKeys);
+  const { array, arrayTableHead, putKey, typePutKey, name,  keysText} = props;
+  const keys = useSelector((state) => state[name][keysText]);
   const { arrayLength, pageSize, page, sort, order } = keys;
   const pageNum = Math.ceil(arrayLength / pageSize);
 

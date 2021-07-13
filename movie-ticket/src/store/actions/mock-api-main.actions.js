@@ -9,7 +9,8 @@ const getListAction = (name, type, querParams) => {
         method: "GET",
         url: `${url}/${name}${querParams}`,
       });
-      const length = res.headers[`x-total-count`];
+      console.log(res);
+      const length = res.headers[`x-total-count`] || res.data.length || -1;
       dispatch({
         type: type,
         payload: { data: res.data, length: length },

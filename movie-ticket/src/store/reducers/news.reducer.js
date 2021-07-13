@@ -7,6 +7,7 @@ const initialState = {
     page: 1,
     pageSize: 7,
     keySearch: "",
+    filter: { key: "", value: "" },
     sort: "",
     order: "",
   },
@@ -20,7 +21,7 @@ export const newsReducer = (state = initialState, action) => {
       state.newsKeys.arrayLength = parseInt(payload.length);
       return { ...state };
     case PUT_NEWS_KEY:
-      state.newsKeys = { ...state.newsKeys, ...payload };
+      state.newsKeys = { ...initialState.newsKeys, ...payload };
       return { ...state };
     default:
       return state;

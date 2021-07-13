@@ -97,6 +97,8 @@ function CreateContent(props) {
         handleEdit={handleEdit}
         putKey={putKey}
         typePutKey={typePutKey}
+        name={name}
+        keysText={keysText}
       />
     </div>
   );

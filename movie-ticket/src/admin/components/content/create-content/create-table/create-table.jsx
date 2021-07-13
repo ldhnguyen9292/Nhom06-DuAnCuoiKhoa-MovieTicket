@@ -10,6 +10,8 @@ function CreateTable(props) {
     handleEdit,
     putKey,
     typePutKey,
+    name,
+    keysText,
   } = props;
   return (
     <div>
@@ -21,6 +23,8 @@ function CreateTable(props) {
         handleEdit={handleEdit}
         putKey={putKey}
         typePutKey={typePutKey}
+        name={name}
+        keysText={keysText}
       />
     </div>
   );
