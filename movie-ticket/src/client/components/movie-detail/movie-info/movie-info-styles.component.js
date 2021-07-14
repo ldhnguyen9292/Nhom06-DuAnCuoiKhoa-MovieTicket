@@ -28,8 +28,9 @@ export const useStyles = makeStyles((theme) => ({
         position: 'absolute',
     },
     Box: {
+        scrollBehavior: 'smooth',
         marginTop: '125px',
-        height: '408px',
+        height: '425px',
         width: '1140px',
         [theme.breakpoints.down('1200')]: {
             width: '928px',
@@ -47,15 +48,6 @@ export const useStyles = makeStyles((theme) => ({
         margin: '0px auto 20px',
         position: 'relative',
     },
-    backGround: {
-        position: 'absolute',
-        height: '100%',
-        width: '100%',
-        '& img': {
-            height: '100%',
-            width: '100%',
-        },
-    },
     fade: {
         position: 'absolute',
         height: '100%',
@@ -66,161 +58,110 @@ export const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         height: '100%',
         width: '100%',
-    },
-    containerContent: {
-        height: '100%',
-        width: '100%',
-        padding: '30px',
-        position: 'relative',
-    },
-    top: {
-        width: '100%',
-        height: '270px',
         display: 'flex',
+        justifyContent: 'center',
+        color: 'white',
     },
-    middle: {
-        width: '100%',
-        height: '50px',
-        padding: '15px 0 0 0',
-        [theme.breakpoints.down('768')]: {
-            display: 'none',
-        },
-    },
-    bottom: {
-        width: '100%',
-        height: '35px',
-        color: '#eee',
-        textAlign: 'right',
-        fontSize: '13px',
-        letterSpacing: '1px',
-        [theme.breakpoints.down('768')]: {
-            display: 'none',
-        },
+    contentBox: {
+        width: '600px',
+        height: '100%',
+        display: 'flex',
     },
     left: {
-        [theme.breakpoints.down('992')]: {
-            width: '30%',
-        },
-        [theme.breakpoints.down('768')]: {
-            width: '0px',
-            display: 'none',
-        },
-        width: '20%',
-        height: '100%',
+        width: '235px',
         display: 'flex',
-        alignItems: 'flex-end',
-        '& h3': {
-            padding: 0,
-            margin: 0,
-            fontSize: '26px',
-            color: '#F3C600',
-            fontWeight: '100',
-        },
-        '& p': {
-            padding: 0,
-            margin: 0,
-            color: '#ffffffef',
-            letterSpacing: '1.75px',
-        },
+        alignItems: 'center',
     },
-    item: {
-        height: '55px',
-    },
-    FIcon: {
-        fontSize: '35px',
-        height: '55px',
-        width: '35px',
-        marginRight: '10px',
-        color: '#d80a21',
-    },
-    mid: {
-        height: '225px',
-        textAlign: 'center',
-        color: 'white',
-        '& h1': {
-            fontSize: '35px',
-            fontWeight: '700',
-            letterSpacing: '2px',
-            paddingTop: '10px',
-            margin: '0',
-        },
-        '& p': {
-            fontSize: '12px',
-        },
-        '& div > span': {
-            fontSize: '12px',
-            backgroundColor: '#eee',
-            color: 'rgba(0,0,0,0.87)',
-            padding: '2px 5px',
-            borderRadius: '2px',
-            margin: '5px',
-        },
-    },
-    box: {
-        display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        width: '60%',
-        height: '100%',
-        [theme.breakpoints.down('992')]: {
-            width: '40%',
-        },
-        [theme.breakpoints.down('768')]: {
+    imgBox: {
+        height: '330px',
+        width: '215px',
+        border: '1px solid #ddd',
+        borderRadius: '5px',
+        '& img': {
+            border: '1px solid #ddd',
+            borderRadius: '5px',
             width: '100%',
+            height: '100%',
         },
-    },
-    right: {
-        [theme.breakpoints.down('768')]: {
-            width: '0px',
-            display: 'none',
+        '&::before': {
+            content: '""',
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.25)',
+            top: '0px',
+            left: '0px',
+            position: 'absolute',
         },
-    },
-    btnBox: {
-        height: '80px',
-        width: '80px',
-        margin: '0 auto',
         position: 'relative',
     },
-    btnFade: {
-        height: '80px',
-        width: '80px',
+    btnBox: {
         position: 'absolute',
-        padding: '38px',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%,-50%)',
-        borderRadius: '50%',
-        animation: `$playAnimation 1000ms infinite ease-in`,
-    },
-    '@keyframes playAnimation': {
-        '0%': {
-            border: '0px solid white',
-            opacity: '0.5',
-        },
-        '100%': {
-            border: '50px solid white',
-            opacity: '0',
-        },
+        width: '100%',
+        height: '100%',
+        top: '0px',
+        left: '0px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     btn: {
-        position: 'absolute',
-        border: '3px solid white',
-        borderRadius: '50%',
-        height: '80px',
-        width: '80px',
         '& svg': {
             fill: 'white',
-            width: '40px',
-            margin: 'auto',
         },
-        margin: '0',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%,-50%)',
+        border: '2px solid #ddd',
+        borderRadius: '50%',
+        padding: '15px',
     },
-    thongtin: {
-        color: '#ddd',
-        border: '1px solid rgba(255,255,255,0.25)',
-        borderRadius: '5px',
+    right: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    rightBox: {
+        height: '340px',
+        maxWidth: '350px',
+        '& h3': {
+            margin: '20px 0px 0px',
+            fontSize: '24px',
+        },
+        '& p': {
+            margin: '10px 0px',
+        }
+    },
+    btnInfo: {
+        border: '1px solid #ddd',
+        borderRadius: '15px',
+        color: 'white',
+    },
+    progressBox: {
+        width: '80px',
+        height: '80px',
+        position: 'relative',
+    },
+    progress: {
+        possition: 'absolute',
+        top: 0,
+        left: 0,
+    },
+    proText: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '80px',
+        height: '80px',
+        textAlign: 'center',
+        lineHeight: '80px',
+        fontSize: '30px',
+        fontWeight: 'bold',
+    },
+    starGr: {
+        height: '30px',
+        display: 'flex',
+        alignItems: 'center',
+        color: '#b446ff',
+        '& span': {
+            color: 'white',
+            fontWeight: 'bold',
+        },
     },
 }));
