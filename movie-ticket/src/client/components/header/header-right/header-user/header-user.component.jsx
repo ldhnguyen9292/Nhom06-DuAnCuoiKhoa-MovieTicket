@@ -88,7 +88,7 @@ function HeaderUser(props) {
   const renderUserButton = () => {
     return (
       <NavLink
-        to=""
+        to="/login"
         className={
           props.flexDirection === "row" ? classes.root : classes.rootCol
         }

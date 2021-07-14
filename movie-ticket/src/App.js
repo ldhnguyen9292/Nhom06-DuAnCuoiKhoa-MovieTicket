@@ -3,7 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router-dom";
 import Admin from "./admin/admin.module";
 import Client from "./client/client.module";
-import MovieDetail from "./client/pages/movie/movie-detail/movie-detail.page";
+import Login from './client/pages/login/login.page';
+import Registration from "./client/pages/registration/registration.page";
 
 function App() {
   return (
@@ -11,6 +12,12 @@ function App() {
       <Switch>
         <Route path="/admin" exact>
           <Admin />
+        </Route>
+        <Route path="/login" exact>
+          <Login />
+        </Route>
+        <Route path="/registration" exact>
+          <Registration />
         </Route>
         <Route path="" exact>
           <Client />
