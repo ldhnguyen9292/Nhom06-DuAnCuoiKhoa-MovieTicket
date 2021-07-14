@@ -23,6 +23,7 @@ function AdminSidebar() {
         { text: "Cinemas" },
         { text: "Carousels" },
         { text: "News" },
+        { text: "Comments" },
       ],
     },
   ];

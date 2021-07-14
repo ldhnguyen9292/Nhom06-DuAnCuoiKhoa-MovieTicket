@@ -15,7 +15,12 @@ function SearchMovie(props) {
 
   return (
     <div className={classes.root}>
-      <MovieName placeHolder={"Tìm tên phim"} handleSubmit={handleSubmit} />
+      <MovieName
+        placeHolder={"Tìm tên phim"}
+        handleSubmit={handleSubmit}
+        keyName={"tenPhim"}
+        type={""}
+      />
       <p className={classes.title}>Danh sách rạp</p>
       <CinemaGroup handleSubmit={handleSubmit} />
       <p className={classes.title}>Tùy chọn thêm</p>

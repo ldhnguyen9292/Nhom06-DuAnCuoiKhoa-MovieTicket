@@ -12,25 +12,24 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useStyles } from "./table-bottom-styles";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { putCarouselKeyAction } from "./../../../../../store/actions/carousel.actions";
 
 function TableBottom(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { array, arrayTableHead } = props;
-  const keys = useSelector((state) => state.carousel.carouselKeys);
+  const { array, arrayTableHead, putKey, typePutKey, name,  keysText} = props;
+  const keys = useSelector((state) => state[name][keysText]);
   const { arrayLength, pageSize, page, sort, order } = keys;
-  const pageNum = Math.round(arrayLength / pageSize);
+  const pageNum = Math.ceil(arrayLength / pageSize);
 
   const handleSortAsc = (title) => {
-    dispatch(putCarouselKeyAction({ sort: title, order: "asc" }));
+    dispatch(putKey(typePutKey, { sort: title, order: "asc" }));
   };
   const handleSortDesc = (title) => {
-    dispatch(putCarouselKeyAction({ sort: title, order: "desc" }));
+    dispatch(putKey(typePutKey, { sort: title, order: "desc" }));
   };
 
   const handleChangePagi = (event, value) => {
-    dispatch(putCarouselKeyAction({ page: value }));
+    dispatch(putKey(typePutKey, { page: value }));
   };
 
   const handleDelete = (id) => {
@@ -109,7 +108,7 @@ function TableBottom(props) {
           <Pagination
             count={pageNum}
             page={page}
-            color="primary"
+            classes={{ ul: classes.ul }}
             className={classes.pagination}
             onChange={handleChangePagi}
           />
@@ -119,7 +118,7 @@ function TableBottom(props) {
   };
 
   return (
-    <>{array.length > 0 ? renderBottom() : <p>Không tìm thấy kết quả</p>}</>
+    <>{array ? renderBottom() : <p>Không tìm thấy kết quả</p>}</>
   );
 }
 

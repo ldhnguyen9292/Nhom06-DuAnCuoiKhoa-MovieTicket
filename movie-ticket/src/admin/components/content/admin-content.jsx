@@ -48,6 +48,11 @@ function AdminContent() {
           import("./datatable/cinemas/cinemas-management.jsx")
         );
         break;
+      case "Comments":
+        Content = lazy(() =>
+          import("./datatable/comments/comments-management.jsx")
+        );
+        break;
       default:
         break;
     }

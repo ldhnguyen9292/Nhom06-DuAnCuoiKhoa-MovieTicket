@@ -1,21 +1,27 @@
-import React from "react";
+import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import NewsCard from "./news-card/news-card";
 import { useStyles } from "./news-content-styles";
 import NewsPagination from "./news-pagination/news-pagination";
 
 function NewsContent() {
   const classes = useStyles();
+  const newsList = useSelector((state) => state.news.newsList);
+
   return (
     <>
-      <div className={classes.box}>
-        <NewsCard />
-      </div>
-      <div className={classes.box}>
-        <NewsCard />
-      </div>
+      {newsList ? (
+        newsList.map((newsItem) => (
+          <div className={classes.box}>
+            <NewsCard newsItem={newsItem} />
+          </div>
+        ))
+      ) : (
+        <p className={classes.box}>Không tìm thấy kết quả</p>
+      )}
       <NewsPagination />
     </>
   );
 }
 
-export default NewsContent;
+export default memo(NewsContent);

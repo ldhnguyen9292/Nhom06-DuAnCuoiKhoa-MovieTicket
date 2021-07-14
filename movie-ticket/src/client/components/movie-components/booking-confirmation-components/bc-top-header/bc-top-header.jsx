@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Grid, CardMedia } from "@material-ui/core";
 import Confirmation from "./../../../../../assets/images/confirmation-bg.jpg";
 import { useStyles } from "./bc-top-header-styles";
@@ -23,4 +23,4 @@ function TopHeader(props) {
   );
 }
 
-export default TopHeader;
+export default memo(TopHeader);
