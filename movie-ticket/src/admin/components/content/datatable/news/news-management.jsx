@@ -24,7 +24,7 @@ const arrayInput = [
   {
     type: "radio",
     name: "loai",
-    placeHolder: ["tinTuc","khuyenMai"],
+    placeHolder: ["tinTuc", "khuyenMai"],
     width: 50,
     validation: "",
   },
@@ -56,6 +56,27 @@ const arrayInput = [
     width: 100,
     validation: "",
   },
+  {
+    type: "date",
+    name: "ngayCongChieu",
+    placeHolder: "Nhập ngày công chiếu dd-mm-yyyy",
+    width: 25,
+    validation: "",
+  },
+  {
+    type: "text",
+    name: "theLoai",
+    placeHolder: "Nhập thể loại phim",
+    width: 50,
+    validation: "",
+  },
+  {
+    type: "number",
+    name: "danhGia",
+    placeHolder: "Đánh giá phim 0-10",
+    width: 25,
+    validation: { min: 0, max: 10 },
+  },
 ];
 const arrayTableHead = [
   "id",
@@ -66,6 +87,9 @@ const arrayTableHead = [
   "hinhAnh",
   "trailer",
   "noiDung",
+  "ngayCongChieu",
+  "theLoai",
+  "danhGia",
 ];
 const name = "news";
 const dbName = "news";

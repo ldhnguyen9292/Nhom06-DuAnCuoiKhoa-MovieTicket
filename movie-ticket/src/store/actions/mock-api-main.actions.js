@@ -1,4 +1,5 @@
 import axios from "axios";
+import { commentListByIdAction, postCommentAction } from "./comment.action";
 
 const url = "https://mock-apis-test.herokuapp.com";
 
@@ -9,7 +10,6 @@ const getListAction = (name, type, querParams) => {
         method: "GET",
         url: `${url}/${name}${querParams}`,
       });
-      console.log(res);
       const length = res.headers[`x-total-count`] || res.data.length || -1;
       dispatch({
         type: type,
@@ -29,6 +29,7 @@ const postNewItemAction = (name, data) => {
         url: `${url}/${name}`,
         data,
       });
+      await postCommentAction();
     } catch (error) {
       console.log(error);
     }
@@ -42,6 +43,9 @@ const actionsByID = (name, method, id) => {
         method,
         url: `${url}/${name}/${id}`,
       });
+      if (name==="news" && method === "DELETE") {
+        await commentListByIdAction("DELETE", id);
+      }
       return res;
     } catch (error) {
       console.log(error);

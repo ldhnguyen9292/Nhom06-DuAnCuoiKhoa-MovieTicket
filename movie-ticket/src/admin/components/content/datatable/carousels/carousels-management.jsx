@@ -45,7 +45,7 @@ const arrayInput = [
 ];
 const arrayTableHead = ["id", "ten", "loai", "maLienKet", "trailer", "hinhAnh"];
 const name = "carousel";
-const dbName = "carouselList";
+const dbName = "carousel";
 
 function CarouselsManagement() {
   const {

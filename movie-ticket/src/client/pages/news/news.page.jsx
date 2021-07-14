@@ -5,7 +5,10 @@ import { Grid, makeStyles } from "@material-ui/core";
 import NewsContent from "../../components/news-components/news-content/news-content";
 import NewsSidebar from "../../components/news-components/news-sidebar/news-sidebar";
 import { callAPIactions } from "../../../store/actions/mock-api-main.actions";
-import { GET_NEWS_LIST } from "./../../../store/constants/news.contants";
+import {
+  GET_NEWS_LIST,
+  PUT_NEWS_KEY,
+} from "./../../../store/constants/news.contants";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -19,7 +22,7 @@ const nameDB = "news";
 
 function News() {
   const classes = useStyles();
-  const { getListAction } = callAPIactions;
+  const { getListAction, putKeyAction } = callAPIactions;
   const dispatch = useDispatch();
   const keys = useSelector((state) => state.news.newsKeys);
   const { page, pageSize, keySearch, filter } = keys;
@@ -29,10 +32,23 @@ function News() {
       getListAction(
         nameDB,
         GET_NEWS_LIST,
-        `?_page=${page}&_limit=${pageSize}&q=${keySearch}&${filter.key}=${filter.value}`
+        `?_page=${page}&_limit=${pageSize}&q=${keySearch}&${filter.key}=${
+          filter.value
+        }&_sort=${"ngayDang"}&_order=desc`
       )
     );
   }, [keys]);
+
+  //componentWillUnmount
+  useEffect(() => {
+    return dispatch(
+      putKeyAction(PUT_NEWS_KEY, {
+        keySearch: "",
+        filter: { key: "", value: "" },
+        page: 1,
+      })
+    );
+  }, []);
 
   return (
     <div>

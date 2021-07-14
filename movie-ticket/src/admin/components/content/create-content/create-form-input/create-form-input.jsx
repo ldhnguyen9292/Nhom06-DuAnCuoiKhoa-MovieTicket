@@ -109,12 +109,9 @@ function CreateFormInput(props) {
                 variant="inline"
                 format="dd/MM/yyyy"
                 id="date-picker-inline"
-                label="Ngày đăng"
+                label={name.split(/(?=[A-Z])/).join(" ")}
                 value={value}
                 onChange={onChange}
-                KeyboardButtonProps={{
-                  "aria-label": "change date",
-                }}
                 className={classes.date}
               />
               {errors.datePicker && (

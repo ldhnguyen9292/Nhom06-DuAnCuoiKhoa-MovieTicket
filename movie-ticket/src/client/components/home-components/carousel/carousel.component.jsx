@@ -19,7 +19,7 @@ function CarouselComponent() {
   const type = GET_CAROUSEL_LIST;
 
   useEffect(() => {
-    dispatch(callAPIactions.getListAction("carouselList", type, "?_sort=id&_order=desc"));
+    dispatch(callAPIactions.getListAction("carousel", type, "?_sort=id&_order=desc"));
   }, []);
 
   useEffect(() => {

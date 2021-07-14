@@ -4,6 +4,7 @@ import CreateFormInput from "./create-form-input/create-form-input";
 import CreateTable from "./create-table/create-table";
 import { useForm, FormProvider } from "react-hook-form";
 import { useStyles } from "./create-content-styles";
+import { postCommentAction } from "../../../../store/actions/comment.action";
 
 function CreateContent(props) {
   const classes = useStyles();
@@ -41,6 +42,14 @@ function CreateContent(props) {
   useEffect(() => {
     dispatch(getDataList());
   }, [keys]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(
+        putKey(typePutKey, { keySearch: "", page: 1, sort: "", order: "" })
+      );
+    };
+  }, []);
 
   const handleCallAPI = async (data) => {
     await dispatch(postNew(dbName, data));
