@@ -43,7 +43,7 @@ const actionsByID = (name, method, id) => {
         method,
         url: `${url}/${name}/${id}`,
       });
-      if (name==="news" && method === "DELETE") {
+      if (name === "news" && method === "DELETE") {
         await commentListByIdAction("DELETE", id);
       }
       return res;

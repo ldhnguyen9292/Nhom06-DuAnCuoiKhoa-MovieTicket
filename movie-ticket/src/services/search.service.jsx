@@ -33,6 +33,7 @@ function filterDataByName(array, keyName) {
     const key = keyName ? keyName.toLowerCase() : "";
     const result = tenPhim.indexOf(key);
     if (result >= 0) return value;
+    return "";
   });
 }
 

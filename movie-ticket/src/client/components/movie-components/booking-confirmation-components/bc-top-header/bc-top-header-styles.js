@@ -17,10 +17,11 @@ export const useStyles = makeStyles((theme) => ({
   title: {
     height: "100%",
     color: "white",
-    fontSize: 20,
+    wordSpacing: 2,
     textTransform: "uppercase",
     "& h2": {
       margin: 0,
+      fontSize: 50,
     },
     [theme.breakpoints.up("sm")]: {
       fontSize: 24,

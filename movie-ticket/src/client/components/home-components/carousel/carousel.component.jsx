@@ -20,6 +20,7 @@ function CarouselComponent() {
 
   useEffect(() => {
     dispatch(callAPIactions.getListAction("carousel", type, "?_sort=id&_order=desc"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

@@ -49,7 +49,7 @@ export const useStyles = makeStyles((theme) => ({
       height: 150,
     },
     marginBottom: 0,
-    backgroundColor: '#00B4DB',
+    // backgroundColor: '#00B4DB',
     backgroundColor: 'black',
   },
   imgSetting,

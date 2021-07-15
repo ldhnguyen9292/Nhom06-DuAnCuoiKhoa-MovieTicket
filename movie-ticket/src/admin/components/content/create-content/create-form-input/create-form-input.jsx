@@ -49,15 +49,13 @@ function CreateFormInput(props) {
   const { arrayInput } = props;
 
   const createInput = (object) => {
-    const { type, name, placeHolder, width, validation } = object;
-    const classBonus =
-      width === 25 ? classes.w25 : width === 50 ? classes.w50 : classes.w100;
+    const { type, name, placeHolder, validation } = object;
     return (
-      <div key={name} className={classBonus}>
+      <div key={name}>
         <input
           type={type}
           className={classes.input}
-          placeHolder={placeHolder}
+          placeholder={placeHolder}
           {...register(name, { ...validation })}
         />
         {errors[name] && (
@@ -68,11 +66,9 @@ function CreateFormInput(props) {
   };
 
   const createRadio = (object) => {
-    const { type, name, placeHolder, width } = object;
-    const classBonus =
-      width === 25 ? classes.w25 : width === 50 ? classes.w50 : classes.w100;
+    const { type, name, placeHolder } = object;
     return (
-      <div key={name} className={clsx(classes.radioBox, classBonus)}>
+      <div key={name} className={classes.radioBox}>
         <h3>Chọn loại:</h3>
         {placeHolder.map((text, index) => {
           return (
@@ -95,20 +91,21 @@ function CreateFormInput(props) {
   };
 
   const createDate = (object) => {
-    const { name, width } = object;
-    const classBonus =
-      width === 25 ? classes.w25 : width === 50 ? classes.w50 : classes.w100;
+    const { name } = object;
     return (
-      <div className={classBonus}>
+      <div>
         <Controller
           name={name}
           render={({ field: { value, onChange } }) => (
-            <MuiPickersUtilsProvider utils={DateFnsUtils} key={"datePicker"}>
+            <MuiPickersUtilsProvider
+              utils={DateFnsUtils}
+              key={`date-picker-${name}`}
+            >
               <KeyboardDatePicker
                 disableToolbar
                 variant="inline"
                 format="dd/MM/yyyy"
-                id="date-picker-inline"
+                id={`date-picker-${name}`}
                 label={name.split(/(?=[A-Z])/).join(" ")}
                 value={value}
                 onChange={onChange}
@@ -125,11 +122,9 @@ function CreateFormInput(props) {
   };
 
   const createTextEditor = (object) => {
-    const { name, width } = object;
-    const classBonus =
-      width === 25 ? classes.w25 : width === 50 ? classes.w50 : classes.w100;
+    const { name } = object;
     return (
-      <div key={name} className={classBonus}>
+      <div key={name}>
         <Controller
           name={name}
           render={({ field: { onChange, value } }) => (
@@ -169,7 +164,20 @@ function CreateFormInput(props) {
       <h4 className={classes.labelForm}>
         Form Input - ID: <input className={classes.id} {...register("id")} />
       </h4>
-      {arrayInput.map((object) => renderInput(object))}
+      {arrayInput.map((object, index) => {
+        const { width } = object;
+        const classBonus =
+          width === 25
+            ? classes.w25
+            : width === 50
+            ? classes.w50
+            : classes.w100;
+        return (
+          <div key={index} className={clsx(classes.root, classBonus)}>
+            {renderInput(object)}
+          </div>
+        );
+      })}
     </>
   );
 }
