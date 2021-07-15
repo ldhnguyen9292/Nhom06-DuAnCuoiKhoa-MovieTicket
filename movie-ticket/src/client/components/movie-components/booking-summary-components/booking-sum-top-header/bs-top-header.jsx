@@ -1,12 +1,11 @@
 import React from "react";
 import { useStyles } from "./bs-top-header-styles";
-import { Grid, IconButton, Typography } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 import BackIcon from "./../../../../../assets/svg/back.jsx";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function BSTopHeader(props) {
   const classes = useStyles();
-  const { ticket } = props;
   const history = useHistory();
 
   const handleBackButton = () => {

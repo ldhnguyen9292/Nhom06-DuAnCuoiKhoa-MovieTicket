@@ -1,9 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
 import BustingCard from '../bustingcard/bustingcard.component';
-import MainCard from '../maincard/maincard.component';
+// import MainCard from '../maincard/maincard.component';
 import { useStyles } from './slickslider-styles.component';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+// import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import { Container } from "@material-ui/core";
 

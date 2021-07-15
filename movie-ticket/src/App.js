@@ -3,7 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router-dom";
 import Admin from "./admin/admin.module";
 import Client from "./client/client.module";
-import MovieDetail from "./client/pages/movie/movie-detail/movie-detail.page";
 
 function App() {
   return (

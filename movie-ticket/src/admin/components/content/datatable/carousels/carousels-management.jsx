@@ -55,6 +55,7 @@ function CarouselsManagement() {
     putNewsByIdAction,
     putKeyAction,
   } = callAPIactions;
+  
   const carouselProps = {
     dbName,
     name,

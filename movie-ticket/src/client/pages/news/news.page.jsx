@@ -37,7 +37,14 @@ function News() {
         }&_sort=${"ngayDang"}&_order=desc`
       )
     );
-  }, [keys]);
+  }, [
+    page,
+    pageSize,
+    keySearch,
+    filter,
+    dispatch,
+    getListAction,
+  ]);
 
   //componentWillUnmount
   useEffect(() => {
@@ -48,7 +55,7 @@ function News() {
         page: 1,
       })
     );
-  }, []);
+  }, [dispatch, putKeyAction]);
 
   return (
     <div>

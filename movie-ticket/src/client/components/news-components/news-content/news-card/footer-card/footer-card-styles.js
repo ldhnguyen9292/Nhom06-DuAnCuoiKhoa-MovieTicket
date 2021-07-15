@@ -74,24 +74,6 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     outline: "none",
   },
-  messBox: {
-    padding: "1% 2%",
-  },
-
-  messAvatar: {
-    width: 32,
-    height: 32,
-    cursor: "pointer",
-    borderRadius: "50%",
-    transition: "all 0.5s",
-    "& img": {
-      width: "100%",
-      height: "100%",
-    },
-    "&:hover": {
-      border: "1px solid #f6f6f6",
-    },
-  },
   messTextBox: {
     flexGrow: 2,
     padding: "0 10px",

@@ -19,5 +19,6 @@ export const useStyles = makeStyles((theme) => ({
     "&:hover": {
       transform: "scale(1.1)",
     },
+    wordSpacing: 2,
   },
 }));

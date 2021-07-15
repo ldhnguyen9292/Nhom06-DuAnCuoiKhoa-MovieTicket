@@ -11,8 +11,8 @@ function NewsContent() {
   return (
     <>
       {newsList ? (
-        newsList.map((newsItem) => (
-          <div className={classes.box}>
+        newsList.map((newsItem, index) => (
+          <div key={index} className={classes.box}>
             <NewsCard newsItem={newsItem} />
           </div>
         ))

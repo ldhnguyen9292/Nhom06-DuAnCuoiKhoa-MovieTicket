@@ -30,7 +30,7 @@ function MovieInfoBooking(props) {
             <div className={classes.contentBox}>
               <div className={classes.left}>
                 <div className={classes.imgBox}>
-                  <img src={Img} />
+                  <img src={Img} alt={"Hình đại diện"} />
                   <div className={classes.btnBox}>
                     <Button className={classes.btn}>
                       <ArrowIcon />
@@ -59,10 +59,13 @@ function MovieInfoBooking(props) {
                       <StarIcon />
                       <span>3/4</span>
                     </div>
-                    <p style={{fontSize: "13px"}}>
-                      124 người đánh giá
-                    </p>
-                    <Button onClick={handleShowInfo} className={classes.btnInfo}>chi tiết</Button>
+                    <p style={{ fontSize: "13px" }}>124 người đánh giá</p>
+                    <Button
+                      onClick={handleShowInfo}
+                      className={classes.btnInfo}
+                    >
+                      chi tiết
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -70,7 +73,7 @@ function MovieInfoBooking(props) {
           </div>
         </Box>
         <div className={classes.infoFile}>
-          {info == true ? <InfoFilm /> : ""}
+          {info === true ? <InfoFilm /> : ""}
         </div>
       </Container>
     </div>

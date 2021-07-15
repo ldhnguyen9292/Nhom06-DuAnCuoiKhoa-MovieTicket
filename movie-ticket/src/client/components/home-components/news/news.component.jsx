@@ -2,7 +2,7 @@ import React from 'react'
 import { useStyles } from './news-styles.component'
 import Videocard from './videocard/videocard.component'
 import Newscard from './newscard/newscard.component'
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
 import { Button } from '@material-ui/core';

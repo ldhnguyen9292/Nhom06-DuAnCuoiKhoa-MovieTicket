@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core";
-import { palette } from "@material-ui/system";
 import Image from "./../../../assets/images/footer-shape.png"
 
 export const useStyles = makeStyles((theme) => ({

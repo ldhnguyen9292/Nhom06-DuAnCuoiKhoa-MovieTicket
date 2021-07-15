@@ -28,7 +28,8 @@ function FooterCard(props) {
 
   useEffect(() => {
     getCommentArray();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   const renderMesseges = () => {
     return (
@@ -108,7 +109,6 @@ function FooterCard(props) {
       const soLike = commentArray.soLike - 1;
       const mangLike = commentArray.mangLike;
       mangLike.splice(index, 1);
-      console.log(mangLike);
       setCommentArray({ ...commentArray, soLike, mangLike });
     } else {
       const soLike = commentArray.soLike + 1;

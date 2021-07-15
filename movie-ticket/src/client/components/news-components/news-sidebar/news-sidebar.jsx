@@ -47,6 +47,7 @@ function NewsSidebar() {
         return news.loai === keyFilter || keyFilter === "";
       });
       item.num = filter.length;
+      return null;
     });
 
     arrayNewest = data
@@ -67,6 +68,7 @@ function NewsSidebar() {
       if (month) {
         itemNumberOfMonth[month].num += 1;
       }
+      return null;
     });
     arrayArchives = itemNumberOfMonth.filter((month) => {
       return month.num > 0;
@@ -89,6 +91,7 @@ function NewsSidebar() {
 
   useEffect(() => {
     callAPI();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
