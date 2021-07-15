@@ -32,13 +32,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   contentLock: {
-    display: "box" || "-webkit-box" || " -moz-box",
-    lineClamp: 3,
-    "-webkit-line-clamp": 3,
-    "-moz-line-clamp": 3,
-    boxOrient: "vertical",
-    "-webkit-box-orient": "vertical",
-    "-moz-box-orient": "vertical",
+    height: "5rem",
     overflow: "hidden",
     transition: "all 0.5s",
   },
@@ -49,7 +43,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   titleRed: {
     color: "#b446ff",
-    // padding: "10px 0",
     padding: "0 4%",
   },
   title: {
@@ -65,5 +58,12 @@ export const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     borderRadius: "0 5px 5px 0",
+  },
+  seeMore: {
+    "&:after": {
+      content: '"..."',
+      fontWeight: "bold",
+      paddingLeft: 2,
+    },
   },
 }));
