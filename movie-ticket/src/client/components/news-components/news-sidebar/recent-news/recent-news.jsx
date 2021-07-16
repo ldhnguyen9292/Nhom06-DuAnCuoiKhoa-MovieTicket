@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Grid, CardMedia } from "@material-ui/core";
 import { useStyles } from "./recent-news-styles";
 import format from "date-format";
@@ -11,8 +12,13 @@ function RecentNews(props) {
   const { array } = props;
   const { putKeyAction } = callAPIactions;
   const dispatch = useDispatch();
+  const history = useHistory();
+  const queryParams = new URLSearchParams(window.location.search);
 
   const handleClick = (id) => {
+    if (queryParams.get("id")) {
+      history.push("/news");
+    }
     dispatch(
       putKeyAction(PUT_NEWS_KEY, { filter: { key: "id", value: id }, page: 1 })
     );

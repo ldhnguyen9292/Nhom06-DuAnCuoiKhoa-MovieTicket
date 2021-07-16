@@ -7,7 +7,7 @@ export const useStyles = makeStyles(() => ({
   labelForm: {
     position: "absolute",
     left: 10,
-    top: -12,
+    top: -30,
     margin: 0,
     backgroundImage: "linear-gradient(to bottom, #0e1726, #191e3a)",
   },

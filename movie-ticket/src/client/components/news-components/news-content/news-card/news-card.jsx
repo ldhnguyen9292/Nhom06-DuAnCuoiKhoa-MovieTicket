@@ -29,7 +29,7 @@ function NewsCard(props) {
         {parse(noiDung)}
       </div>
       <div onClick={handleLock} className={classes.lockBtn}>
-        {lock ? <p>Xem thêm</p> : <p>Rút gọn</p>}
+        {lock ? <p className={classes.seeMore}>Xem thêm</p> : <p>Rút gọn</p>}
       </div>
 
       <FooterCard id={id} />
