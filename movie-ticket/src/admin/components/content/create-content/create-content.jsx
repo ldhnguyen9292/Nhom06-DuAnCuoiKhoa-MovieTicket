@@ -90,13 +90,17 @@ function CreateContent(props) {
             onSubmit={methods.handleSubmit(onSubmit)}
             className={classes.form}
           >
-            <CreateFormInput
-              arrayInput={cacheArrayInput}
-              handleCallAPI={handleCallAPI}
-            />
-            <button type="submit" className={classes.button}>
-              {!isEdit ? <span>Tạo mới</span> : <span>Chỉnh sửa</span>}
-            </button>
+            <div className={classes.formInput}>
+              <CreateFormInput
+                arrayInput={cacheArrayInput}
+                handleCallAPI={handleCallAPI}
+              />
+            </div>
+            <div className={classes.formBtnSubmit}>
+              <button type="submit" className={classes.button}>
+                {!isEdit ? <span>Tạo mới</span> : <span>Chỉnh sửa</span>}
+              </button>
+            </div>
           </form>
         </div>
       </FormProvider>

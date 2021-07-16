@@ -24,7 +24,7 @@ const arrayInput = [
   {
     type: "radio",
     name: "loai",
-    placeHolder: ["phimBomTan", "khuyenMai"],
+    placeHolder: ["phimBomTan", "tinTuc"],
     width: 100,
     validation: "",
   },

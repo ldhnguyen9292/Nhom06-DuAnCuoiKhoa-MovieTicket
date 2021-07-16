@@ -27,11 +27,11 @@ export const useStyles = makeStyles((theme) => ({
     },
     h2: {
         fontSize: '32px',
-        width: '210px',
+        // width: '210px',
         marginBottom: '5px',
     },
     fade: {
-        width: '210px',
+        // width: '210px',
         height: '2px',
         background: 'linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))',
     },

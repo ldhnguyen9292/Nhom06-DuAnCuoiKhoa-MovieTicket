@@ -17,6 +17,9 @@ export const useStyles = makeStyles((theme) => ({
   content: {
     padding: "0 4%",
     transition: "all 0.5s",
+    "& p": {
+      margin: 0,
+    },
     "& img, & iframe": {
       display: "flex",
       justifyContent: "center",
@@ -29,10 +32,11 @@ export const useStyles = makeStyles((theme) => ({
     },
     "& h2": {
       fontSize: 16,
+      margin: 0,
     },
   },
   contentLock: {
-    height: "5rem",
+    height: 64,
     overflow: "hidden",
     transition: "all 0.5s",
   },
