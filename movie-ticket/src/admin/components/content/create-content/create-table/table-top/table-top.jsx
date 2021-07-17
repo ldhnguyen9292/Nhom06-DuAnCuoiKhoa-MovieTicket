@@ -30,7 +30,11 @@ function TableTop(props) {
             onChange={handleChange}
           >
             {[7, 10, 20, 50].map((value) => {
-              return <option value={value}>{value}</option>;
+              return (
+                <option key={`pageSize-${value}`} value={value}>
+                  {value}
+                </option>
+              );
             })}
           </select>
         </div>

@@ -5,7 +5,7 @@ import Img1 from "./../../../../../assets/images/bot-1.jpg";
 import Img2 from "./../../../../../assets/images/bot-2.jpg";
 import Img3 from "./../../../../../assets/images/bot-3.jpg";
 import Img4 from "./../../../../../assets/images/bot-4.jpg";
-import { Container } from "@material-ui/core";
+// import { Container } from "@material-ui/core";
 
 function SliderTopMovie() {
   const classes = useStyles();
@@ -56,7 +56,7 @@ function SliderTopMovie() {
       <div>
         <Slider {...settings} className={classes.slider}>
           <div className={classes.item}>
-            <img src={Img1} className={classes.img}></img>
+            <img src={Img1} className={classes.img} alt={"Hình top movie"} />
             <div className={classes.content}>
               {/* Link Movie Detail */}
               <h3>Aquaman</h3>
@@ -65,28 +65,28 @@ function SliderTopMovie() {
             </div>
           </div>
           <div>
-            <img src={Img2} className={classes.img}></img>
+            <img src={Img2} className={classes.img} alt={"Hình top movie"} />
             <div className={classes.content}>
               <h3>Aquaman</h3>
               <p>Release On 30 Nov</p>
             </div>
           </div>
           <div>
-            <img src={Img3} className={classes.img}></img>
+            <img src={Img3} className={classes.img} alt={"Hình top movie"} />
             <div className={classes.content}>
               <h3>Aquaman</h3>
               <p>Release On 30 Nov</p>
             </div>
           </div>
           <div>
-            <img src={Img4} className={classes.img}></img>
+            <img src={Img4} className={classes.img} alt={"Hình top movie"} />
             <div className={classes.content}>
               <h3>Aquaman</h3>
               <p>Release On 30 Nov</p>
             </div>
           </div>
           <div>
-            <img src={Img1} className={classes.img}></img>
+            <img src={Img1} className={classes.img} alt={"Hình top movie"} />
             <div className={classes.content}>
               {/* Link Movie Detail */}
               <h3>Aquaman</h3>
@@ -95,21 +95,21 @@ function SliderTopMovie() {
             </div>
           </div>
           <div>
-            <img src={Img2} className={classes.img}></img>
+            <img src={Img2} className={classes.img} alt={"Hình top movie"} />
             <div className={classes.content}>
               <h3>Aquaman</h3>
               <p>Release On 30 Nov</p>
             </div>
           </div>
           <div>
-            <img src={Img3} className={classes.img}></img>
+            <img src={Img3} className={classes.img} alt={"Hình top movie"} />
             <div className={classes.content}>
               <h3>Aquaman</h3>
               <p>Release On 30 Nov</p>
             </div>
           </div>
           <div>
-            <img src={Img4} className={classes.img}></img>
+            <img src={Img4} className={classes.img} alt={"Hình top movie"} />
             <div className={classes.content}>
               <h3>Aquaman</h3>
               <p>Release On 30 Nov</p>

@@ -15,8 +15,11 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   content: {
-    padding: "2% 4%",
+    padding: "0 4%",
     transition: "all 0.5s",
+    "& p": {
+      margin: 0,
+    },
     "& img, & iframe": {
       display: "flex",
       justifyContent: "center",
@@ -27,11 +30,13 @@ export const useStyles = makeStyles((theme) => ({
       borderRadius: 5,
       overflow: "hidden",
     },
+    "& h2": {
+      fontSize: 16,
+      margin: 0,
+    },
   },
   contentLock: {
-    display: "box",
-    lineClamp: 4,
-    boxOrient: "vertical",
+    height: 64,
     overflow: "hidden",
     transition: "all 0.5s",
   },
@@ -42,7 +47,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   titleRed: {
     color: "#b446ff",
-    padding: "10px 0",
     padding: "0 4%",
   },
   title: {
@@ -51,15 +55,6 @@ export const useStyles = makeStyles((theme) => ({
     padding: "2% 4%",
     margin: 0,
   },
-  quote: {
-    border: "1px solid #dddddd",
-    padding: "0 3% ",
-    color: "black",
-  },
-  titleQuote: {
-    color: "#b446ff",
-    fontWeight: "bold",
-  },
   avatar: {
     width: "100%",
     height: "90%",
@@ -67,5 +62,12 @@ export const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     borderRadius: "0 5px 5px 0",
+  },
+  seeMore: {
+    "&:after": {
+      content: '"..."',
+      fontWeight: "bold",
+      paddingLeft: 2,
+    },
   },
 }));

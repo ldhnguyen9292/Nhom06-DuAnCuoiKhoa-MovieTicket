@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { CardMedia, Paper, Modal } from "@material-ui/core";
 import { useStyles } from "./modal-video-styles.component";
 
@@ -12,6 +11,10 @@ function ModalVideo(props) {
     props.handleClose();
   };
 
+  const handleMore = () => {
+    props.handleMore();
+  };
+
   const renderBody = () => {
     return (
       <Paper className={classes.root}>
@@ -20,14 +23,7 @@ function ModalVideo(props) {
             <Button className={classes.btn} size="small" onClick={handleClose}>
               Close
             </Button>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              {slider.tenphim}
-            </Typography>
-            <Button className={classes.btn} size="small">
+            <Button className={classes.btn} size="small" onClick={handleMore}>
               Chi tiết
             </Button>
           </div>

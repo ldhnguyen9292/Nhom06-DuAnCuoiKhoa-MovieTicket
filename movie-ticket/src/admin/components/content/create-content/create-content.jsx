@@ -4,7 +4,6 @@ import CreateFormInput from "./create-form-input/create-form-input";
 import CreateTable from "./create-table/create-table";
 import { useForm, FormProvider } from "react-hook-form";
 import { useStyles } from "./create-content-styles";
-import { postCommentAction } from "../../../../store/actions/comment.action";
 
 function CreateContent(props) {
   const classes = useStyles();
@@ -41,6 +40,7 @@ function CreateContent(props) {
 
   useEffect(() => {
     dispatch(getDataList());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keys]);
 
   useEffect(() => {
@@ -49,6 +49,7 @@ function CreateContent(props) {
         putKey(typePutKey, { keySearch: "", page: 1, sort: "", order: "" })
       );
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCallAPI = async (data) => {
@@ -89,13 +90,17 @@ function CreateContent(props) {
             onSubmit={methods.handleSubmit(onSubmit)}
             className={classes.form}
           >
-            <CreateFormInput
-              arrayInput={cacheArrayInput}
-              handleCallAPI={handleCallAPI}
-            />
-            <button type="submit" className={classes.button}>
-              {!isEdit ? <span>Tạo mới</span> : <span>Chỉnh sửa</span>}
-            </button>
+            <div className={classes.formInput}>
+              <CreateFormInput
+                arrayInput={cacheArrayInput}
+                handleCallAPI={handleCallAPI}
+              />
+            </div>
+            <div className={classes.formBtnSubmit}>
+              <button type="submit" className={classes.button}>
+                {!isEdit ? <span>Tạo mới</span> : <span>Chỉnh sửa</span>}
+              </button>
+            </div>
           </form>
         </div>
       </FormProvider>

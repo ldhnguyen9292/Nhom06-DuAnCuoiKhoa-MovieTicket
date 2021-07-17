@@ -4,12 +4,12 @@ function ArrowIcon() {
       version="1.1"
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsxlink="http://www.w3.org/1999/xlink"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
       viewBox="0 0 191.255 191.255"
       style={{ enableBackground: "new 0 0 191.255 191.255" }}
-      xmlspace="preserve"
+      xmlSpace="preserve"
     >
       <g>
         <path

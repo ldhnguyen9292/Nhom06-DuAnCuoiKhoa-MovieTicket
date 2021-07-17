@@ -25,9 +25,16 @@ function News() {
   const { getListAction, putKeyAction } = callAPIactions;
   const dispatch = useDispatch();
   const keys = useSelector((state) => state.news.newsKeys);
+  const queryParams = new URLSearchParams(window.location.search);
+  const idFilter = queryParams.get("id");
   const { page, pageSize, keySearch, filter } = keys;
 
   useEffect(() => {
+    if (idFilter) {
+      console.log("Đổi ID");
+      filter.key = "id";
+      filter.value = idFilter;
+    }
     dispatch(
       getListAction(
         nameDB,
@@ -37,7 +44,8 @@ function News() {
         }&_sort=${"ngayDang"}&_order=desc`
       )
     );
-  }, [keys]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [keys, idFilter]);
 
   //componentWillUnmount
   useEffect(() => {
@@ -48,6 +56,7 @@ function News() {
         page: 1,
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

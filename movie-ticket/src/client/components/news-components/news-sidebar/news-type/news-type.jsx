@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { useStyles } from "./news-type-styles";
 import { Grid } from "@material-ui/core";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
@@ -11,8 +12,13 @@ function NewsType(props) {
   const { array, keyName } = props;
   const { putKeyAction } = callAPIactions;
   const dispatch = useDispatch();
+  const history = useHistory();
+  const queryParams = new URLSearchParams(window.location.search);
 
   const handleClick = (value) => {
+    if (queryParams.get("id")) {
+      history.push("/news");
+    }
     let key = keyName;
     if (value === "") {
       key = "";

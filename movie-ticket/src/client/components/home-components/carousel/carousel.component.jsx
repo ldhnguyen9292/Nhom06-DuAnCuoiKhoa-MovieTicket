@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useStyles } from "./carousel-styles.component";
 import Slider from "react-slick";
 import { CardMedia } from "@material-ui/core";
@@ -17,15 +18,31 @@ function CarouselComponent() {
   const [active, setActive] = useState(0);
   let slider1, slider2;
   const type = GET_CAROUSEL_LIST;
+  const history = useHistory();
 
   useEffect(() => {
-    dispatch(callAPIactions.getListAction("carousel", type, "?_sort=id&_order=desc"));
+    dispatch(
+      callAPIactions.getListAction("carousel", type, "?_sort=id&_order=desc")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setNav1(slider1);
     setNav2(slider2);
   }, [slider1, slider2]);
+
+  const handleMore = (slider) => {
+    let pathname = "";
+    let search = "";
+    if (slider.loai === "tinTuc") {
+      pathname = `/news`;
+      search = `?id=${slider.maLienKet}`;
+    } else if (slider.loai === "phimBomTan") {
+      pathname = `/movie/movie-detail:maPhim=${slider.maLienKet}`;
+    }
+    history.push({ pathname, search });
+  };
 
   const renderTop = () => {
     return (
@@ -35,17 +52,14 @@ function CarouselComponent() {
         arrows={false}
       >
         {carouselList.map((slider, index) => {
-          let link = "";
-          if (slider.loai === "khuyenMai") {
-            link = `/news?id=${slider.maLienKet}`;
-          } else if (slider.loai === "phimBomTan") {
-            link = `/movie/movie-detail?maPhim=${slider.maLienKet}`;
-          }
           return (
             <div className={classes.top} key={index}>
               <CardMedia className={classes.imgTop} image={slider.hinhAnh} />
               <div className={classes.btnTopMore}>
-                <PlayCard slider={slider} link={link} />
+                <PlayCard
+                  slider={slider}
+                  handleMore={() => handleMore(slider)}
+                />
               </div>
             </div>
           );

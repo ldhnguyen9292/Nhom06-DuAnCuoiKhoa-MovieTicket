@@ -1,10 +1,10 @@
 import React from "react";
 import { useStyles } from "./danhGiaFilm-styles.component";
-import Image from "./../../../../assets/images/aquaman.jpg";
-import { Button } from "@material-ui/core";
-import ArrowIcon from "../../../../assets/svg/MyArrowIcon";
-import { CircularProgress } from "@material-ui/core";
-import StarIcon from "@material-ui/icons/Star";
+// import Image from "./../../../../assets/images/aquaman.jpg";
+// import { Button } from "@material-ui/core";
+// import ArrowIcon from "../../../../assets/svg/MyArrowIcon";
+// import { CircularProgress } from "@material-ui/core";
+// import StarIcon from "@material-ui/icons/Star";
 
 function DanhGiaFilm() {
   const classes = useStyles();

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { CardMedia, Grid, SvgIcon } from "@material-ui/core";
+import { CardMedia, Grid } from "@material-ui/core";
 import { useStyles } from "./movie-card-2-styles.component";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";

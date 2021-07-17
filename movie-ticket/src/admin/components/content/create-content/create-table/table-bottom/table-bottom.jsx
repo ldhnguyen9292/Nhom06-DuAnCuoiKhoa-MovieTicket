@@ -16,7 +16,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 function TableBottom(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { array, arrayTableHead, putKey, typePutKey, name,  keysText} = props;
+  const { array, arrayTableHead, putKey, typePutKey, name, keysText } = props;
   const keys = useSelector((state) => state[name][keysText]);
   const { arrayLength, pageSize, page, sort, order } = keys;
   const pageNum = Math.ceil(arrayLength / pageSize);
@@ -54,7 +54,7 @@ function TableBottom(props) {
                 </TableCell>
                 {arrayTableHead.map((title) => (
                   <TableCell key={title} className={classes.title}>
-                    <Typography className={classes.textTitle}>
+                    <Typography component="span" className={classes.textTitle}>
                       {title.split(/(?=[A-Z])/).join(" ")}
                       <Typography className={classes.sortIcon}>
                         <ExpandLessIcon
@@ -80,8 +80,8 @@ function TableBottom(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {array.map((row) => (
-                <TableRow key={row.name}>
+              {array.map((row, index) => (
+                <TableRow key={`table-row-${index}`}>
                   <TableCell className={classes.textBody}>
                     <EditIcon
                       className={classes.iconButton}
@@ -92,9 +92,12 @@ function TableBottom(props) {
                       onClick={() => handleDelete(row.id)}
                     />
                   </TableCell>
-                  {arrayTableHead.map((element, index) => {
+                  {arrayTableHead.map((element, i) => {
                     return (
-                      <TableCell key={index} className={classes.textBody}>
+                      <TableCell
+                        key={`table-cell-${i}`}
+                        className={classes.textBody}
+                      >
                         {row[element]}
                       </TableCell>
                     );
@@ -117,9 +120,7 @@ function TableBottom(props) {
     );
   };
 
-  return (
-    <>{array ? renderBottom() : <p>Không tìm thấy kết quả</p>}</>
-  );
+  return <>{array ? renderBottom() : <p>Không tìm thấy kết quả</p>}</>;
 }
 
 export default memo(TableBottom);
