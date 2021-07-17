@@ -59,6 +59,7 @@ và bảo mật thông tin!</p>
                     </Button>
                     <Button
                         to="/registration"
+                        href="/registration"
                         variant="contained"
                         color="secondary"
                         className={classes.btnSignUp}

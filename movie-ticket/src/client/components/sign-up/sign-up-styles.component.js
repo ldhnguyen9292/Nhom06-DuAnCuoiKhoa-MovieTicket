@@ -85,4 +85,28 @@ export const useStyles = makeStyles((theme) => ({
           height: 50,
         },
     },
+    formBox: {
+        width: '296px',
+        margin: '10px 0px 20px',
+    },
+    input: {
+        color: '#eee',
+        fontWeight: '500',
+        margin: '10px 0px',
+    },
+    btnSubmit: {
+        color: '#eee',
+        marginTop: '10px',
+        width: '116px', 
+    },
+    button: {
+        width: '100%',
+        height: '50px',
+        margin: '10px 0px',
+        borderRadius: '5px',
+    },
+    imgIcon: {
+        height: '100%',
+        width: '296px',
+    },
 }))
