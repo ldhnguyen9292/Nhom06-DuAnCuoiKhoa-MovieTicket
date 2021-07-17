@@ -19,3 +19,7 @@ export const getUserListAction = (urlExpand) => {
     }
   };
 };
+
+export const postUserLogInAction = () => {
+  console.log("log in");
+};

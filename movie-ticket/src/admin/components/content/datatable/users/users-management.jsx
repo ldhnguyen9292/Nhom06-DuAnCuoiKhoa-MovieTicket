@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useCallback, useMemo } from "react";
+import React, { memo, useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, FormProvider } from "react-hook-form";
 import { callAPIactions } from "../../../../../store/actions/mock-api-main.actions";
@@ -75,6 +75,7 @@ const typePutKey = PUT_USER_KEY;
 function UsersManagement() {
   const classes = useStyles();
   const methods = useForm();
+  const { setValue } = methods;
   const [isEdit, setEdit] = useState(false);
   const { putKeyAction } = callAPIactions;
   const dispatch = useDispatch();
@@ -87,22 +88,26 @@ function UsersManagement() {
   };
 
   useEffect(() => {
-    const urlExpand = `LayDanhSachNguoiDungPhanTrang?MaNhom=GP07&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
+    const urlExpand = `LayDanhSachNguoiDungPhanTrang?MaNhom=GP06&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
     handleCallAPI(urlExpand);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, pageSize]);
 
   useEffect(() => {
     const tuKhoa = keySearch === "" ? "" : `&tuKhoa=${keySearch}`;
-    const urlExpand = `TimKiemNguoiDung?MaNhom=GP07${tuKhoa}&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
+    const urlExpand = `TimKiemNguoiDung?MaNhom=GP06${tuKhoa}&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
     handleCallAPI(urlExpand);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keySearch]);
 
   const handleDelete = () => {
     console.log("detele");
   };
 
-  const handleEdit = () => {
-    console.log("edit");
+  const handleEdit = (id, index) => {
+    console.log("edit", index, cacheArray[index]);
+    arrayTableHead.map((keyRef) => setValue(keyRef, cacheArray[index][keyRef]));
+    setEdit(true);
   };
 
   const onSubmit = () => {
@@ -111,7 +116,6 @@ function UsersManagement() {
 
   const cacheArray = useMemo(() => {
     let userList = array.items || array || [];
-    console.log(userList);
     if (sort) {
       userList.sort((first, second) => {
         if (first[sort] > second[sort]) {
