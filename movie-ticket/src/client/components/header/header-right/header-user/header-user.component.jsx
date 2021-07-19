@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, memo } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import { Typography, Popper } from "@material-ui/core";
 import { useStyles } from "./header-user-style.component";
 import Badge from "@material-ui/core/Badge";
@@ -8,20 +9,25 @@ import MailIcon from "@material-ui/icons/Mail";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MenuItem from "@material-ui/core/MenuItem";
+import { useSelector } from "react-redux";
+import { PUT_USER_LOGIN_STATUS } from "../../../../../store/constants/user.consants";
 
 function HeaderUser(props) {
   const classes = useStyles();
-  const [isLogin, setIsLogin] = useState(false);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state.user.isLogin);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
 
   const handleIsLogin = () => {
-    setIsLogin(true);
+    history.push("/login");
     setAnchorEl(null);
   };
 
   const handleIsLogout = () => {
-    setIsLogin(false);
+    localStorage.setItem("userInfo", null);
+    dispatch({ type: PUT_USER_LOGIN_STATUS, payload: false });
     setAnchorEl(null);
   };
 
@@ -68,7 +74,7 @@ function HeaderUser(props) {
           onClick={handleClick}
           className={classes.userMenu}
         >
-        <AccountCircle />
+          <AccountCircle />
           {renderUserInfo()}
         </IconButton>
         <IconButton aria-label="show 4 new mails" color="inherit">
@@ -102,4 +108,4 @@ function HeaderUser(props) {
   return <>{!isLogin ? renderUserButton() : renderUserIcon()}</>;
 }
 
-export default HeaderUser;
+export default memo(HeaderUser);

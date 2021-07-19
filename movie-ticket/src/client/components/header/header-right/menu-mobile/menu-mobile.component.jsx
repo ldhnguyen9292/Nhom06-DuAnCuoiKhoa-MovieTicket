@@ -48,7 +48,11 @@ function MenuMobile() {
               <img src={Logo} alt="logo" className={classes.iconLogo} />
               <span className={classes.titleLogo}>Movie Ticket</span>
             </NavLink>
-            <HighlightOffIcon fontSize="large" onClick={handleClose} className={classes.closeBtn}/>
+            <HighlightOffIcon
+              fontSize="large"
+              onClick={handleClose}
+              className={classes.closeBtn}
+            />
           </Box>
           <NavLink to="/movie" className={classes.title}>
             <div className={classes.iconFlex}>
@@ -100,11 +104,11 @@ function MenuMobile() {
             <div key={i} className={classes.socialNetwork}>
               <Box>
                 {icon === "Facebook" ? (
-                  <FacebookIcon fontSize="medium" />
+                  <FacebookIcon />
                 ) : icon === "Twitter" ? (
-                  <TwitterIcon fontSize="medium" />
+                  <TwitterIcon />
                 ) : (
-                  <YouTubeIcon fontSize="medium" />
+                  <YouTubeIcon />
                 )}
                 <div>
                   <p>{icon}</p>
