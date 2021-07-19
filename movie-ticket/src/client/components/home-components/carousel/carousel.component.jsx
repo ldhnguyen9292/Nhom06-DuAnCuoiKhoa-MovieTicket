@@ -72,10 +72,13 @@ function CarouselComponent() {
     const settings = {
       slidesToShow: 5,
       slidesToScroll: 1,
+      autoplay: true,
       initialSlide: 0,
+      autoplaySpeed: 4000,
+      cssEase: "linear",
+      pauseOnHover: true,
       swipeToSlide: true,
       focusOnSelect: true,
-      className: "center",
       centerMode: true,
       arrows: false,
       responsive: [
@@ -108,7 +111,7 @@ function CarouselComponent() {
               <CardMedia
                 className={clsx(
                   classes.imgSetting,
-                  active === slider.id ? classes.active : classes.imgBot
+                  active === index ? classes.active : classes.imgBot
                 )}
                 image={slider.hinhAnh}
               />

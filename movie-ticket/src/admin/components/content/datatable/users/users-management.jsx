@@ -6,29 +6,39 @@ import { PUT_USER_KEY } from "../../../../../store/constants/user.consants";
 import CreateFormInput from "../../create-content/create-form-input/create-form-input";
 import CreateTable from "../../create-content/create-table/create-table";
 import { useStyles } from "./user-management-styles";
-import { getUserListAction } from "../../../../../store/actions/user.action";
+import {
+  getUserListAction,
+  putUpdateUserInfoAction,
+  deleteUserAction,
+  postAdminSignUpAction,
+} from "../../../../../store/actions/user.action";
 
+const valid = {
+  required: "Vui lòng không để trống",
+  minLength: { value: 4, message: "Số ký tự 4-20" },
+  maxLength: { value: 20, message: "Số ký tự 4-20" },
+};
 const arrayInput = [
   {
     type: "text",
     name: "taiKhoan",
     placeHolder: "Nhập tên người dùng",
     width: 50,
-    validation: "",
+    validation: valid,
   },
   {
     type: "text",
     name: "matKhau",
     placeHolder: "Nhập mật khẩu",
     width: 50,
-    validation: "",
+    validation: valid,
   },
   {
     type: "text",
     name: "email",
     placeHolder: "Nhập email",
     width: 50,
-    validation: "",
+    validation: { required: "Vui lòng nhập email" },
   },
   {
     type: "text",
@@ -38,16 +48,9 @@ const arrayInput = [
     validation: "",
   },
   {
-    type: "text",
-    name: "maNhom",
-    placeHolder: "Nhập mã nhóm",
-    width: 50,
-    validation: "",
-  },
-  {
-    type: "text",
+    type: "radio",
     name: "maLoaiNguoiDung",
-    placeHolder: "Nhập mã loại người dùng",
+    placeHolder: ["QuanTri", "KhachHang"],
     width: 50,
     validation: "",
   },
@@ -64,7 +67,6 @@ const arrayTableHead = [
   "matKhau",
   "email",
   "soDt",
-  "maNhom",
   "maLoaiNguoiDung",
   "hoTen",
 ];
@@ -75,7 +77,7 @@ const typePutKey = PUT_USER_KEY;
 function UsersManagement() {
   const classes = useStyles();
   const methods = useForm();
-  const { setValue } = methods;
+  const { setValue, handleSubmit, setFocus } = methods;
   const [isEdit, setEdit] = useState(false);
   const { putKeyAction } = callAPIactions;
   const dispatch = useDispatch();
@@ -100,18 +102,30 @@ function UsersManagement() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keySearch]);
 
-  const handleDelete = () => {
-    console.log("detele");
+  const handleDelete = async (id, index) => {
+    const data = array.items[index].taiKhoan;
+    await deleteUserAction(data);
+    const urlExpand = `LayDanhSachNguoiDungPhanTrang?MaNhom=GP06&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
+    handleCallAPI(urlExpand);
   };
 
   const handleEdit = (id, index) => {
-    console.log("edit", index, cacheArray[index]);
     arrayTableHead.map((keyRef) => setValue(keyRef, cacheArray[index][keyRef]));
     setEdit(true);
+    setFocus("id");
   };
 
-  const onSubmit = () => {
-    console.log("submit");
+  const onSubmit = async (data, e) => {
+    const d = { ...data, maNhom: "GP06" };
+    if (isEdit) {
+      await putUpdateUserInfoAction(d);
+      setEdit(false);
+    } else {
+      postAdminSignUpAction(d);
+    }
+    const urlExpand = `LayDanhSachNguoiDungPhanTrang?MaNhom=GP06&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
+    handleCallAPI(urlExpand);
+    e.target.reset();
   };
 
   const cacheArray = useMemo(() => {
@@ -138,10 +152,7 @@ function UsersManagement() {
     <>
       <FormProvider {...methods}>
         <div className={classes.root}>
-          <form
-            onSubmit={methods.handleSubmit(onSubmit)}
-            className={classes.form}
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
             <div className={classes.formInput}>
               <CreateFormInput
                 arrayInput={arrayInput}

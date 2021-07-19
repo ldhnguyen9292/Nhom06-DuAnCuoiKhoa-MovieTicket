@@ -1,6 +1,5 @@
 import React from "react";
 import SignIn from "../../components/sign-in/sign-in.component";
-import { withRouter } from "react-router";
 
 function Login() {
   return (
@@ -10,4 +9,4 @@ function Login() {
   );
 }
 
-export default withRouter(Login);
+export default Login;

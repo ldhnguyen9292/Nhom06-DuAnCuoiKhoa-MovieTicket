@@ -1,4 +1,8 @@
-import { GET_USER_LIST, PUT_USER_KEY } from "../constants/user.consants";
+import {
+  GET_USER_LIST,
+  PUT_USER_KEY,
+  PUT_USER_LOGIN_STATUS,
+} from "../constants/user.consants";
 
 const initialState = {
   userList: [],
@@ -11,6 +15,7 @@ const initialState = {
     sort: "",
     order: "",
   },
+  isLogin: Boolean(JSON.parse(localStorage.getItem("userInfo"))),
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -22,6 +27,9 @@ export const userReducer = (state = initialState, action) => {
       return { ...state };
     case PUT_USER_KEY:
       state.userKeys = { ...state.userKeys, ...payload };
+      return { ...state };
+    case PUT_USER_LOGIN_STATUS:
+      state.isLogin = payload;
       return { ...state };
     default:
       return state;

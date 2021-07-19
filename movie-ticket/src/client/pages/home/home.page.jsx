@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import CarouselComponent from "../../components/home-components/carousel/carousel.component";
 import SearchHome from "../../components/home-components/search/search.component";
 import MovieComponent from './../../components/home-components/movie/movie.component';
@@ -15,4 +15,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default memo(Home);
