@@ -1,4 +1,5 @@
 import axios from "axios";
+import { emailService } from "../../services/email.service";
 import {
   GET_USER_LIST,
   PUT_USER_LOGIN_STATUS,
@@ -50,8 +51,30 @@ export const postUserLogInAction = async (data, history, dispatch) => {
 export const postUserSignUpAction = async (data, history) => {
   const res = await userAction(data, "POST", "DangKy");
   if (res.status === 200) {
-    const { taiKhoan, matKhau } = { res };
-    await postUserLogInAction({ taiKhoan, matKhau }, history);
+    const { taiKhoan, matKhau, email, soDt, hoTen } = res.data;
+    const title = "Đã đăng ký thành công tài khoản Movie Ticket";
+    const messTop =
+      "Xin chúc mừng bạn đã đăng ký thành công tài khoản Movie Ticket với thông tin như sau:";
+    const username = `"Tài Khoản": ${taiKhoan}`;
+    const password = `"Mật khẩu": ${matKhau}`;
+    const userEmail = `Email: ${email}`;
+    const userTel = `"Số điện thoại": ${soDt}`;
+    const name = `"Họ tên": ${hoTen}`;
+    const data = {
+      email,
+      title,
+      hoTen,
+      messTop,
+      username,
+      password,
+      userEmail,
+      userTel,
+      name,
+    };
+    emailService.sendEmail("template_12xtfoh", data);
+    alert("Bạn đã đăng ký thành công. Thông tin đã được gửi qua mail của bạn.");
+    // await postUserLogInAction({ taiKhoan, matKhau }, history);
+    history.goBack();
   }
 };
 
@@ -60,11 +83,11 @@ export const putUpdateUserInfoAction = async (data) => {
   await userAction(data, "PUT", "CapNhatThongTinNguoiDung", token);
 };
 
-export const deleteUserAction = async (data)=>{
+export const deleteUserAction = async (data) => {
   const token = JSON.parse(localStorage.getItem("userInfo")).accessToken;
   await userAction(null, "DELETE", `XoaNguoiDung?TaiKhoan=${data}`, token);
-}
+};
 
-export const postAdminSignUpAction = async(data)=>{
+export const postAdminSignUpAction = async (data) => {
   await userAction(data, "POST", "DangKy");
-}
+};

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getMovieListAction } from "../../../../../store/actions/movie.action";
 import PropTypes from "prop-types";
 import { useStyles } from "./navtab-styles.component";
 import AppBar from "@material-ui/core/AppBar";
@@ -41,9 +43,16 @@ function a11yProps(index) {
   };
 }
 
-export default function SimpleTabs() {
+function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const maNhom = value === 0 ? "GP06" : "GP07";
+    dispatch(getMovieListAction(maNhom));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -61,12 +70,12 @@ export default function SimpleTabs() {
           >
             <Tab
               className={classes.tabs}
-              label="Upcoming Movies"
+              label="Phim Đang Chiếu"
               {...a11yProps(0)}
             />
             <Tab
               className={classes.tabs}
-              label="Relesed Movies"
+              label="Phim Sắp Chiếu"
               {...a11yProps(1)}
             />
           </Tabs>
@@ -81,3 +90,5 @@ export default function SimpleTabs() {
     </div>
   );
 }
+
+export default memo(SimpleTabs);
