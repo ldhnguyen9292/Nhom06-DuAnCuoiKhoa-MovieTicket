@@ -126,4 +126,7 @@ export const useStyles = makeStyles((theme) => ({
     maxWidth: 1200,
     margin: "0 auto",
   },
+  errors: {
+    color: "red",
+  },
 }));

@@ -1,6 +1,7 @@
 import React, { memo, useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { Grid, CardMedia } from "@material-ui/core";
-import NewsAvatar from "./../../../../../../assets/images/news-icon.jpg";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
@@ -41,15 +42,28 @@ function FooterCard(props) {
   };
 
   const renderTextBox = () => {
+    if (!JSON.parse(localStorage.getItem("userInfo"))) {
+      return (
+        <NavLink to="/login" className={classes.loginText}>
+          <p>Vui lòng đăng nhập để bình luận...</p>
+        </NavLink>
+      );
+    }
+
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     return (
       <div className={classes.messBox}>
         <Grid container alignItems="center" wrap="nowrap">
           <Grid item className={classes.avatarBox}>
-            <CardMedia
-              component="img"
-              src={NewsAvatar}
-              className={classes.messAvatar}
-            />
+            {userInfo.hinhAnh ? (
+              <CardMedia
+                component="img"
+                src={userInfo.hinhAnh}
+                className={classes.messAvatar}
+              />
+            ) : (
+              <AccountCircleIcon />
+            )}
           </Grid>
           <Grid item className={classes.messTextBox}>
             <div className={classes.messText}>
@@ -77,9 +91,11 @@ function FooterCard(props) {
   const handleChange = (event) => {
     if (event.key === "Enter") {
       let { soBinhLuan, mangBinhLuan } = commentArray;
-      const maThanhVien = parseInt("9292");
-      const ten = "Admin";
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const maThanhVien = userInfo.taiKhoan;
+      const ten = userInfo.hoTen;
       const hinhDaiDien =
+        userInfo.hinhAnh ||
         "https://anh.eva.vn//upload/3-2013/images/2013-08-20/1376967060-14.jpg";
       const ngayBinhLuan = new Date();
       soBinhLuan += 1;
@@ -101,7 +117,11 @@ function FooterCard(props) {
   };
 
   const handleClickLike = () => {
-    const maNguoiDung = "9292";
+    if (!JSON.parse(localStorage.getItem("userInfo"))) {
+      return alert("Vui lòng đăng nhập để thực hiện tính năng này");
+    }
+
+    const maNguoiDung = JSON.parse(localStorage.getItem("userInfo")).taiKhoan;
     const index = commentArray.mangLike.findIndex((id) => {
       return id === maNguoiDung;
     });

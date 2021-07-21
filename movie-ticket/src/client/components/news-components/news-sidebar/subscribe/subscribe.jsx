@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { emailService } from "../../../../../services/email.service";
 import { useStyles } from "./subscribe-styles";
 
 function Subscribe() {
@@ -11,7 +12,17 @@ function Subscribe() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email);
+    const messMid = `Email: ${email}`;
+    const data = {
+      email,
+      title: "Đăng ký email thành công",
+      hoTen: "bạn",
+      messTop:
+        "Xin chúc mừng bạn đã đăng ký thành công email. Khi có tin tức mới thì chúng tôi sẽ gửi mail cho bạn.",
+      messMid,
+    };
+    emailService.sendEmail("template_12xtfoh", data);
+    alert("Đăng ký thành công");
   };
 
   return (

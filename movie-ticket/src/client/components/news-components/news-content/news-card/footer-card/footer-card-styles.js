@@ -81,4 +81,13 @@ export const useStyles = makeStyles((theme) => ({
       padding: "0 2%",
     },
   },
+  loginText: {
+    color: "#b446ff",
+    "& p": {
+      padding: "5px",
+      marginLeft: "10%",
+      background: "#dddddd63",
+      borderRadius: 5,
+    },
+  },
 }));

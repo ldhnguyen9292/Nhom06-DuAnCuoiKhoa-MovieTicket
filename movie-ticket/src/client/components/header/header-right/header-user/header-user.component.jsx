@@ -37,6 +37,9 @@ function HeaderUser(props) {
   };
 
   const renderUserInfo = () => {
+    const maLoaiNguoiDung = JSON.parse(
+      localStorage.getItem("userInfo")
+    ).maLoaiNguoiDung;
     return (
       <Popper
         id="userInfo"
@@ -49,9 +52,14 @@ function HeaderUser(props) {
         }
         placement={props.placement === "bottom" ? "bottom" : "left"}
       >
-        <MenuItem className={classes.menuTitle} onClick={handleClick}>
-          Tài khoản
-        </MenuItem>
+        <NavLink to="/" className={classes.navTitle}>
+          <p> Tài khoản</p>
+        </NavLink>
+        {maLoaiNguoiDung === "QuanTri" ? (
+          <NavLink to="/admin" className={classes.navTitle}>
+            <p> Quản lý</p>
+          </NavLink>
+        ) : null}
         <MenuItem className={classes.menuTitle} onClick={handleIsLogout}>
           Đăng xuất
         </MenuItem>

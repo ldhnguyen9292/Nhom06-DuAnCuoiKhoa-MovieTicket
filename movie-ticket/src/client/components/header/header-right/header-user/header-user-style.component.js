@@ -93,9 +93,11 @@ export const useStyles = makeStyles((theme) => ({
       borderBottom: "13px solid white",
       borderLeft: "13px solid transparent",
       position: "absolute",
+      paddingTop: 5,
       right: "50%",
       top: "-25%",
       transform: "translate(50%,50%)",
+      zIndex: -1,
     },
   },
   menuMobile: {
@@ -113,11 +115,25 @@ export const useStyles = makeStyles((theme) => ({
       right: "0",
       top: "50%",
       transform: "translate(50%,-50%)",
+      zIndex: -1,
     },
   },
   menuTitle: {
     "&:hover": {
       color: "#b446ff",
+    },
+  },
+  navTitle: {
+    color: "black",
+    "& p": {
+      margin: 0,
+      padding: "6px 16px",
+    },
+    "&:hover": {
+      color: "#b446ff",
+      "& p": {
+        backgroundColor: "rgba(0, 0, 0, 0.04)",
+      },
     },
   },
 }));

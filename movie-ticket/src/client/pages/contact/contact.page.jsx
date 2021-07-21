@@ -1,5 +1,7 @@
 import React from "react";
 import { Grid, Paper, CardMedia, Typography, SvgIcon } from "@material-ui/core";
+import { useForm } from "react-hook-form";
+import { Prompt } from "react-router-dom";
 import PhoneIcon from "@material-ui/icons/Phone";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import EmailIcon from "@material-ui/icons/Email";
@@ -9,6 +11,7 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import { ReactComponent as FacebookIcon } from "./../../../assets/svg/facebook-f-brands.svg";
+import { emailService } from "../../../services/email.service";
 
 const arrayContact = [
   {
@@ -26,13 +29,22 @@ const arrayContact = [
   {
     iconSrc: EmailIcon,
     title: "Email",
-    detail1: "movie.ticket@gmail.com",
-    detail2: "movie.support@gmail.com",
+    detail1: "mticket.gp06@gmail.com",
+    detail2: "",
   },
 ];
 
 function Contact() {
   const classes = useStyles();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    emailService.sendEmail("template_gyypj1f", data);
+  };
 
   const renderTop = () => {
     return (
@@ -40,16 +52,38 @@ function Contact() {
         <Grid container spacing={2} className={classes.topBox}>
           <Grid item xs={12} lg={8}>
             <h1 className={classes.title}>Liên hệ chúng tôi</h1>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Grid container justify="center">
                 <Grid item xs={12} lg={6} className={classes.inputText}>
-                  <input type="text" placeholder="Tên" />
+                  <input
+                    type="text"
+                    placeholder="Tên"
+                    {...register("username", { required: "Vui lòng nhập tên" })}
+                  />
+                  {errors.username && (
+                    <p className={classes.errors}>{errors.username.message}</p>
+                  )}
                 </Grid>
                 <Grid item xs={12} lg={6} className={classes.inputText}>
-                  <input type="email" placeholder="Email" />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    {...register("email", { required: "Vui lòng nhập email" })}
+                  />
+                  {errors.email && (
+                    <p className={classes.errors}>{errors.email.message}</p>
+                  )}
                 </Grid>
                 <Grid item xs={12} className={classes.inputText}>
-                  <textarea placeholder="Nội dung" />
+                  <textarea
+                    placeholder="Nội dung"
+                    {...register("content", {
+                      required: "Vui lòng nhập nội dung",
+                    })}
+                  />
+                  {errors.content && (
+                    <p className={classes.errors}>{errors.content.message}</p>
+                  )}
                 </Grid>
                 <button type="submit" className={classes.contactBtn}>
                   Gửi tin nhắn
@@ -90,6 +124,7 @@ function Contact() {
             </Paper>
           </Grid>
         </Grid>
+        <Prompt when={isDirty} message="Bạn có muốn rời đi?" />
       </div>
     );
   };
