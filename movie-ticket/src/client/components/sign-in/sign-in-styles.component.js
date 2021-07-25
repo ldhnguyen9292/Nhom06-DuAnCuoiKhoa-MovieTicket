@@ -3,8 +3,8 @@ import BG from "./../../../assets/images/bg_sign-in.jpg";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100vw",
-    minHeight: 700,
+    width: "100%",
+    minHeight: 900,
     background: `url(${BG}) center center`,
     display: "flex",
     alignItems: "center",

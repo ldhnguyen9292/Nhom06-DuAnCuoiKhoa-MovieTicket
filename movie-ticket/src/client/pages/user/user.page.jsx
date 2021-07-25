@@ -1,9 +1,10 @@
 import React from "react";
+import UserComponent from "../../components/user-component/user.component";
 
 function User() {
   return (
     <div>
-      <h1>User</h1>
+      <UserComponent/>
     </div>
   );
 }
