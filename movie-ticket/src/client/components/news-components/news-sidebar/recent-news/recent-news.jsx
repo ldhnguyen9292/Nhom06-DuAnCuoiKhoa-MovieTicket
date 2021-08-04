@@ -1,27 +1,16 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { Grid, CardMedia } from "@material-ui/core";
 import { useStyles } from "./recent-news-styles";
 import format from "date-format";
-import { PUT_NEWS_KEY } from "../../../../../store/constants/news.contants";
-import { callAPIactions } from "../../../../../store/actions/mock-api-main.actions";
-import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function RecentNews(props) {
   const classes = useStyles();
   const { array } = props;
-  const { putKeyAction } = callAPIactions;
-  const dispatch = useDispatch();
   const history = useHistory();
-  const queryParams = new URLSearchParams(window.location.search);
 
   const handleClick = (id) => {
-    if (queryParams.get("id")) {
-      history.push("/news");
-    }
-    dispatch(
-      putKeyAction(PUT_NEWS_KEY, { filter: { key: "id", value: id }, page: 1 })
-    );
+    history.push(`/news?key=_id&value=${id}`);
   };
 
   return (
@@ -32,7 +21,7 @@ function RecentNews(props) {
             key={index}
             container
             className={classes.root}
-            onClick={() => handleClick(value.id)}
+            onClick={() => handleClick(value._id)}
           >
             <Grid item className={classes.img}>
               <CardMedia component="img" src={value.hinhAnh} />

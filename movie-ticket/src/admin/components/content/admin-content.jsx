@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
 function AdminContent() {
   const classes = useStyles();
   const queryParams = new URLSearchParams(useLocation().search);
-  const key = queryParams.get("key");
+  const data = queryParams.get("data");
   const sub = queryParams.get("sub");
 
   const lazyLoading = () => {
@@ -62,7 +62,7 @@ function AdminContent() {
   return (
     <div className={classes.root}>
       <Paper className={classes.box}>
-        {!key || key === "Dashboard" ? <Dashboard /> : <>{lazyLoading()}</>}
+        {!data || data === "Dashboard" ? <Dashboard /> : <>{lazyLoading()}</>}
       </Paper>
     </div>
   );

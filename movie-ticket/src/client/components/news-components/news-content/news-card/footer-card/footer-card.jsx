@@ -130,11 +130,13 @@ function FooterCard(props) {
       const mangLike = commentArray.mangLike;
       mangLike.splice(index, 1);
       setCommentArray({ ...commentArray, soLike, mangLike });
+      putCommentArray({ ...commentArray, soLike, mangLike });
     } else {
       const soLike = commentArray.soLike + 1;
       const mangLike = commentArray.mangLike;
       mangLike.push(maNguoiDung);
       setCommentArray({ ...commentArray, soLike, mangLike });
+      putCommentArray({ ...commentArray, soLike, mangLike });
     }
   };
 

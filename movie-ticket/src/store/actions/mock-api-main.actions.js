@@ -1,7 +1,7 @@
 import axios from "axios";
 import { commentListByIdAction, postCommentAction } from "./comment.action";
 
-const url = "https://mock-apis-test.herokuapp.com";
+const url = "https://moveticket-mongodb.herokuapp.com";
 
 const getListAction = (name, type, querParams) => {
   return async (dispatch) => {
@@ -10,7 +10,7 @@ const getListAction = (name, type, querParams) => {
         method: "GET",
         url: `${url}/${name}${querParams}`,
       });
-      const length = res.headers[`x-total-count`] || res.data.length || -1;
+      const length = res.headers[`resultlength`] || res.data.length || -1;
       dispatch({
         type: type,
         payload: { data: res.data, length: length },
@@ -58,7 +58,7 @@ const putNewsByIdAction = (name, data) => {
     try {
       await axios({
         method: "PUT",
-        url: `${url}/${name}/${data.id}`,
+        url: `${url}/${name}/${data._id}`,
         data,
       });
     } catch (error) {

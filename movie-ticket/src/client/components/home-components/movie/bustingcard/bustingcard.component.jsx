@@ -14,18 +14,19 @@ function BustingCard(props) {
   const { item } = props;
   const history = useHistory();
   const [open, setOpen] = useState(false);
+  const hinhAnh = item.hinhAnh.replace("http", "https");
 
   const renderStar = (danhGia) => {
     let result = [];
     for (let index = 0; index < 5; index++) {
       if (danhGia > 2) {
-        result.push(<StarIcon fontSize="small" />);
+        result.push(<StarIcon key={index} fontSize="small" />);
         danhGia -= 2;
       } else if (danhGia > 0) {
-        result.push(<StarHalfIcon fontSize="small" />);
+        result.push(<StarHalfIcon key={index} fontSize="small" />);
         danhGia = 0;
       } else {
-        result.push(<StarBorderIcon fontSize="small" />);
+        result.push(<StarBorderIcon key={index} fontSize="small" />);
       }
     }
     return result;
@@ -43,7 +44,7 @@ function BustingCard(props) {
     <>
       <Box boxShadow={3} className={classes.root}>
         <div classes={classes.imgbox}>
-          <img src={item.hinhAnh} alt="" className={classes.img} />
+          <img src={hinhAnh} alt="" className={classes.img} />
           <div className={classes.overlay} />
           <div className={classes.view}>
             <div className={classes.btnbox}>

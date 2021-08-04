@@ -15,7 +15,7 @@ function Newscard(props) {
   const history = useHistory();
 
   const getComment = async () => {
-    const res = await commentListByIdAction("GET", newsItem.id);
+    const res = await commentListByIdAction("GET", newsItem._id);
     if (res) {
       setComment(res);
     }
@@ -24,10 +24,13 @@ function Newscard(props) {
   useEffect(() => {
     getComment();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newsItem.id]);
+  }, []);
 
   const nextPage = () => {
-    history.push({ pathname: "/news", search: `?id=${newsItem.id}` });
+    history.push({
+      pathname: "/news",
+      search: `?key=_id&value=${newsItem._id}`,
+    });
   };
 
   return (

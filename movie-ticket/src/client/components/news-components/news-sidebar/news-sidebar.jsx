@@ -81,7 +81,7 @@ function NewsSidebar() {
     try {
       const res = await axios({
         method: "GET",
-        url: "https://mock-apis-test.herokuapp.com/news",
+        url: "https://moveticket-mongodb.herokuapp.com/news",
       });
       setArrayValue(res.data);
     } catch (error) {

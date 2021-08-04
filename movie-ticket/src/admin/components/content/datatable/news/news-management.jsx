@@ -79,7 +79,7 @@ const arrayInput = [
   },
 ];
 const arrayTableHead = [
-  "id",
+  "_id",
   "ngayDang",
   "tacGia",
   "loai",

@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import "date-fns";
 import { useFormContext, Controller } from "react-hook-form";
 import { useStyles } from "./create-form-input-styles";
 import DateFnsUtils from "@date-io/date-fns";
@@ -101,19 +100,21 @@ function CreateFormInput(props) {
               utils={DateFnsUtils}
               key={`date-picker-${name}`}
             >
-              <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="dd/MM/yyyy"
-                id={`date-picker-${name}`}
-                label={name.split(/(?=[A-Z])/).join(" ")}
-                value={value}
-                onChange={onChange}
-                className={classes.date}
-              />
-              {errors.datePicker && (
-                <p className={classes.error}>{errors.datePicker.message}</p>
-              )}
+              <>
+                <KeyboardDatePicker
+                  disableToolbar
+                  variant="inline"
+                  format="dd/MM/yyyy"
+                  id={`date-picker-${name}`}
+                  label={name.split(/(?=[A-Z])/).join(" ")}
+                  value={value}
+                  onChange={onChange}
+                  className={classes.date}
+                />
+                {errors.datePicker && (
+                  <p className={classes.error}>{errors.datePicker.message}</p>
+                )}
+              </>
             </MuiPickersUtilsProvider>
           )}
         ></Controller>
@@ -162,7 +163,7 @@ function CreateFormInput(props) {
   return (
     <>
       <h4 className={classes.labelForm}>
-        Form Input - ID: <input className={classes.id} {...register("id")} />
+        Form Input - ID: <input className={classes.id} {...register("_id")} />
       </h4>
       {arrayInput.map((object, index) => {
         const { width } = object;

@@ -7,18 +7,27 @@ import NewsPagination from "./news-pagination/news-pagination";
 function NewsContent() {
   const classes = useStyles();
   const newsList = useSelector((state) => state.news.newsList);
+  if (!newsList) {
+    return <p className={classes.box}>Không tìm thấy kết quả</p>;
+  }
 
-  return (
-    <>
-      {newsList ? (
-        newsList.map((newsItem, index) => (
+  if (Array.isArray(newsList))
+    return (
+      <>
+        {newsList.map((newsItem, index) => (
           <div key={index} className={classes.box}>
             <NewsCard newsItem={newsItem} />
           </div>
-        ))
-      ) : (
-        <p className={classes.box}>Không tìm thấy kết quả</p>
-      )}
+        ))}
+        <NewsPagination />
+      </>
+    );
+
+  return (
+    <>
+      <div className={classes.box}>
+        <NewsCard newsItem={newsList} />
+      </div>
       <NewsPagination />
     </>
   );

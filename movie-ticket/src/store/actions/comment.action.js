@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://mock-apis-test.herokuapp.com/comment";
+const url = "https://moveticket-mongodb.herokuapp.com/comment";
 
 const initialData = {
   soLike: 0,

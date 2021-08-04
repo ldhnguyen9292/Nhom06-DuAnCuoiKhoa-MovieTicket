@@ -21,7 +21,7 @@ function Videocard(props) {
   const history = useHistory();
 
   const getComment = async () => {
-    const res = await commentListByIdAction("GET", newsItem.id);
+    const res = await commentListByIdAction("GET", newsItem._id);
     if (res) {
       setComment(res);
     }
@@ -30,7 +30,7 @@ function Videocard(props) {
   useEffect(() => {
     getComment();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newsItem.id]);
+  }, [newsItem._id]);
 
   const renderStar = () => {
     let score = newsItem.danhGia;
@@ -61,7 +61,10 @@ function Videocard(props) {
   };
 
   const nextPage = () => {
-    history.push({ pathname: "/news", search: `?id=${newsItem.id}` });
+    history.push({
+      pathname: "/news",
+      search: `?key=_id&value=${newsItem._id}`,
+    });
   };
 
   return (

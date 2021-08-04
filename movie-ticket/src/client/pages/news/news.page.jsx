@@ -1,14 +1,11 @@
 import React, { memo, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import TopHeader from "../../components/movie-components/booking-confirmation-components/bc-top-header/bc-top-header";
 import { Grid, makeStyles } from "@material-ui/core";
 import NewsContent from "../../components/news-components/news-content/news-content";
 import NewsSidebar from "../../components/news-components/news-sidebar/news-sidebar";
 import { callAPIactions } from "../../../store/actions/mock-api-main.actions";
-import {
-  GET_NEWS_LIST,
-  PUT_NEWS_KEY,
-} from "./../../../store/constants/news.contants";
+import { GET_NEWS_LIST } from "./../../../store/constants/news.contants";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,42 +19,31 @@ const nameDB = "news";
 
 function News() {
   const classes = useStyles();
-  const { getListAction, putKeyAction } = callAPIactions;
+  const { getListAction } = callAPIactions;
   const dispatch = useDispatch();
-  const keys = useSelector((state) => state.news.newsKeys);
   const queryParams = new URLSearchParams(window.location.search);
-  const idFilter = queryParams.get("id");
-  const { page, pageSize, keySearch, filter } = keys;
+  const q = queryParams.get("q") || "";
+  const page = queryParams.get("page") || 1;
+  const limit = queryParams.get("limit") || 7;
+  const keySearch = queryParams.get("q") || "";
+  const key = queryParams.get("key") || "";
+  const value = queryParams.get("value") || "";
+
+  // const { page, pageSize, keySearch, filter } = keys;
 
   useEffect(() => {
-    if (idFilter) {
-      console.log("Đổi ID");
-      filter.key = "id";
-      filter.value = idFilter;
-    }
-    dispatch(
-      getListAction(
-        nameDB,
-        GET_NEWS_LIST,
-        `?_page=${page}&_limit=${pageSize}&q=${keySearch}&${filter.key}=${
-          filter.value
-        }&_sort=${"ngayDang"}&_order=desc`
-      )
-    );
+    let temp = `?page=${page}&limit=${limit}&q=${keySearch}&key=${key}&value=${value}&sort=${"ngayDang"}&_order=desc`;
+    if (key === "_id") temp = `/${value}`;
+    const run = async () => {
+      try {
+        await dispatch(getListAction(nameDB, GET_NEWS_LIST, temp));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    run();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keys, idFilter]);
-
-  //componentWillUnmount
-  useEffect(() => {
-    return dispatch(
-      putKeyAction(PUT_NEWS_KEY, {
-        keySearch: "",
-        filter: { key: "", value: "" },
-        page: 1,
-      })
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [q, page, limit, keySearch, key, value]);
 
   return (
     <div>

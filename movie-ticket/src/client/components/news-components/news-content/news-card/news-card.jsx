@@ -10,7 +10,7 @@ function NewsCard(props) {
   const classes = useStyles();
   const [lock, setLock] = useState(true);
   const { newsItem } = props;
-  const { id, hinhAnh, ngayDang, tacGia, tenBai, noiDung } = newsItem;
+  const { _id, hinhAnh, ngayDang, tacGia, tenBai, noiDung } = newsItem;
   const date = format("dd/MM/yyyy", new Date(ngayDang));
 
   const handleLock = () => {
@@ -32,7 +32,7 @@ function NewsCard(props) {
         {lock ? <p className={classes.seeMore}>Xem thêm</p> : <p>Rút gọn</p>}
       </div>
 
-      <FooterCard id={id} />
+      <FooterCard id={_id} />
     </Paper>
   );
 }
