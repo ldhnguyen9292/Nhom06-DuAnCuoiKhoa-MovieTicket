@@ -24,7 +24,7 @@ function ListType2(props) {
   const handleChange = (sub) => {
     history.push({
       pathname: "/admin",
-      search: `key=${item.text}&sub=${sub.text}`,
+      search: `data=${item.text}&sub=${sub.text}`,
     });
   };
 

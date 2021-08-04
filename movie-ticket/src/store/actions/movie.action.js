@@ -21,7 +21,6 @@ export const getMovieListAction = (maNhom) => {
   return async (dispatch) => {
     const res = await movieActions("GET", `LayDanhSachPhim?maNhom=${maNhom}`);
     if (res.status === 200) {
-      console.log(res.data);
       dispatch({
         type: GET_MOVIE_LIST,
         payload: res.data,

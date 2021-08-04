@@ -22,7 +22,7 @@ function CarouselComponent() {
 
   useEffect(() => {
     dispatch(
-      callAPIactions.getListAction("carousel", type, "?_sort=id&_order=desc")
+      callAPIactions.getListAction("carousels", type, "?sort=_id&order=desc")
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -37,7 +37,7 @@ function CarouselComponent() {
     let search = "";
     if (slider.loai === "tinTuc") {
       pathname = `/news`;
-      search = `?id=${slider.maLienKet}`;
+      search = `?key=_id=&value=${slider.maLienKet}`;
     } else if (slider.loai === "phimBomTan") {
       pathname = `/movie/movie-detail:maPhim=${slider.maLienKet}`;
     }

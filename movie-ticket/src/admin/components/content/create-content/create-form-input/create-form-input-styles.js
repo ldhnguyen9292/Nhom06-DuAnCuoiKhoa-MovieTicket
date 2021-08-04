@@ -12,7 +12,7 @@ export const useStyles = makeStyles(() => ({
     backgroundImage: "linear-gradient(to bottom, #0e1726, #191e3a)",
   },
   id: {
-    width: 20,
+    width: "fit-content",
     background: "transparent",
     outline: "none",
     border: "transparent",

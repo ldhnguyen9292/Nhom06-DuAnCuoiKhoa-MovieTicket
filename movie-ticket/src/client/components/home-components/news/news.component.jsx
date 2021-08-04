@@ -25,7 +25,7 @@ function NewsComponent() {
       getListAction(
         dbName,
         GET_NEWS_LIST,
-        `?_page=${1}&_limit=${3}&_sort=${"ngayDang"}&_order=desc`
+        `?page=${1}&limit=${3}&sort=${"ngayDang"}&order=desc`
       )
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps

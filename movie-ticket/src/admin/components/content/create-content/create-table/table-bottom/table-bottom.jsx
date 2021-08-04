@@ -32,12 +32,12 @@ function TableBottom(props) {
     dispatch(putKey(typePutKey, { page: value }));
   };
 
-  const handleDelete = (id, index) => {
-    props.handleDelete(id, index);
+  const handleDelete = (id ) => {
+    props.handleDelete(id);
   };
 
-  const handleEdit = (id, index) => {
-    props.handleEdit(id, index);
+  const handleEdit = (id) => {
+    props.handleEdit(id);
   };
 
   const renderBottom = () => {
@@ -85,11 +85,11 @@ function TableBottom(props) {
                   <TableCell className={classes.textBody}>
                     <EditIcon
                       className={classes.iconButton}
-                      onClick={() => handleEdit(row.id, index)}
+                      onClick={() => handleEdit(row._id)}
                     />
                     <DeleteIcon
                       className={classes.iconButton}
-                      onClick={() => handleDelete(row.id, index)}
+                      onClick={() => handleDelete(row._id)}
                     />
                   </TableCell>
                   {arrayTableHead.map((element, i) => {

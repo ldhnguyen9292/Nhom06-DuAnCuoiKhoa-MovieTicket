@@ -15,7 +15,7 @@ const arrayInput = [
     validation: "",
   },
   {
-    type: "number",
+    type: "text",
     name: "maLienKet",
     placeHolder: "Nhập mã liên kết",
     width: 50,
@@ -43,9 +43,9 @@ const arrayInput = [
     validation: { required: "Vui lòng nhập link hình ảnh" },
   },
 ];
-const arrayTableHead = ["id", "ten", "loai", "maLienKet", "trailer", "hinhAnh"];
+const arrayTableHead = ["_id", "ten", "loai", "maLienKet", "trailer", "hinhAnh"];
 const name = "carousel";
-const dbName = "carousel";
+const dbName = "carousels";
 
 function CarouselsManagement() {
   const {

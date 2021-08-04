@@ -13,12 +13,6 @@ export const useStyles = makeStyles((theme) => ({
         transform: "scale(1.2)",
       },
     },
-    [theme.breakpoints.down("600")]: {
-      height: "200px",
-    },
-    [theme.breakpoints.down("460")]: {
-      height: "220px",
-    },
   },
   left: {
     height: "240px",
@@ -38,7 +32,6 @@ export const useStyles = makeStyles((theme) => ({
     width: "315px",
     [theme.breakpoints.down("600")]: {
       width: "100%",
-      height: "200px",
     },
   },
   content: {
@@ -47,7 +40,6 @@ export const useStyles = makeStyles((theme) => ({
     padding: "20px",
     [theme.breakpoints.down("600")]: {
       width: "100%",
-      height: "200px",
     },
   },
   link: {

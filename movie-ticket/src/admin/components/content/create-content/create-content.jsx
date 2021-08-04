@@ -34,7 +34,7 @@ function CreateContent(props) {
     return getList(
       dbName,
       typeGetList,
-      `?q=${keySearch}&_page=${page}&_limit=${pageSize}&_sort=${sort}&_order=${order}`
+      `?q=${keySearch}&page=${page}&limit=${pageSize}&sort=${sort}&order=${order}`
     );
   };
 
@@ -66,14 +66,14 @@ function CreateContent(props) {
     const res = await dispatch(actionsByID(dbName, "GET", id));
     arrayTableHead.map((name) => setValue(name, res.data[name]));
     setEdit(true);
-    setFocus("id");
+    setFocus("_id");
   };
 
   const onSubmit = async (data, e) => {
     if (isEdit) {
       setEdit(false);
       await dispatch(putData(dbName, data));
-      dispatch(getDataList());
+      await dispatch(getDataList());
     } else {
       handleCallAPI(data);
     }
@@ -81,6 +81,10 @@ function CreateContent(props) {
   };
 
   const cacheArrayInput = useMemo(() => arrayInput, [arrayInput]);
+
+  if (array.length === 0) {
+    return <p>Lỗi rồi</p>;
+  }
 
   return (
     <div>
