@@ -26,7 +26,7 @@ function HeaderUser(props) {
   };
 
   const handleIsLogout = () => {
-    localStorage.setItem("userInfo", null);
+    localStorage.clear();
     dispatch({ type: PUT_USER_LOGIN_STATUS, payload: false });
     setAnchorEl(null);
   };
@@ -37,9 +37,9 @@ function HeaderUser(props) {
   };
 
   const renderUserInfo = () => {
-    const maLoaiNguoiDung = JSON.parse(
-      localStorage.getItem("userInfo")
-    ).maLoaiNguoiDung;
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    const { maLoaiNguoiDung, taiKhoan } = userInfo;
+
     return (
       <Popper
         id="userInfo"
@@ -52,7 +52,7 @@ function HeaderUser(props) {
         }
         placement={props.placement === "bottom" ? "bottom" : "left"}
       >
-        <NavLink to="/" className={classes.navTitle}>
+        <NavLink to={`/user/${taiKhoan}`} className={classes.navTitle}>
           <p> Tài khoản</p>
         </NavLink>
         {maLoaiNguoiDung === "QuanTri" ? (

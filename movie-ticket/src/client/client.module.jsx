@@ -53,7 +53,7 @@ function Client() {
           </Guard>
         </Route>
         <Route path="/registration" exact component={Registration} />
-        <Route path="/user" exact component={User} />
+        <Route path="/user/:taiKhoan" exact component={User} />
 
         <Route path="/news" exact component={News} />
         <Route path="/contact" exact component={Contact} />
