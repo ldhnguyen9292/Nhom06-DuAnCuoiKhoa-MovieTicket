@@ -102,17 +102,17 @@ function UsersManagement() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keySearch]);
 
-  const handleDelete = async (id, index) => {
-    const data = array.items[index].taiKhoan;
-    await deleteUserAction(data);
+  const handleDelete = async (id) => {
+    await deleteUserAction(id);
     const urlExpand = `LayDanhSachNguoiDungPhanTrang?MaNhom=GP06&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
     handleCallAPI(urlExpand);
   };
 
-  const handleEdit = (id, index) => {
+  const handleEdit = (id) => {
+    const index = cacheArray.findIndex((value) => value.taiKhoan === id);
     arrayTableHead.map((keyRef) => setValue(keyRef, cacheArray[index][keyRef]));
     setEdit(true);
-    setFocus("id");
+    setFocus("taiKhoan");
   };
 
   const onSubmit = async (data, e) => {
