@@ -1,90 +1,49 @@
-import React, { useState } from "react";
+import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import { Grid, CardMedia } from "@material-ui/core";
 import { useStyles } from "./seat-main-styles";
 import Screen from "./../../../../../assets/images/screen.png";
 import clsx from "clsx";
+import ChairComponent from "./chair/chair.component";
 
-function SeatMain(props) {
+function SeatMain() {
   const classes = useStyles();
-  const [state, setState] = useState(false);
+  const chairList = useSelector((state) => state.movie.chairList);
+  if (!chairList) return;
 
-  const handleChooseTicket = async (event) => {
-    const input = event.target.querySelector("input");
-    if (!input) {
-      const input = event.target;
-      await setTimeout(() => {
-        props.handleChooseTicket(input.checked);
-        setState({ ...state, [`${input.id}`]: input.checked });
-      }, 100);
-    } else {
-      input.checked = !input.checked;
-      props.handleChooseTicket(input.checked);
-      setState({ ...state, [`${input.id}`]: input.checked });
-    }
-  };
-
-  const renderSeat = (start, end) => {
-    const array = [];
-    for (let index = start; index < end; index++) {
-      array.push(
-        <li
-          key={index}
-          className={clsx(
-            classes.seat,
-            index % 2 === 0 ? classes.seatDisabled : "",
-            state[`${index}`] ? classes.seatActive : ""
-          )}
-          onClick={index % 2 === 1 ? handleChooseTicket : null}
-        >
-          <input type="checkbox" id={index} name="cb" />
-          <label
-            htmlFor={index}
-            className={index % 2 === 0 ? classes.labelDisabled : classes.label}
-          >
-            {index}
-          </label>
-        </li>
-      );
-    }
-    return array;
-  };
+  const { danhSachGhe, thongTinPhim } = chairList;
 
   return (
     <div className={classes.root}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <h3>Rạp 1</h3>
+        <h3>{thongTinPhim?.tenRap}</h3>
         <div className="st_seat_full_container">
           <div className="st_seat_lay_economy_wrapper float_left">
             <CardMedia component="img" src={Screen} />
             <Grid container justify="space-between" direction="row">
-              <Grid item xs={6}>
-                <Grid
-                  container
-                  justify="space-around"
-                  className={classes.seatMain}
-                >
-                  {renderSeat(1, 60)}
-                </Grid>
-              </Grid>
-              <Grid item xs={6}>
-                <Grid
-                  container
-                  justify="space-around"
-                  className={classes.seatMain}
-                >
-                  {renderSeat(61, 120)}
-                </Grid>
-              </Grid>
+              {danhSachGhe?.map((chair) => {
+                return (
+                  <Grid item key={chair.stt}>
+                    <Grid
+                      container
+                      justify="space-around"
+                      className={classes.seatMain}
+                    >
+                      <ChairComponent chair={chair} />
+                    </Grid>
+                  </Grid>
+                );
+              })}
             </Grid>
             <Grid container justify="center" className={classes.seatInfo}>
               <Grid className={classes.seat}>
-                <span>Trống</span>
+                <label>Trống</label>
               </Grid>
               <Grid className={clsx(classes.seat, classes.seatActive)}>
-                <span>Chọn</span>
+                <label>Chọn</label>
               </Grid>
               <Grid className={clsx(classes.seat, classes.seatDisabled)}>
-                <span>Đã đặt</span>
+                <label>Đã đặt</label>
               </Grid>
             </Grid>
           </div>
@@ -94,4 +53,4 @@ function SeatMain(props) {
   );
 }
 
-export default SeatMain;
+export default memo(SeatMain);

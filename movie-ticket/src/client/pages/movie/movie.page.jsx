@@ -1,163 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, memo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import ReleasedMovie from "./../../components/movie-components/released-movie/released-movie.component";
 import SearchMovie from "./../../components/movie-components/search-movie/search-movie.component";
 import { Grid } from "@material-ui/core";
-import TrangTi from "./../../../assets/images/trang-ti.jpg";
-import HungThanTrang from "./../../../assets/images/hung-than-trang.png";
-import BanTayDietQuy from "./../../../assets/images/ban-tay-diet-quy.png";
 import { SearchService } from "./../../../services/search.service";
 import { useStyles } from "./movie-styles.page";
 import UpcomingMovie from "../../components/movie-components/upcoming/upcoming.component";
-import TopMovie from './../../components/movie-components/top-movie/topMovie.component'
-
-const initialArray = [
-  {
-    maPhim: "1",
-    tenPhim: "Trạng Tí",
-    theLoai: "Drama, hài kịch",
-    danhGia: 8.5,
-    hinhAnh: TrangTi,
-    trailer: "https://www.youtube.com/embed/l2XBzUZidig",
-  },
-  {
-    maPhim: "2",
-    tenPhim: "Hung thần trắng",
-    theLoai: "Drama, hài kịch",
-    danhGia: 8.5,
-    hinhAnh: HungThanTrang,
-    trailer: "https://www.youtube.com/embed/yHSNsUnLaaA",
-  },
-  {
-    maPhim: "3",
-    tenPhim: "bàn tay diệt quỷ",
-    theLoai: "Hành động, mạo hiểm",
-    danhGia: 8.5,
-    hinhAnh: BanTayDietQuy,
-    trailer: "https://www.youtube.com/embed/uqJ9u7GSaYM",
-  },
-  {
-    maPhim: "1",
-    tenPhim: "Trạng Tí",
-    theLoai: "Drama, hài kịch",
-    danhGia: 8.5,
-    hinhAnh: TrangTi,
-    trailer: "https://www.youtube.com/embed/l2XBzUZidig",
-  },
-  {
-    maPhim: "2",
-    tenPhim: "Hung thần trắng",
-    theLoai: "Drama, hài kịch",
-    danhGia: 8.5,
-    hinhAnh: HungThanTrang,
-    trailer: "https://www.youtube.com/embed/yHSNsUnLaaA",
-  },
-  {
-    maPhim: "3",
-    tenPhim: "bàn tay diệt quỷ",
-    theLoai: "Hành động, mạo hiểm",
-    danhGia: 5,
-    hinhAnh: BanTayDietQuy,
-    trailer: "https://www.youtube.com/embed/uqJ9u7GSaYM",
-  },
-  {
-    maPhim: "1",
-    tenPhim: "Trạng Tí",
-    theLoai: "Drama, hài kịch",
-    danhGia: 7,
-    hinhAnh: TrangTi,
-    trailer: "https://www.youtube.com/embed/l2XBzUZidig",
-  },
-  {
-    maPhim: "2",
-    tenPhim: "Hung thần trắng",
-    theLoai: "Drama, hài kịch",
-    danhGia: 9,
-    hinhAnh: HungThanTrang,
-    trailer: "https://www.youtube.com/embed/yHSNsUnLaaA",
-  },
-  {
-    maPhim: "3",
-    tenPhim: "bàn tay diệt quỷ",
-    theLoai: "Hành động, mạo hiểm",
-    danhGia: 10,
-    hinhAnh: BanTayDietQuy,
-    trailer: "https://www.youtube.com/embed/uqJ9u7GSaYM",
-  },
-  {
-    maPhim: "1",
-    tenPhim: "Trạng Tí",
-    theLoai: "Drama, hài kịch",
-    danhGia: 8.5,
-    hinhAnh: TrangTi,
-    trailer: "https://www.youtube.com/embed/l2XBzUZidig",
-  },
-  {
-    maPhim: "2",
-    tenPhim: "Hung thần trắng",
-    theLoai: "Drama, hài kịch",
-    danhGia: 8.5,
-    hinhAnh: HungThanTrang,
-    trailer: "https://www.youtube.com/embed/yHSNsUnLaaA",
-  },
-  {
-    maPhim: "3",
-    tenPhim: "bàn tay diệt quỷ",
-    theLoai: "Hành động, mạo hiểm",
-    danhGia: 8.5,
-    hinhAnh: BanTayDietQuy,
-    trailer: "https://www.youtube.com/embed/uqJ9u7GSaYM",
-  },
-  {
-    maPhim: "1",
-    tenPhim: "Trạng Tí",
-    theLoai: "Drama, hài kịch",
-    danhGia: 8.5,
-    hinhAnh: TrangTi,
-    trailer: "https://www.youtube.com/embed/l2XBzUZidig",
-  },
-  {
-    maPhim: "2",
-    tenPhim: "Hung thần trắng",
-    theLoai: "Drama, hài kịch",
-    danhGia: 8.5,
-    hinhAnh: HungThanTrang,
-    trailer: "https://www.youtube.com/embed/yHSNsUnLaaA",
-  },
-  {
-    maPhim: "3",
-    tenPhim: "bàn tay diệt quỷ",
-    theLoai: "Hành động, mạo hiểm",
-    danhGia: 5,
-    hinhAnh: BanTayDietQuy,
-    trailer: "https://www.youtube.com/embed/uqJ9u7GSaYM",
-  },
-  {
-    maPhim: "1",
-    tenPhim: "Trạng Tí",
-    theLoai: "Drama, hài kịch",
-    danhGia: 7,
-    hinhAnh: TrangTi,
-    trailer: "https://www.youtube.com/embed/l2XBzUZidig",
-  },
-  {
-    maPhim: "2",
-    tenPhim: "Hung thần trắng",
-    theLoai: "Drama, hài kịch",
-    danhGia: 9,
-    hinhAnh: HungThanTrang,
-    trailer: "https://www.youtube.com/embed/yHSNsUnLaaA",
-  },
-  {
-    maPhim: "3",
-    tenPhim: "bàn tay diệt quỷ",
-    theLoai: "Hành động, mạo hiểm",
-    danhGia: 10,
-    hinhAnh: BanTayDietQuy,
-    trailer: "https://www.youtube.com/embed/uqJ9u7GSaYM",
-  },
-];
-let array = initialArray;
+import TopMovie from "./../../components/movie-components/top-movie/topMovie.component";
+import { getMovieListAction } from "../../../store/actions/movie.action";
 
 const initialQueryParams = {
   page: 1,
@@ -179,13 +30,21 @@ function Movie() {
   let queryParams = queryP;
   const [submit, setSubmit] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
+  let movieList = useSelector((state) => state.movie.movieList);
+  console.log(movieList);
+
+  useEffect(() => {
+    dispatch(getMovieListAction("GP06"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const filterArray = () => {
     const newArray = SearchService.filterDataByName(
-      initialArray,
+      movieList,
       queryParams.tenPhim
     );
-    array = newArray;
+    movieList = newArray;
   };
 
   const handleChange = (queryP) => {
@@ -213,7 +72,7 @@ function Movie() {
         </Grid>
         <Grid item xs={12} md={9}>
           <ReleasedMovie
-            array={array}
+            array={movieList}
             queryParams={queryParams}
             handleChange={handleChange}
           />
@@ -223,4 +82,4 @@ function Movie() {
   );
 }
 
-export default Movie;
+export default memo(Movie);

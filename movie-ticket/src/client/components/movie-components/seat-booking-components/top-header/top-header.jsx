@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useStyles } from "./top-header-styles";
 import { Grid, IconButton, Typography } from "@material-ui/core";
 import BackIcon from "./../../../../../assets/svg/back.jsx";
@@ -6,10 +6,14 @@ import { NavLink, useHistory } from "react-router-dom";
 
 function TopHeader(props) {
   const classes = useStyles();
-  const { ticket } = props;
   const history = useHistory();
+  const userBooking = JSON.parse(localStorage.getItem("userBooking"));
+  const { tenPhim, thoiLuong, ngayChieuGioChieu } = userBooking;
+  const time = new Date(ngayChieuGioChieu);
+  const { ticket } = props;
 
   const handleBackButton = () => {
+    console.log("goback");
     history.goBack();
   };
 
@@ -22,12 +26,10 @@ function TopHeader(props) {
           margin: "0 auto",
         }}
       >
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} sm={4}>
           <Grid container alignItems="center" className={classes.topLeft}>
-            <Grid item className={classes.backIcon}>
-              <IconButton onClick={handleBackButton}>
-                <BackIcon />
-              </IconButton>
+            <Grid item className={classes.backIcon} onClick={handleBackButton}>
+              <BackIcon />
             </Grid>
             <Grid item className={classes.textBox}>
               <p>Số lượng vé</p>
@@ -35,13 +37,24 @@ function TopHeader(props) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} sm={4}>
           <div className={classes.topMid}>
-            <h3>Bố già - Phụ đề - (2:47)</h3>
-            <h4>Today, 19 Dec, 10:00 PM</h4>
+            <h3>
+              {tenPhim} - {thoiLuong} Phút
+            </h3>
+            <h4>
+              {time.toLocaleString("vi-VN", {
+                day: "numeric",
+                month: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              })}
+            </h4>
           </div>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} sm={4}>
           <Grid container className={classes.topRight}>
             <NavLink to="/movie/booking-summary">
               <IconButton>
@@ -55,4 +68,4 @@ function TopHeader(props) {
   );
 }
 
-export default TopHeader;
+export default memo(TopHeader);

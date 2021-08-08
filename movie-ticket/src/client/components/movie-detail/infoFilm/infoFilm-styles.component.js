@@ -2,12 +2,12 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
     root: {
-        width: '1140px',
+        width: '100%',
         margin: '30px auto 30px',
         backgroundColor: 'rgba(0,0,0,0.4)',
         borderRadius: '10px',
         color: '#ddd',
-        height: '450px',
+        height: '100%',
     },
     appBar: {
         backgroundColor: 'transparent',
