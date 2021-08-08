@@ -35,7 +35,7 @@ function Client() {
       <Switch>
         <Route path="/movie" exact component={Movie} />
         <Route
-          path="/movie/movie-detail:maPhim"
+          path="/movie/movie-detail/:maPhim"
           exact
           component={MovieDetail}
         />

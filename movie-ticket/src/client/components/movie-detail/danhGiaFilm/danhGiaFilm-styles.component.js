@@ -1,101 +1,151 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        display: 'flex',
-        padding: '0 50px',
+  root: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    padding: "0 50px",
+    [theme.breakpoints.up("lg")]: {
+      flexDirection: "row",
     },
-    right: {
-        width: '50%',
+  },
+  right: {
+    width: "100%",
+  },
+  left: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    "& h3": {
+      margin: "0px",
+      fontSize: "24px",
     },
-    left: {
-        width: '50%',
-        '& h3': {
-            margin: '0px',
-            fontSize: '24px',
-        },
-        '& p': {
-            marginTop: '0px',
-            fontSize: '14px',
-        }
+    "& p": {
+      marginTop: "0px",
+      fontSize: "14px",
     },
-    img: {
-        height: '320px',
-        width: '212px',
-        border: '1px solid #ddd',
-        borderRadius: '5px',
-        '& img': {
-            border: '1px solid #ddd',
-            borderRadius: '5px',
-            width: '100%',
-            height: '100%',
-        },
-        '&::before': {
-            content: '""',
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0,0,0,0.3)',
-            top: '0px',
-            left: '0px',
-            position: 'absolute',
-        },
-        position: 'relative',
+  },
+  img: {
+    height: "320px",
+    width: "212px",
+    border: "1px solid #ddd",
+    borderRadius: "5px",
+    "& img": {
+      border: "1px solid #ddd",
+      borderRadius: "5px",
+      width: "100%",
+      height: "100%",
     },
-    btnBox: {
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        top: '0px',
-        left: '0px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+    "&::before": {
+      content: '""',
+      display: "block",
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0,0,0,0.3)",
+      top: "0px",
+      left: "0px",
+      position: "absolute",
     },
-    btn: {
-        '& svg': {
-            fill: 'white',
-        },
-        border: '2px solid #ddd',
-        borderRadius: '50%',
-        padding: '15px',
+    position: "relative",
+  },
+  btnBox: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: "0px",
+    left: "0px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  btn: {
+    "& svg": {
+      fill: "white",
     },
-    progressBox: {
-        width: '80px',
-        height: '80px',
-        position: 'relative',
+    border: "2px solid #ddd",
+    borderRadius: "50%",
+    padding: "15px",
+  },
+  progressBox: {
+    width: "80px",
+    height: "80px",
+    position: "relative",
+  },
+  progress: {
+    possition: "absolute",
+    top: 0,
+    left: 0,
+  },
+  proText: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "80px",
+    height: "80px",
+    textAlign: "center",
+    lineHeight: "80px",
+    fontSize: "30px",
+    fontWeight: "bold",
+  },
+  imgRight: {
+    position: "absolute",
+    width: "200px",
+    right: "-220px",
+    top: "0px",
+  },
+  starGr: {
+    height: "30px",
+    display: "flex",
+    alignItems: "center",
+    color: "#b446ff",
+    "& span": {
+      color: "white",
+      fontWeight: "bold",
     },
-    progress: {
-        possition: 'absolute',
-        top: 0,
-        left: 0,
+  },
+  rating: {
+    flexGrow: 1,
+    padding: "0 20px",
+  },
+  ratingBox: {
+    listStyle: "none",
+  },
+  ratingItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  ratingSlider: {
+    width: "50%",
+    "& .MuiSlider-rail, & .MuiSlider-track": {
+      height: 5,
     },
-    proText: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '80px',
-        height: '80px',
-        textAlign: 'center',
-        lineHeight: '80px',
-        fontSize: '30px',
-        fontWeight: 'bold',
+    "& .MuiSlider-thumb": {
+      display: "none",
     },
-    imgRight: {
-        position: 'absolute',
-        width: '200px',
-        right: '-220px',
-        top: '0px',
+  },
+  yourRate: {
+    display: "flex",
+    padding: "0 20px",
+    alignItems: "center",
+  },
+  yourSlider: {
+    width: "100%",
+    marginRight: 20,
+    "& .MuiSlider-rail, & .MuiSlider-track": {
+      height: 5,
     },
-    starGr: {
-        height: '30px',
-        display: 'flex',
-        alignItems: 'center',
-        color: '#b446ff',
-        '& span': {
-            color: 'white',
-            fontWeight: 'bold',
-        },
+    "& .MuiSlider-thumb": {
+      width: 14,
+      height: 14,
     },
-}))
+  },
+  btnSubmit: {
+    marginLeft: 20,
+    padding: "5px 10px",
+    cursor: "pointer",
+    color: "#b446ff",
+  },
+}));

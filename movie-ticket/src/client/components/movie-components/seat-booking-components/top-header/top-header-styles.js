@@ -12,7 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sx")]: {
       justifyContent: "flex-start",
     },
   },
@@ -21,6 +21,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    cursor: "pointer",
     "& svg": {
       width: 50,
       background: "#3f414f",
@@ -54,7 +55,7 @@ export const useStyles = makeStyles((theme) => ({
     padding: 20,
     justifyContent: "center",
     alignItems: "center",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sx")]: {
       justifyContent: "flex-end",
     },
   },

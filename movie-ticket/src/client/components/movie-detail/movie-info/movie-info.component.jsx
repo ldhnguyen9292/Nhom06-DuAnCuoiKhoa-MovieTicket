@@ -5,13 +5,24 @@ import { Box } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import InfoFilm from "../infoFilm/infoFilm.component";
 import { CircularProgress } from "@material-ui/core";
-import StarIcon from "@material-ui/icons/Star";
+// import StarIcon from "@material-ui/icons/Star";
 import ArrowIcon from "./../../../../assets/svg/MyArrowIcon";
-import Img from "./../../../../assets/images/aquaman.jpg";
+// import Img from "./../../../../assets/images/aquaman.jpg";
+import { useSelector } from "react-redux";
+import format from "date-format";
+import ModalVideo from "../../modal-video/modal-video.component";
+import clsx from "clsx";
 
 function MovieInfoBooking(props) {
   const classes = useStyles();
   const [info, setInfo] = useState(false);
+  const [open, setOpen] = useState(false);
+  const movieDetail = useSelector((state) => state.movie.movieDetail);
+  const mongoMovieDetail = useSelector((state) => state.movie.mongoMovieDetail);
+  const { tenPhim, hinhAnh, ngayKhoiChieu } = movieDetail;
+  const { thoiLuongChieu, IMDB, dinhDang, danhGia, soNguoiDanhGia } =
+    mongoMovieDetail;
+
   const handleShowInfo = () => {
     setInfo(!info);
   };
@@ -20,6 +31,13 @@ function MovieInfoBooking(props) {
     const root = document.getElementById("information");
     root.scrollTop = root.scrollHeight;
   }, [info]);
+
+  const handleClose = () => {
+    setOpen(!open);
+  };
+  const handleMore = () => {
+    console.log("Run");
+  };
 
   return (
     <div className={classes.root} id="information">
@@ -30,9 +48,9 @@ function MovieInfoBooking(props) {
             <div className={classes.contentBox}>
               <div className={classes.left}>
                 <div className={classes.imgBox}>
-                  <img src={Img} alt={"Hình đại diện"} />
+                  <img src={hinhAnh} alt={"Hình đại diện"} />
                   <div className={classes.btnBox}>
-                    <Button className={classes.btn}>
+                    <Button onClick={handleClose} className={classes.btn}>
                       <ArrowIcon />
                     </Button>
                   </div>
@@ -40,26 +58,24 @@ function MovieInfoBooking(props) {
               </div>
               <div className={classes.right}>
                 <div className={classes.rightBox}>
-                  <h3>Aquaman - Đế vương Atlantis</h3>
-                  <p>129 phút - 0 IMDb - 2D/Digital</p>
-                  <p>30.04.2021</p>
+                  <h3>{tenPhim}</h3>
+                  <p>
+                    {thoiLuongChieu} phút - {IMDB} IMDb - {dinhDang}
+                  </p>
+                  <p>{format("dd/MM/yyyy", new Date(ngayKhoiChieu))}</p>
                   <div className={classes.progressBox}>
-                    <div className={classes.proText}>7.5</div>
+                    <div className={classes.proText}>{danhGia}</div>
                     <CircularProgress
                       variant="determinate"
-                      value={75}
+                      value={danhGia * 10}
                       size={80}
                       className={classes.progress}
                     />
                   </div>
                   <div>
-                    <div className={classes.starGr}>
-                      <StarIcon />
-                      <StarIcon />
-                      <StarIcon />
-                      <span>3/4</span>
-                    </div>
-                    <p style={{ fontSize: "13px" }}>124 người đánh giá</p>
+                    <p style={{ fontSize: "13px" }}>
+                      {soNguoiDanhGia} người đánh giá
+                    </p>
                     <Button
                       onClick={handleShowInfo}
                       className={classes.btnInfo}
@@ -72,9 +88,15 @@ function MovieInfoBooking(props) {
             </div>
           </div>
         </Box>
-        <div className={classes.infoFile}>
-          {info === true ? <InfoFilm /> : ""}
+        <div className={clsx(info ? classes.infoFileDown : classes.infoFileUp)}>
+          <InfoFilm />
         </div>
+        <ModalVideo
+          slider={movieDetail}
+          open={open}
+          handleClose={handleClose}
+          handleMore={handleMore}
+        />
       </Container>
     </div>
   );

@@ -1,25 +1,32 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        display: 'flex',
-        padding: '0 50px',
+  root: {
+    width: "100%",
+    display: "flex",
+    padding: "0 50px",
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
     },
-    right: {
-        width: '50%',
+  },
+  right: {
+    display: "flex",
+    "& p": {
+      minWidth: "150px",
     },
-    left: {
-        width: '50%',
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "column",
     },
-    info: {
-        display: 'flex',
-        '& p': {
-            minWidth: '150px',
-        }
+  },
+  info: {
+    display: "flex",
+    "& p": {
+      minWidth: "150px",
     },
-    bold: {
-        color: 'white',
-        fontWeight: 'bold',
-    },
+  },
+  bold: {
+    color: "white",
+    fontWeight: "bold",
+  },
 }));

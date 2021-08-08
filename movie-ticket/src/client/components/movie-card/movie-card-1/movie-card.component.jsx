@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -14,6 +15,7 @@ import ModalVideo from "../../modal-video/modal-video.component";
 function CardMovie(props) {
   const classes = useStyles();
   const { movie } = props;
+  const history = useHistory();
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -39,6 +41,10 @@ function CardMovie(props) {
       }
     }
     return starArray;
+  };
+
+  const handleClick = () => {
+    history.push(`/movie/movie-detail/${movie.maPhim}`);
   };
 
   return (
@@ -75,7 +81,11 @@ function CardMovie(props) {
           </Typography>
         </Grid>
         <Grid item xs={4}>
-          <Button size="small" className={classes.morebtn}>
+          <Button
+            onClick={handleClick}
+            size="small"
+            className={classes.morebtn}
+          >
             <TicketIcon />
           </Button>
         </Grid>

@@ -1,30 +1,35 @@
 import { makeStyles } from "@material-ui/core";
 
-const color = "rgba(255,255,255,0.38)";
-
 export const useStyles = makeStyles((theme) => ({
-  root: {
-    background: "#333545",
-    paddingTop: 40,
-    paddingBottom: 100,
-    color: color,
-    textTransform: "uppercase",
-    textAlign: "center",
-    margin: "0 auto",
-  },
   seatMain: {
     padding: "0 5%",
   },
   seat: {
-    width: "8vw",
-    height: "25px",
+    width: "5vw",
+    height: "5%",
     fontSize: 11,
     textAlign: "center",
     border: "1px solid #4d4f5c",
-    lineHeight: 2,
+    lineHeight: 1.5,
     borderRadius: 5,
     cursor: "pointer",
     margin: "5px 1vw 20px 1vw",
+    [theme.breakpoints.up("sm")]: {
+      height: 20,
+      fontSize: 13,
+    },
+    [theme.breakpoints.up("md")]: {
+      height: 25,
+      fontSize: 15,
+    },
+    [theme.breakpoints.up("lg")]: {
+      height: 35,
+      fontSize: 19,
+    },
+    [theme.breakpoints.up("xl")]: {
+      height: 40,
+      fontSize: 22,
+    },
     position: "relative",
     "& input": {
       display: "none",
@@ -70,5 +75,14 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "40%",
       fontWeight: "bold",
     },
+  },
+  popover: {
+    pointerEvents: "none",
+  },
+  paper: {
+    padding: "0px 10px",
+    background: "red",
+    color: "white",
+    marginBottom: 5,
   },
 }));

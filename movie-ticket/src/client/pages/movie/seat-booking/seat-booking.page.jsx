@@ -1,24 +1,26 @@
-import React, { useState } from "react";
+import React, { memo, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getChairListAction } from "../../../../store/actions/movie.action";
 import SeatMain from "../../../components/movie-components/seat-booking-components/seat-main/seat-main";
 import TopHeader from "../../../components/movie-components/seat-booking-components/top-header/top-header";
 
 function SeatBooking() {
-  const [ticket, setTicket] = useState(0);
+  const userBooking = JSON.parse(localStorage.getItem("userBooking"));
+  const { maLichChieu } = userBooking;
+  const dispatch = useDispatch();
+  const ticket = useSelector((state) => state.movie.ticket);
 
-  const handleChooseTicket = (value) => {
-    if (value) {
-      setTicket(ticket + 1);
-    } else {
-      setTicket(ticket - 1);
-    }
-  };
+  useEffect(() => {
+    dispatch(getChairListAction(maLichChieu));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
       <TopHeader ticket={ticket} />
-      <SeatMain handleChooseTicket={handleChooseTicket} />
+      <SeatMain />
     </div>
   );
 }
 
-export default SeatBooking;
+export default memo(SeatBooking);
