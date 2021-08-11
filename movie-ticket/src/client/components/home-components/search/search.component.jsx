@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { memo, useState, useRef } from "react";
+import { useSelector } from "react-redux";
 import {
   CardMedia,
   Typography,
   InputBase,
   IconButton,
 } from "@material-ui/core";
+import Popper from "@material-ui/core/Popper";
 import SearchIcon from "@material-ui/icons/Search";
 import { useStyles } from "./search-styles.component";
 import Grid from "@material-ui/core/Grid";
@@ -14,13 +16,26 @@ import cityIcon from "./../../../../assets/images/city.png";
 import dateIcon from "./../../../../assets/images/date.png";
 import cinemaIcon from "./../../../../assets/images/cinema.png";
 import searchBG from "./../../../../assets/images/searchBG.jpg";
+import format from "date-format";
 
-const initialSearchList = { name: "", city: "", date: "", cinema: "" };
+const initialSearchList = {
+  name: "",
+  city: "",
+  date: "",
+  cinema: "",
+  maPhim: 0,
+};
+const today = new Date();
 
 function SearchHome() {
   const classes = useStyles();
   const [searchList, setSearchList] = useState(initialSearchList);
   const history = useHistory();
+  const movieList = useSelector((state) => state.movie.movieList);
+  const cinemaList = useSelector((state) => state.cinema.cinemaList);
+  const ref = useRef();
+  const [open, setOpen] = useState(false);
+
   const moreArray = [
     {
       id: "city",
@@ -29,14 +44,6 @@ function SearchHome() {
       helper: { id: "cityHelper", text: "Chọn thành phố" },
       option: [
         { text: "Chọn thành phố" },
-        { text: "Hồ Chí Minh" },
-        { text: "Hà Nội" },
-        { text: "Hồ Chí Minh" },
-        { text: "Hà Nội" },
-        { text: "Hồ Chí Minh" },
-        { text: "Hà Nội" },
-        { text: "Hồ Chí Minh" },
-        { text: "Hà Nội" },
         { text: "Hồ Chí Minh" },
         { text: "Hà Nội" },
       ],
@@ -48,8 +55,17 @@ function SearchHome() {
       helper: { id: "dateHelper", text: "Chọn ngày" },
       option: [
         { text: "Chọn ngày" },
-        { text: "24/06/2021" },
-        { text: "25/06/2021" },
+        { text: format("dd/MM/yyyy", today) },
+        { text: format("dd/MM/yyyy", new Date(today.getTime() + 86400000)) },
+        {
+          text: format("dd/MM/yyyy", new Date(today.getTime() + 2 * 86400000)),
+        },
+        {
+          text: format("dd/MM/yyyy", new Date(today.getTime() + 3 * 86400000)),
+        },
+        {
+          text: format("dd/MM/yyyy", new Date(today.getTime() + 4 * 86400000)),
+        },
       ],
     },
     {
@@ -57,27 +73,36 @@ function SearchHome() {
       name: "Rạp",
       imgUrl: cinemaIcon,
       helper: { id: "cinemaHelper", text: "Chọn rạp" },
-      option: [
-        { text: "Chọn rạp" },
-        { text: "Galaxy" },
-        { text: "CGV" },
-        { text: "Cinebox" },
-      ],
+      option: cinemaList.map((v) => ({
+        text: v.tenHeThongRap,
+      })),
     },
   ];
 
-  const handleChange = (name, event) => {
+  const handleMoreChange = (id, value) => {
+    const temp = { [id]: value };
+    console.log(temp);
+    setSearchList({ ...searchList, ...temp });
+  };
+
+  const handleChange = (id, event) => {
     const value = event.target.value;
-    setSearchList({ ...searchList, [name]: value });
+    if (value) setOpen(true);
+    setSearchList({ ...searchList, [id]: value });
+  };
+
+  const handlePopperClick = (tenPhim, maPhim) => {
+    setSearchList({ ...searchList, name: tenPhim, maPhim });
+    setOpen(false);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setSearchList(initialSearchList);
-    const { name, city, date, cinema } = searchList;
+    const { city, date, cinema, maPhim } = searchList;
     history.push({
-      pathname: `/movie/movie-detail:${name}`,
-      search: `?city=${city}?date=${date}?cinema=${cinema}`,
+      pathname: `/movie/movie-detail/${maPhim}`,
+      search: `?city=${city}&date=${date}&cinema=${cinema}`,
     });
   };
 
@@ -99,11 +124,43 @@ function SearchHome() {
         />
         <span>{array.name}</span>
         {array ? (
-          <OptionSearch array={array} handleChange={handleChange} />
+          <OptionSearch array={array} handleMoreChange={handleMoreChange} />
         ) : (
           <></>
         )}
       </Grid>
+    );
+  };
+
+  const renderPopper = () => {
+    if (!searchList.name || !isNaN(searchList.name)) return;
+    let body = [];
+    body = movieList.filter((v) => {
+      const index = v.tenPhim
+        .toLowerCase()
+        .indexOf(searchList.name.toLowerCase());
+      return index > -1;
+    });
+
+    return (
+      <Popper
+        anchorEl={ref.current}
+        open={open}
+        className={classes.paper}
+        placement="bottom-start"
+      >
+        <ul className={classes.ul}>
+          {body.map((v) => (
+            <li
+              key={v.tenphim}
+              className={classes.li}
+              onClick={() => handlePopperClick(v.tenPhim, v.maPhim)}
+            >
+              {v.tenPhim}
+            </li>
+          ))}
+        </ul>
+      </Popper>
     );
   };
 
@@ -124,8 +181,11 @@ function SearchHome() {
               placeholder="Chọn hoặc điền tên phim..."
               className={classes.inputInput}
               type="search"
+              ref={ref}
+              value={searchList.name || ""}
               onChange={(event) => handleChange("name", event)}
             />
+            {renderPopper()}
             <IconButton type="submit" className={classes.btnSearch}>
               <SearchIcon />
             </IconButton>
@@ -164,4 +224,4 @@ function SearchHome() {
   );
 }
 
-export default SearchHome;
+export default memo(SearchHome);

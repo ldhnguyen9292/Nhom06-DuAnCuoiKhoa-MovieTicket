@@ -58,10 +58,18 @@ function CardMovie(props) {
           >
             Xem trailer
           </button>
-          <button className={clsx(classes.btnSetting, classes.more)}>
+          <button
+            className={clsx(classes.btnSetting, classes.more)}
+            onClick={handleClick}
+          >
             Chi tiết
           </button>
-          <ModalVideo slider={movie} open={open} handleClose={handleClose} />
+          <ModalVideo
+            slider={movie}
+            open={open}
+            handleClose={handleClose}
+            handleMore={handleClick}
+          />
         </div>
       </div>
       <Grid container className={classes.bot} alignItems="center">

@@ -46,7 +46,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    paddingBottom: 20,
+    paddingBottom: "2vw",
     borderRadius: 10,
   },
   top: {
@@ -58,7 +58,10 @@ export const useStyles = makeStyles((theme) => ({
     padding: 10,
   },
   h1: {
-    fontSize: 30,
+    fontSize: "5vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: 30,
+    },
     color: "white",
     textTransform: "uppercase",
     paddingLeft: 10,
@@ -66,6 +69,10 @@ export const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: "#31d7a9",
+    fontSize: "4vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: "1rem",
+    },
   },
   contentRight: {
     display: "none",
@@ -79,11 +86,14 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   h2: {
-    fontSize: 20,
     color: "white",
     textTransform: "uppercase",
     paddingLeft: 10,
     fontWeight: "bold",
+    fontSize: "4vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: "20",
+    },
   },
   searchField: {
     width: "95%",
@@ -119,7 +129,7 @@ export const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
+      // justifyContent: "center",
     },
   },
   inputSetting: {
@@ -145,9 +155,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   moreSetting: {
     display: "flex",
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
-    padding: 10,
+    padding: "1vw",
     "& span": {
       padding: "0 5px",
       color: "#31d7a9",
@@ -155,5 +165,24 @@ export const useStyles = makeStyles((theme) => ({
   },
   icon: {
     width: 30,
+  },
+  paper: {
+    zIndex: 1,
+    color: "black",
+  },
+  ul: {
+    listStyle: "none",
+    background: "white",
+    width: 200,
+    maxHeight: 200,
+    margin: 0,
+    padding: 5,
+    overflowY: "scroll",
+    border: "1px solid black",
+    borderRadius: "0 0 10px 10px",
+  },
+  li: {
+    cursor: "pointer",
+    padding: 5,
   },
 }));

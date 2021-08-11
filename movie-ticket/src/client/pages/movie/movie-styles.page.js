@@ -1,9 +1,9 @@
-import {makeStyles} from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles(()=>({
-    root: {
-        padding: 30,
-        maxWidth: '1200px',
-        margin: '30px auto',
-    },
-}))
+export const useStyles = makeStyles(() => ({
+  root: {
+    padding: "5vw",
+    maxWidth: "1200px",
+    margin: "0 auto",
+  },
+}));

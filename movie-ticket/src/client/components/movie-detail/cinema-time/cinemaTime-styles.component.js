@@ -4,16 +4,15 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "1200px",
     margin: "30px auto",
+    display: "flex",
+    flexWrap: "nowrap",
+    gap: "1vw",
   },
   container: {
-    width: "100%",
-    // height: "1100px",
+    width: "75%",
     backgroundColor: "white",
-    padding: "30px",
+    padding: "2vw",
     overflowY: "hidden",
-    [theme.breakpoints.down("1200")]: {
-      width: "100%",
-    },
   },
   appbar: {
     width: "100%",

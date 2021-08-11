@@ -9,9 +9,12 @@ export const useStyles = makeStyles((theme) => ({
     padding: "70px 0px 20px",
   },
   container: {
-    maxWidth: "1200px",
+    maxWidth: 1200,
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
+    [theme.breakpoints.up("lg")]: {
+      justifyContent: "flex-start",
+    },
     flexWrap: "wrap",
     gap: 20,
   },

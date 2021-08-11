@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useStyles } from "./bs-top-header-styles";
 import { Grid, IconButton } from "@material-ui/core";
 import BackIcon from "./../../../../../assets/svg/back.jsx";
@@ -7,6 +7,8 @@ import { useHistory } from "react-router-dom";
 function BSTopHeader(props) {
   const classes = useStyles();
   const history = useHistory();
+  const userBooking = JSON.parse(localStorage.getItem("userBooking"));
+  const { tenPhim, thoiLuong } = userBooking;
 
   const handleBackButton = () => {
     history.goBack();
@@ -32,8 +34,8 @@ function BSTopHeader(props) {
         </Grid>
         <Grid item xs={8} md={4}>
           <div className={classes.topMid}>
-            <h2>Bố già</h2>
-            <h3>Phụ đề - (2:47)</h3>
+            <h2>{tenPhim}</h2>
+            <h3>{thoiLuong} phút</h3>
           </div>
         </Grid>
       </Grid>
@@ -41,4 +43,4 @@ function BSTopHeader(props) {
   );
 }
 
-export default BSTopHeader;
+export default memo(BSTopHeader);

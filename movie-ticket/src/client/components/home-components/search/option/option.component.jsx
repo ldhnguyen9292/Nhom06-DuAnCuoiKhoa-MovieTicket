@@ -12,7 +12,7 @@ function OptionSearch(props) {
   const handleOptionChoose = (event) => {
     setOpen(false);
     setText(event.target.innerHTML);
-    props.handleChange(array.id, event);
+    props.handleMoreChange(array.id, event.target.innerHTML);
   };
 
   const handleOpen = () => {
@@ -23,9 +23,7 @@ function OptionSearch(props) {
     return (
       <ul className={classes.list} onClick={handleOptionChoose}>
         {array.option.map((opt, index) => (
-          <li key={index} value={index}>
-            {opt.text}
-          </li>
+          <li key={index}>{opt.text}</li>
         ))}
       </ul>
     );

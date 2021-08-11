@@ -68,7 +68,6 @@ function MovieInfoBooking(props) {
                     <CircularProgress
                       variant="determinate"
                       value={danhGia * 10}
-                      size={80}
                       className={classes.progress}
                     />
                   </div>

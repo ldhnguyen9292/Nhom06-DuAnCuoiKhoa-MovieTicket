@@ -1,14 +1,19 @@
-import React from "react";
+import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import { useStyles } from "./SliderTopMovie-styles.component";
 import Slider from "react-slick";
-import Img1 from "./../../../../../assets/images/bot-1.jpg";
-import Img2 from "./../../../../../assets/images/bot-2.jpg";
-import Img3 from "./../../../../../assets/images/bot-3.jpg";
-import Img4 from "./../../../../../assets/images/bot-4.jpg";
-// import { Container } from "@material-ui/core";
+import format from "date-format";
+import { useHistory } from "react-router-dom";
 
 function SliderTopMovie() {
   const classes = useStyles();
+  const comingSoon = useSelector((state) => state.movie.comingSoon);
+  const history = useHistory();
+
+  const handleClick = (maPhim) => {
+    history.push(`/movie/movie-detail/${maPhim}`);
+  };
+
   const render = () => {
     const settings = {
       dots: false,
@@ -55,71 +60,28 @@ function SliderTopMovie() {
     return (
       <div>
         <Slider {...settings} className={classes.slider}>
-          <div className={classes.item}>
-            <img src={Img1} className={classes.img} alt={"Hình top movie"} />
-            <div className={classes.content}>
-              {/* Link Movie Detail */}
-              <h3>Aquaman</h3>
-              {/* Link Movie Detail */}
-              <p>Release On 30 Nov</p>
+          {comingSoon.map((m) => (
+            <div key={m.tenPhim} className={classes.item}>
+              <div className={classes.imgBox}>
+                <img
+                  src={m.hinhAnh}
+                  className={classes.img}
+                  alt={"Hình top movie"}
+                />
+              </div>
+              <div className={classes.content}>
+                <h3 onClick={() => handleClick(m.maPhim)}>{m.tenPhim}</h3>
+                <p>{format("dd/MM/yyyy", new Date(m.ngayKhoiChieu))}</p>
+              </div>
             </div>
-          </div>
-          <div>
-            <img src={Img2} className={classes.img} alt={"Hình top movie"} />
-            <div className={classes.content}>
-              <h3>Aquaman</h3>
-              <p>Release On 30 Nov</p>
-            </div>
-          </div>
-          <div>
-            <img src={Img3} className={classes.img} alt={"Hình top movie"} />
-            <div className={classes.content}>
-              <h3>Aquaman</h3>
-              <p>Release On 30 Nov</p>
-            </div>
-          </div>
-          <div>
-            <img src={Img4} className={classes.img} alt={"Hình top movie"} />
-            <div className={classes.content}>
-              <h3>Aquaman</h3>
-              <p>Release On 30 Nov</p>
-            </div>
-          </div>
-          <div>
-            <img src={Img1} className={classes.img} alt={"Hình top movie"} />
-            <div className={classes.content}>
-              {/* Link Movie Detail */}
-              <h3>Aquaman</h3>
-              {/* Link Movie Detail */}
-              <p>Release On 30 Nov</p>
-            </div>
-          </div>
-          <div>
-            <img src={Img2} className={classes.img} alt={"Hình top movie"} />
-            <div className={classes.content}>
-              <h3>Aquaman</h3>
-              <p>Release On 30 Nov</p>
-            </div>
-          </div>
-          <div>
-            <img src={Img3} className={classes.img} alt={"Hình top movie"} />
-            <div className={classes.content}>
-              <h3>Aquaman</h3>
-              <p>Release On 30 Nov</p>
-            </div>
-          </div>
-          <div>
-            <img src={Img4} className={classes.img} alt={"Hình top movie"} />
-            <div className={classes.content}>
-              <h3>Aquaman</h3>
-              <p>Release On 30 Nov</p>
-            </div>
-          </div>
+          ))}
         </Slider>
       </div>
     );
   };
+
+  if (!comingSoon) return <></>;
   return <div className={classes.root}>{render()}</div>;
 }
 
-export default SliderTopMovie;
+export default memo(SliderTopMovie);

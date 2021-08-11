@@ -16,12 +16,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   box: {
     width: "98.5%",
-    height: "345px",
+    height: "fit-content",
     background: `url(${Image}) no-repeat center center`,
     borderRadius: "30px",
-    [theme.breakpoints.down("sm")]: {
-      height: "270px",
-    },
   },
   content: {
     width: "100%",

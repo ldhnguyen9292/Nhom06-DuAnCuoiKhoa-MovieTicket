@@ -9,6 +9,7 @@ import Subscribe from "./subscribe/subscribe";
 import { PUT_NEWS_KEY } from "../../../../store/constants/news.contants";
 import axios from "axios";
 import NewsArchives from "./news-archives/news-archives";
+import LoadingComponent from "../../loading/loading.component";
 
 let arrayType = [
   { name: "tất cả", type: "", num: 0 },
@@ -39,6 +40,7 @@ function NewsSidebar() {
   const classes = useStyles();
   const type = PUT_NEWS_KEY;
   const [state, setState] = useState(false);
+  const [loading, setLoading] = useState();
 
   const setArrayValue = (data) => {
     arrayType.map((item) => {
@@ -79,11 +81,13 @@ function NewsSidebar() {
 
   const callAPI = async () => {
     try {
+      setLoading(true);
       const res = await axios({
         method: "GET",
         url: "https://moveticket-mongodb.herokuapp.com/news",
       });
       setArrayValue(res.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -91,9 +95,11 @@ function NewsSidebar() {
 
   useEffect(() => {
     callAPI();
+    return () => setLoading({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (loading) return <LoadingComponent />;
   return (
     <div className={classes.sideBar}>
       <Paper className={classes.paper}>

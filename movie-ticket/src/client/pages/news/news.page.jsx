@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import TopHeader from "../../components/movie-components/booking-confirmation-components/bc-top-header/bc-top-header";
 import { Grid, makeStyles } from "@material-ui/core";
@@ -6,6 +6,7 @@ import NewsContent from "../../components/news-components/news-content/news-cont
 import NewsSidebar from "../../components/news-components/news-sidebar/news-sidebar";
 import { callAPIactions } from "../../../store/actions/mock-api-main.actions";
 import { GET_NEWS_LIST } from "./../../../store/constants/news.contants";
+import LoadingComponent from "../../components/loading/loading.component";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -28,23 +29,23 @@ function News() {
   const keySearch = queryParams.get("q") || "";
   const key = queryParams.get("key") || "";
   const value = queryParams.get("value") || "";
+  const [loading, setLoading] = useState();
 
-  // const { page, pageSize, keySearch, filter } = keys;
+  const callAPI = async () => {
+    setLoading(true);
+    let temp = `?page=${page}&limit=${limit}&q=${keySearch}&key=${key}&value=${value}&sort=ngayDang&order=desc`;
+    if (key === "_id") temp = `/${value}`;
+    await dispatch(getListAction(nameDB, GET_NEWS_LIST, temp));
+    setLoading(false);
+  };
 
   useEffect(() => {
-    let temp = `?page=${page}&limit=${limit}&q=${keySearch}&key=${key}&value=${value}&sort=${"ngayDang"}&_order=desc`;
-    if (key === "_id") temp = `/${value}`;
-    const run = async () => {
-      try {
-        await dispatch(getListAction(nameDB, GET_NEWS_LIST, temp));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    run();
+    callAPI();
+    return () => setLoading({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q, page, limit, keySearch, key, value]);
 
+  if (loading) return <LoadingComponent />;
   return (
     <div>
       <TopHeader title="Tin tức" />

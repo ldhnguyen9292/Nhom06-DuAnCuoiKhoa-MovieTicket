@@ -35,6 +35,7 @@ export const useStyles = makeStyles((theme) => ({
   p: {
     cursor: "pointer",
     textAlign: "center",
+    margin: "1vw",
     "&::after": {
       content: '""',
       border: "solid white",

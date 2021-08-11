@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { carouselReducer } from "./carousel.reducer";
+import { cinemaReducer } from "./cinema.reducer";
 import { movieReducer } from "./movie.reducer";
 import { newsReducer } from "./news.reducer";
 import { userReducer } from "./user.reducer";
@@ -9,4 +10,5 @@ export const RootReducer = combineReducers({
   carousel: carouselReducer,
   news: newsReducer,
   user: userReducer,
+  cinema: cinemaReducer,
 });

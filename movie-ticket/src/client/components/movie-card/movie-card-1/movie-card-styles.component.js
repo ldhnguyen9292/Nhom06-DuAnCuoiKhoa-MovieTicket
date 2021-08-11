@@ -5,8 +5,8 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
   },
   top: {
-    height: 300,
-
+    height: "50vw",
+    maxHeight: "300px",
     position: "relative",
     transition: "all 0.5s",
     "&:hover div ": {
@@ -38,7 +38,8 @@ export const useStyles = makeStyles((theme) => ({
 
   btnSetting: {
     width: 100,
-    height: 50,
+    height: "10vw",
+    maxHeight: 50,
     borderRadius: 10,
     transition: "all 0.5s",
     textTransform: "uppercase",
@@ -92,7 +93,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   morebtn: {
     border: "1px solid #eeeeee",
-    width: 50,
+    [theme.breakpoints.down("600")]: {
+      border: "none",
+    },
+    maxWidth: 50,
+    width: "5vw",
     height: 50,
     transition: "all 0.5s",
     "&:hover": {
@@ -100,8 +105,9 @@ export const useStyles = makeStyles((theme) => ({
         "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
     },
     "& svg": {
-      width: 60,
-      padding: 5,
+      maxWidth: 50,
+      width: "10vw",
+      // padding: 5,
       transition: "all 0.5s",
       fill: "#b446ff",
       "&:hover": {

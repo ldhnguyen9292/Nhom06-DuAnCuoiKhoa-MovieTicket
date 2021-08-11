@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { CardMedia, Grid } from "@material-ui/core";
@@ -12,6 +13,7 @@ import TicketIcon from "./../../../../assets/svg/TicketIcon";
 
 function CardMovie2(props) {
   const classes = useStyles();
+  const history = useHistory();
   const { movie } = props;
   const [open, setOpen] = useState(false);
 
@@ -40,6 +42,10 @@ function CardMovie2(props) {
     return starArray;
   };
 
+  const handleClick = () => {
+    history.push(`/movie/movie-detail/${movie.maPhim}`);
+  };
+
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} sm={4} className={classes.left}>
@@ -63,17 +69,16 @@ function CardMovie2(props) {
             </Typography>
           </Grid>
           <Grid item xs={3}>
-            <Button size="small" className={classes.morebtn}>
+            <Button
+              size="small"
+              className={classes.morebtn}
+              onClick={handleClick}
+            >
               <TicketIcon />
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <p className={classes.text}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem
-              doloremque possimus, a labore in eos, error iste quae ipsum
-              mollitia laudantium. Deserunt, facilis. Alias suscipit, ut eaque
-              provident voluptate ab.
-            </p>
+            <p className={classes.text}>{movie.moTa}</p>
           </Grid>
           <Grid item xs={12} className={classes.rightBot}>
             <button
@@ -82,10 +87,18 @@ function CardMovie2(props) {
             >
               Xem trailer
             </button>
-            <button className={clsx(classes.btnSetting, classes.more)}>
+            <button
+              className={clsx(classes.btnSetting, classes.more)}
+              onClick={handleClick}
+            >
               Chi tiết
             </button>
-            <ModalVideo slider={movie} open={open} handleClose={handleClose} />
+            <ModalVideo
+              slider={movie}
+              open={open}
+              handleClose={handleClose}
+              handleMore={handleClick}
+            />
           </Grid>
         </Grid>
       </Grid>
