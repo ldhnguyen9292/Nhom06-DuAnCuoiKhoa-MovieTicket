@@ -1,31 +1,20 @@
 import React, { memo, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./carousel-styles.component";
 import Slider from "react-slick";
 import { CardMedia } from "@material-ui/core";
 import clsx from "clsx";
 import PlayCard from "./../../play-card/play-card.component";
-import { callAPIactions } from "./../../../../store/actions/mock-api-main.actions";
-import { GET_CAROUSEL_LIST } from "../../../../store/constants/carousel.constants";
 
 function CarouselComponent() {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const carouselList = useSelector((state) => state.carousel.carouselList);
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
   const [active, setActive] = useState(0);
   let slider1, slider2;
-  const type = GET_CAROUSEL_LIST;
   const history = useHistory();
-
-  useEffect(() => {
-    dispatch(
-      callAPIactions.getListAction("carousels", type, "?sort=_id&order=desc")
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     setNav1(slider1);

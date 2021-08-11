@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useStyles } from "./released-movie-styles.component";
 import CardMovie from "../../movie-card/movie-card-1/movie-card.component";
 import CardMovie2 from "../../movie-card/movie-card-2/movie-card-2.component";
@@ -7,40 +9,34 @@ import { Pagination } from "@material-ui/lab";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import ViewModuleIcon from "@material-ui/icons/ViewModule";
 import clsx from "clsx";
+import SearchMovie from "../search-movie/search-movie.component";
 
-function ReleasedMovie(props) {
+function ReleasedMovie() {
   const classes = useStyles();
-  const { array, queryParams } = props;
   const [active, setActive] = useState(false);
-  let pageLoad = {
-    pageSize: queryParams.pageSize,
-    page: queryParams.page,
-  };
-  const pageTotal = Math.round(array.length / 10);
+  const search = new URLSearchParams(window.location.search);
+  const history = useHistory();
+  const q = search.get("q") || "";
+  const rate = Number(search.get("rate")) || 5;
+  const limit = 12;
+  const page = Number(search.get("page")) || 1;
+  const movieList = useSelector((state) => state.movie.movieList);
+  let array = [];
 
-  const changeActive2 = () => {
-    setActive(false);
-  };
-
-  const changeActive1 = () => {
-    setActive(true);
-  };
-
-  const changeState = (pageV) => {
-    const newObject = { ...pageLoad, page: pageV };
-    pageLoad = newObject;
-    console.log(queryParams);
-    props.handleChange({ ...queryParams, page: pageV, submit: true });
+  const changeActive = () => {
+    setActive(!active);
   };
 
   const handleChangePage = (event, value) => {
-    changeState(value);
+    history.push({
+      pathname: "/movie",
+      search: `?q=${q}&rate=${rate}&page=${value}`,
+    });
   };
 
   const renderMovieList1 = () => {
-    const { pageSize, page } = pageLoad;
-    const begin = 1 * (pageSize * (page - 1));
-    const end = pageSize * page;
+    const begin = 1 * (limit * (page - 1));
+    const end = limit * page;
     return (
       <Grid container className={classes.root}>
         {array.map((movie, index) => {
@@ -49,9 +45,8 @@ function ReleasedMovie(props) {
               <Grid
                 key={index}
                 item
-                xs={12}
-                sm={6}
-                lg={4}
+                xs={6}
+                lg={3}
                 className={classes.cardItem}
               >
                 <CardMovie movie={movie} />
@@ -64,9 +59,8 @@ function ReleasedMovie(props) {
   };
 
   const renderMovieList2 = () => {
-    const { pageSize, page } = pageLoad;
-    const begin = 1 * (pageSize * (page - 1));
-    const end = pageSize * page;
+    const begin = 1 * (limit * (page - 1));
+    const end = limit * page;
     return (
       <Grid container className={classes.root}>
         {array.map((movie, index) => {
@@ -82,8 +76,22 @@ function ReleasedMovie(props) {
     );
   };
 
+  const setArray = () => {
+    if (q) {
+      array = movieList.filter((v) => {
+        const index = v.tenPhim.toLowerCase().indexOf(q.toLowerCase());
+        return index > -1;
+      });
+    } else if (rate) {
+      array = movieList.filter((v) => v.danhGia >= rate);
+    } else array = movieList;
+  };
+
+  setArray();
+  const pageTotal = Math.round(array.length / limit);
+
   return (
-    <Grid>
+    <Grid className={classes.root}>
       <div className={classes.title}>
         <span>PHIM DANG CHIEU</span>
         <div className={classes.options}>
@@ -92,31 +100,34 @@ function ReleasedMovie(props) {
               classes.arrangeIcon,
               !active ? classes.arrangeIconActive : ""
             )}
-            onClick={changeActive2}
+            onClick={changeActive}
           />
           <FormatListBulletedIcon
             className={clsx(
               classes.arrangeIcon,
               active ? classes.arrangeIconActive : ""
             )}
-            onClick={changeActive1}
+            onClick={changeActive}
           />
         </div>
       </div>
-      {array.length > 0 ? (
-        !active ? (
-          renderMovieList1()
+      <SearchMovie />
+      <div>
+        {array.length > 0 ? (
+          !active ? (
+            renderMovieList1()
+          ) : (
+            renderMovieList2()
+          )
         ) : (
-          renderMovieList2()
-        )
-      ) : (
-        <div>Không có kết quả tìm kiếm</div>
-      )}
+          <div>Không có kết quả tìm kiếm</div>
+        )}
+      </div>
       <Pagination
         count={pageTotal}
         variant="outlined"
         shape="rounded"
-        page={pageLoad.page}
+        page={page}
         className={classes.pagination}
         onChange={handleChangePage}
       />

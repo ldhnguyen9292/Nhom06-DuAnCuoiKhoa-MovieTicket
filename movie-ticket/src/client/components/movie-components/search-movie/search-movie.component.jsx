@@ -1,30 +1,28 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { useStyles } from "./search-movie-styles.component";
 import MovieName from "./movie-name/movie-name";
 import Options from "./options/options";
-import CinemaGroup from "./cinema-group/cinema-group";
 
-function SearchMovie(props) {
+function SearchMovie() {
   const classes = useStyles();
-  const { queryParams } = props;
+  const history = useHistory();
 
-  const handleSubmit = (object) => {
-    let keySearch = { ...queryParams, ...object };
-    props.handleChange(keySearch);
+  const handleSubmit = (q, rate) => {
+    history.push({
+      pathname: "/movie",
+      search: `?q=${q}&rate=${rate}&page=${1}`,
+    });
   };
 
   return (
     <div className={classes.root}>
-      <MovieName
-        placeHolder={"Tìm tên phim"}
-        handleSubmit={handleSubmit}
-        keyName={"tenPhim"}
-        type={""}
-      />
-      <p className={classes.title}>Danh sách rạp</p>
-      <CinemaGroup handleSubmit={handleSubmit} />
-      <p className={classes.title}>Tùy chọn thêm</p>
-      <Options handleSubmit={handleSubmit} />
+      <div className={classes.item}>
+        <Options handleSubmit={handleSubmit} />
+      </div>
+      <div className={classes.item}>
+        <MovieName placeHolder={"Tìm tên phim"} handleSubmit={handleSubmit} />
+      </div>
     </div>
   );
 }

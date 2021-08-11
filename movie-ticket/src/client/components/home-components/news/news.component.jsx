@@ -1,35 +1,17 @@
-import React, { useEffect, memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./news-styles.component";
 import Videocard from "./videocard/videocard.component";
 import Newscard from "./newscard/newscard.component";
-// import Paper from '@material-ui/core/Paper';
 import Grid from "@material-ui/core/Grid";
 import { Container } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import { callAPIactions } from "../../../../store/actions/mock-api-main.actions";
-import { GET_NEWS_LIST } from "../../../../store/constants/news.contants";
-
-const dbName = "news";
 
 function NewsComponent() {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const newsList = useSelector((state) => state.news.newsList);
-  const { getListAction } = callAPIactions;
   const history = useHistory();
-
-  useEffect(() => {
-    dispatch(
-      getListAction(
-        dbName,
-        GET_NEWS_LIST,
-        `?page=${1}&limit=${3}&sort=${"ngayDang"}&order=desc`
-      )
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const pushNewsPage = () => {
     history.push("/news");

@@ -9,12 +9,10 @@ import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 
 import PersonIcon from "@material-ui/icons/Person";
-import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import SettingsIcon from "@material-ui/icons/Settings";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import UserInfoComponent from "./user-info/user-info.component";
-import UserTB from "./user-TB/user-TB.component";
 import UserHistory from "./user-history/user-history.component";
 import UserKM from "./user-KM/user-KM.component";
 import UserSetting from "./user-setting/user-setting.component";
@@ -91,22 +89,16 @@ function UserComponent() {
               {...a11yProps(0)}
             />
             <Tab
-              icon={<NotificationsActiveIcon />}
-              className={classes.tab}
-              label={screenW <= 999 ? "" : "Thông Báo"}
-              {...a11yProps(1)}
-            />
-            <Tab
               icon={<AssignmentIcon />}
               className={classes.tab}
               label={screenW <= 999 ? "" : "Lịch Sử Mua Hàng"}
-              {...a11yProps(2)}
+              {...a11yProps(1)}
             />
             <Tab
               icon={<BookmarkBorderIcon />}
               className={classes.tab}
               label={screenW <= 999 ? "" : "Khuyến Mãi"}
-              {...a11yProps(3)}
+              {...a11yProps(2)}
             />
             <Tab
               icon={<SettingsIcon />}
@@ -121,15 +113,12 @@ function UserComponent() {
             <UserInfoComponent />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <UserTB />
-          </TabPanel>
-          <TabPanel value={value} index={2}>
             <UserHistory />
           </TabPanel>
-          <TabPanel value={value} index={3}>
+          <TabPanel value={value} index={2}>
             <UserKM />
           </TabPanel>
-          <TabPanel value={value} index={4}>
+          <TabPanel value={value} index={3}>
             <UserSetting />
           </TabPanel>
         </div>

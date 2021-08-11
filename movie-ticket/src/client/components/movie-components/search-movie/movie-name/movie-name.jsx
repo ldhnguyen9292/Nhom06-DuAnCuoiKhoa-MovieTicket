@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { useStyles } from "./movie-name-styles";
 import SearchIcon from "@material-ui/icons/Search";
-import { useHistory } from "react-router-dom";
 
 function MovieName(props) {
   const classes = useStyles();
-  const [name, setName] = useState("");
-  const { placeHolder, keyName } = props;
-  const history = useHistory();
+  const [value, setValue] = useState("");
+  const { placeHolder } = props;
 
   const handleChange = (event) => {
-    setName({ [keyName]: event.target.value });
+    setValue(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push(`/${keyName}?q=${name[keyName]}&page=1`);
+    props.handleSubmit(value, 0);
   };
 
   return (
@@ -23,7 +21,7 @@ function MovieName(props) {
       <input
         type="text"
         placeholder={placeHolder}
-        value={name[keyName]}
+        value={value}
         onChange={handleChange}
       />
       <SearchIcon

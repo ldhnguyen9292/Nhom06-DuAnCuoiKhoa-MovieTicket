@@ -33,7 +33,7 @@ function BustingCard(props) {
   };
 
   const handleMovieDetailClick = () => {
-    history.push(`/movie/movie-detail:${item.maPhim}`);
+    history.push(`/movie/movie-detail/${item.maPhim}`);
   };
 
   const handleOpen = () => {
@@ -60,7 +60,7 @@ function BustingCard(props) {
         <div className={classes.contentbox}>
           <div className={classes.left}>
             <p className={classes.title}>{item.tenPhim}</p>
-            <p className={classes.type}>Drama, Acation</p>
+            <p className={classes.type}>{item.moTa}</p>
             <div className={classes.icongroup}>{renderStar(item.danhGia)}</div>
           </div>
           <div className={classes.right}>

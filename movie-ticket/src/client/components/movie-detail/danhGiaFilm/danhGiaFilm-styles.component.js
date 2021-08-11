@@ -69,24 +69,35 @@ export const useStyles = makeStyles((theme) => ({
     padding: "15px",
   },
   progressBox: {
-    width: "80px",
-    height: "80px",
+    maxWidth: "80px",
+    maxHeight: "80px",
+    width: "10vw",
+    height: "10vw",
     position: "relative",
   },
   progress: {
     possition: "absolute",
     top: 0,
     left: 0,
+    width: "10vw !important",
+    height: "10vw !important",
+    maxWidth: "80px",
+    maxHeight: "80px",
   },
   proText: {
     position: "absolute",
-    top: 0,
-    left: 0,
-    width: "80px",
-    height: "80px",
+    top: "50%",
+    left: "50%",
+    maxWidth: "80px",
+    maxHeight: "80px",
+    width: "9vw",
+    height: "9vw",
+    transform: "translate(-50%,-25%)",
     textAlign: "center",
-    lineHeight: "80px",
-    fontSize: "30px",
+    fontSize: "4vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: 30,
+    },
     fontWeight: "bold",
   },
   imgRight: {
@@ -107,7 +118,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   rating: {
     flexGrow: 1,
-    padding: "0 20px",
+    padding: "0 1vw",
   },
   ratingBox: {
     listStyle: "none",
@@ -118,6 +129,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   ratingSlider: {
+    padding: "1vw 0",
     width: "50%",
     "& .MuiSlider-rail, & .MuiSlider-track": {
       height: 5,
@@ -128,7 +140,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   yourRate: {
     display: "flex",
-    padding: "0 20px",
+    padding: "0 1vw",
     alignItems: "center",
   },
   yourSlider: {
@@ -147,5 +159,9 @@ export const useStyles = makeStyles((theme) => ({
     padding: "5px 10px",
     cursor: "pointer",
     color: "#b446ff",
+  },
+  starIcon: {
+    width: "2vw",
+    maxWidth: "1rem",
   },
 }));

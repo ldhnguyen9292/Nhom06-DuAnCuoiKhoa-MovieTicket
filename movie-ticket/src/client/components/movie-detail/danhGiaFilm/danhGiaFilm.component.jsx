@@ -29,7 +29,7 @@ function DanhGiaFilm() {
     return result.map((element, i) => {
       let star = [];
       for (let index = 0; index < 5 - i; index++) {
-        star.push(<StarIcon />);
+        star.push(<StarIcon className={classes.starIcon} />);
       }
       return (
         <li key={i} className={classes.ratingItem}>
@@ -46,7 +46,6 @@ function DanhGiaFilm() {
   };
 
   const handleSubmit = () => {
-    console.log("run");
     scoreArray.push(value);
     dispatch(putRatingMongoAction(maPhim, { scoreArray: scoreArray }));
   };
@@ -64,7 +63,9 @@ function DanhGiaFilm() {
           />
         </div>
         <div className={classes.rating}>
-          <h4 style={{ paddingLeft: 20 }}>Đánh giá:</h4>
+          <h4 style={{ paddingLeft: 20 }}>
+            Đánh giá của thành viên Movie Ticket:
+          </h4>
           <ul className={classes.ratingBox}>{renderRating()}</ul>
         </div>
       </div>

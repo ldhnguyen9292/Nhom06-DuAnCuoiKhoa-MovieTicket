@@ -1,8 +1,9 @@
 import React, { memo } from "react";
 import { useStyles } from "./top-header-styles";
+import { useSelector } from "react-redux";
 import { Grid, IconButton, Typography } from "@material-ui/core";
 import BackIcon from "./../../../../../assets/svg/back.jsx";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function TopHeader(props) {
   const classes = useStyles();
@@ -11,10 +12,17 @@ function TopHeader(props) {
   const { tenPhim, thoiLuong, ngayChieuGioChieu } = userBooking;
   const time = new Date(ngayChieuGioChieu);
   const { ticket } = props;
+  const chairs = useSelector((state) => state.movie.chairList.danhSachGhe);
 
   const handleBackButton = () => {
     console.log("goback");
     history.goBack();
+  };
+
+  const handleSubmit = () => {
+    const chairChosen = chairs?.filter((chair) => chair.daChon);
+    localStorage.setItem("ticket", JSON.stringify(chairChosen));
+    history.push("/movie/booking-summary");
   };
 
   return (
@@ -55,12 +63,10 @@ function TopHeader(props) {
           </div>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Grid container className={classes.topRight}>
-            <NavLink to="/movie/booking-summary">
-              <IconButton>
-                <Typography className={classes.payIcon}>Thanh toán</Typography>
-              </IconButton>
-            </NavLink>
+          <Grid container className={classes.topRight} onClick={handleSubmit}>
+            <IconButton>
+              <Typography className={classes.payIcon}>Thanh toán</Typography>
+            </IconButton>
           </Grid>
         </Grid>
       </Grid>

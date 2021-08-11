@@ -55,6 +55,32 @@ const mongoUserAction = async (data, method, query) => {
 };
 
 // Client
+export const getUserInfoAction = async (data) => {
+  try {
+    const res = await axios({
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan`,
+      method: "POST",
+      data,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const putUserInfoAction = async (data, token) => {
+  try {
+    const res = await axios({
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      method: "PUT",
+      data,
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const postUserLogInAction = async (data, history, dispatch) => {
   const res = await userAction(data, "POST", "DangNhap");
   if (res.status === 200) {
@@ -106,14 +132,13 @@ export const putClientUpdateUserInfoAction = async (data, taiKhoan) => {
   }
 };
 
-const getClientUpdateUserInfoAction = async (taiKhoan) => {
+export const getClientUpdateUserInfoAction = async (taiKhoan) => {
   try {
     const mongoRes = await mongoUserAction(null, "GET", taiKhoan);
     localStorage.setItem("mongoUserInfo", JSON.stringify(mongoRes.data));
     const anhDaiDien = mongoRes.data.anhDaiDien
       ? mongoRes.data.anhDaiDien
       : "avataricon.png";
-    console.log(anhDaiDien);
     const avatar = await getImage(anhDaiDien);
     localStorage.setItem("avatar", JSON.stringify(avatar.data));
   } catch (error) {

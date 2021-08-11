@@ -2,15 +2,17 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
+    maxWidth: 1200,
     minWidth: 275,
-    margin: '0px',
+    width: "100%",
+    margin: "0px",
   },
   title: {
-    padding: '20px 10px',
-    margin: '0px',
+    padding: "5vw 10px",
+    margin: "0px",
     display: "flex",
     justifyContent: "space-between",
-    fontSize: 26,
+    fontSize: "4vw",
     textTransform: "uppercase",
     position: "relative",
     paddingBottom: 15,

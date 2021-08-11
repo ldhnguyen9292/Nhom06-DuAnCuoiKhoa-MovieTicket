@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     position: "relative",
-    padding: "100px 0",
+    padding: "10vw 0",
     "&::before": {
       content: '""',
       width: "100%",
@@ -22,22 +22,11 @@ export const useStyles = makeStyles((theme) => ({
     maxWidth: "1200px",
   },
   Box: {
-    height: "425px",
+    maxHeight: "500px",
+    height: "60vw",
     width: "fit-content",
-    // [theme.breakpoints.down("1200")]: {
-    //   width: "928px",
-    //   height: "408px",
-    // },
-    // [theme.breakpoints.down("992")]: {
-    //   width: "708px",
-    //   height: "408px",
-    // },
-    // [theme.breakpoints.down("768")]: {
-    //   height: "345px",
-    //   width: "100%",
-    // },
     border: "5px solid white",
-    margin: "0px auto 20px",
+    margin: "0px auto 1vh",
     position: "relative",
   },
   fade: {
@@ -52,25 +41,23 @@ export const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "fit-content",
     display: "flex",
-
     color: "white",
     zIndex: 1,
   },
   contentBox: {
-    width: "600px",
+    maxWidth: "700px",
+    width: "90vw",
     height: "100%",
     display: "flex",
     justifyContent: "space-around",
     zIndex: 1,
   },
   left: {
-    width: "235px",
+    width: "40%",
     display: "flex",
     alignItems: "center",
   },
   imgBox: {
-    height: "330px",
-    width: "215px",
     padding: 5,
     outline: "none",
     "& img": {
@@ -114,14 +101,19 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   rightBox: {
-    height: "340px",
-    maxWidth: "350px",
     "& h3": {
-      margin: "20px 0px 0px",
-      fontSize: "24px",
+      margin: "0",
+      fontSize: "5vw",
+      [theme.breakpoints.up("760")]: {
+        fontSize: "26px",
+      },
     },
     "& p": {
+      fontSize: "3vw",
       margin: "10px 0px",
+      [theme.breakpoints.up("760")]: {
+        fontSize: "20px",
+      },
     },
   },
   btnInfo: {
@@ -130,24 +122,35 @@ export const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   progressBox: {
-    width: "80px",
-    height: "80px",
+    maxWidth: "80px",
+    maxHeight: "80px",
+    width: "10vw",
+    height: "10vw",
     position: "relative",
   },
   progress: {
     possition: "absolute",
     top: 0,
     left: 0,
+    width: "10vw !important",
+    height: "10vw !important",
+    maxWidth: "80px",
+    maxHeight: "80px",
   },
   proText: {
     position: "absolute",
-    top: 0,
-    left: 0,
-    width: "80px",
-    height: "80px",
+    top: "50%",
+    left: "50%",
+    maxWidth: "80px",
+    maxHeight: "80px",
+    width: "9vw",
+    height: "9vw",
+    transform: "translate(-50%,-25%)",
     textAlign: "center",
-    lineHeight: "80px",
-    fontSize: "30px",
+    fontSize: "4vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: 30,
+    },
     fontWeight: "bold",
   },
   starGr: {

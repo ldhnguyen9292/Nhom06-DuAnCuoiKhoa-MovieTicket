@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getMovieListAction } from "../../../../../store/actions/movie.action";
 import PropTypes from "prop-types";
@@ -9,6 +9,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import SlickSlider from "../slickslider/slickslider.component";
+import LoadingComponent from "./../../../loading/loading.component";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,12 +46,20 @@ function a11yProps(index) {
 
 function SimpleTabs() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [loading, setLoading] = useState();
   const dispatch = useDispatch();
+
+  const callAPI = async (maNhom) => {
+    setLoading(true);
+    await dispatch(getMovieListAction(maNhom));
+    setLoading(false);
+  };
 
   useEffect(() => {
     const maNhom = value === 0 ? "GP06" : "GP07";
-    dispatch(getMovieListAction(maNhom));
+    callAPI(maNhom);
+    return () => setLoading({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
@@ -58,6 +67,7 @@ function SimpleTabs() {
     setValue(newValue);
   };
 
+  if (loading) return <LoadingComponent />;
   return (
     <div className={classes.root}>
       <div className={classes.container}>
