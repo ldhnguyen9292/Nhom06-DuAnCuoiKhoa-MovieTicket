@@ -6,12 +6,14 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     zIndex: 2,
     height: 104,
+    padding: 10,
   },
   top: {
     background: "#060818",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    padding: "0 10px",
     "& div": {
       padding: 5,
     },
@@ -43,5 +45,25 @@ export const useStyles = makeStyles((theme) => ({
   },
   text: {
     textTransform: "Capitalize",
+  },
+  avatarIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: "50%",
+    cursor: "pointer",
+  },
+  paper: {
+    background: "#b9b9b9c4",
+    color: "white",
+    borderRadius: "0 0 5px 5px",
+  },
+  userP: {
+    padding: 5,
+    margin: 0,
+    borderRadius: 5,
+    cursor: "pointer",
+    "&:hover": {
+      background: "gray",
+    },
   },
 }));
