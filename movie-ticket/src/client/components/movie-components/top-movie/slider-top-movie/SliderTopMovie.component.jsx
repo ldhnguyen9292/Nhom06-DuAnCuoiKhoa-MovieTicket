@@ -64,7 +64,7 @@ function SliderTopMovie() {
             <div key={m.tenPhim} className={classes.item}>
               <div className={classes.imgBox}>
                 <img
-                  src={m.hinhAnh}
+                  src={m.hinhAnh?.replace("https", "http")}
                   className={classes.img}
                   alt={"Hình top movie"}
                 />

@@ -49,7 +49,10 @@ function CardMovie2(props) {
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} sm={4} className={classes.left}>
-        <CardMedia className={classes.imgSetting} image={movie.hinhAnh} />
+        <CardMedia
+          className={classes.imgSetting?.replace("https", "http")}
+          image={movie.hinhAnh}
+        />
       </Grid>
       <Grid item xs={12} sm={8}>
         <Grid container className={classes.right} alignItems="center">
