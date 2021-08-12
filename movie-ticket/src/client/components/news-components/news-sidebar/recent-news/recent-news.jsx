@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Grid, CardMedia } from "@material-ui/core";
 import { useStyles } from "./recent-news-styles";
 import format from "date-format";
@@ -38,4 +38,4 @@ function RecentNews(props) {
     </>
   );
 }
-export default RecentNews;
+export default memo(RecentNews);

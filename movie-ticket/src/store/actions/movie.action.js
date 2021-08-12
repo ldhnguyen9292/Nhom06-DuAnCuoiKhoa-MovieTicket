@@ -115,7 +115,6 @@ export const postTicketBookingAction = async (data, token) => {
         khuyenMai: ticket.length * 500 + total.voucher,
         lichSuDatVe,
       };
-      console.log(data);
       putClientUpdateUserInfoAction(data, mongoUserInfo.taiKhoan);
     }
   } catch (error) {

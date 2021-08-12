@@ -8,10 +8,12 @@ import Total from "./total/total";
 
 function BSContent() {
   const classes = useStyles();
-  const status = JSON.parse(localStorage.getItem("donate")).status;
-  const [donate, setDonate] = useState(status);
-  const id = JSON.parse(localStorage.getItem("payMethod")).id;
-  const [state, setState] = useState({ [id]: true });
+  const status = JSON.parse(localStorage.getItem("donate"));
+  const temp = status ? status.status : false;
+  const [donate, setDonate] = useState(temp);
+  const id = JSON.parse(localStorage.getItem("payMethod"));
+  const idTemp = id ? { [id.id]: true } : false;
+  const [state, setState] = useState(idTemp);
 
   const handleDonate = () => {
     localStorage.setItem(

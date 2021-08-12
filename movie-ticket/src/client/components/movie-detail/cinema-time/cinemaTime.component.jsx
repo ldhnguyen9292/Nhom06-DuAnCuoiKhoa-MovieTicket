@@ -45,7 +45,8 @@ function CinemaTime() {
   const classes = useStyles();
   const theme = useTheme();
   const search = new URLSearchParams(window.location.search);
-  const dateParts = search.get("date").split("/");
+  let dateParts = search.get("date");
+  if (dateParts) dateParts = dateParts.split("/");
   const day = dateParts
     ? new Date(dateParts[2], dateParts[1] - 1, dateParts[0]).getDay()
     : new Date().getDay();

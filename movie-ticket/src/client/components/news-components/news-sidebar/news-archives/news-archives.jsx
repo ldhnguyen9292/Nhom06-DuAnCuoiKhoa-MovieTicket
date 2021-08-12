@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./news-archives-styles";
 import { Grid } from "@material-ui/core";
@@ -39,4 +39,4 @@ function NewsArchives(props) {
   return <div>{renderArray()}</div>;
 }
 
-export default NewsArchives;
+export default memo(NewsArchives);

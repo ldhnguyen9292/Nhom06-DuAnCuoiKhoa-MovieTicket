@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Paper } from "@material-ui/core";
 import MovieName from "../../movie-components/search-movie/movie-name/movie-name";
 import NewsTitle from "./news-title/news-title";
@@ -19,28 +20,27 @@ let arrayType = [
 
 let arrayArchives = [];
 
-let itemNumberOfMonth = [
-  { name: "Tháng 1", type: "1", num: 0 },
-  { name: "Tháng 2", type: "2", num: 0 },
-  { name: "Tháng 3", type: "3", num: 0 },
-  { name: "Tháng 4", type: "4", num: 0 },
-  { name: "Tháng 5", type: "5", num: 0 },
-  { name: "Tháng 6", type: "6", num: 0 },
-  { name: "Tháng 7", type: "7", num: 0 },
-  { name: "Tháng 8", type: "8", num: 0 },
-  { name: "Tháng 9", type: "9", num: 0 },
-  { name: "Tháng 10", type: "10", num: 0 },
-  { name: "Tháng 11", type: "11", num: 0 },
-  { name: "Tháng 12", type: "12", num: 0 },
-];
-
 let arrayNewest = [];
 
 function NewsSidebar() {
   const classes = useStyles();
   const type = PUT_NEWS_KEY;
-  const [state, setState] = useState(false);
   const [loading, setLoading] = useState();
+  const history = useHistory();
+  let itemNumberOfMonth = [
+    { name: "Tháng 1", type: "1", num: 0 },
+    { name: "Tháng 2", type: "2", num: 0 },
+    { name: "Tháng 3", type: "3", num: 0 },
+    { name: "Tháng 4", type: "4", num: 0 },
+    { name: "Tháng 5", type: "5", num: 0 },
+    { name: "Tháng 6", type: "6", num: 0 },
+    { name: "Tháng 7", type: "7", num: 0 },
+    { name: "Tháng 8", type: "8", num: 0 },
+    { name: "Tháng 9", type: "9", num: 0 },
+    { name: "Tháng 10", type: "10", num: 0 },
+    { name: "Tháng 11", type: "11", num: 0 },
+    { name: "Tháng 12", type: "12", num: 0 },
+  ];
 
   const setArrayValue = (data) => {
     arrayType.map((item) => {
@@ -72,11 +72,11 @@ function NewsSidebar() {
       }
       return null;
     });
+
     arrayArchives = itemNumberOfMonth.filter((month) => {
       return month.num > 0;
     });
     arrayArchives = arrayArchives.reverse();
-    setState(!state);
   };
 
   const callAPI = async () => {
@@ -99,6 +99,10 @@ function NewsSidebar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleSubmit = (value) => {
+    history.push(`/news?key=tenBai&value=${value}`);
+  };
+
   if (loading) return <LoadingComponent />;
   return (
     <div className={classes.sideBar}>
@@ -107,6 +111,7 @@ function NewsSidebar() {
           placeHolder={"Tìm tên tin tức"}
           keyName="tenBai"
           type={type}
+          handleSubmit={handleSubmit}
         />
 
         <NewsTitle title={"Thể loại"} />
