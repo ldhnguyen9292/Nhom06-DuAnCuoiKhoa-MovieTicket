@@ -17,6 +17,7 @@ export const useStyles = makeStyles((theme) => ({
   left: {
     width: "100%",
     display: "flex",
+    alignItems: "center",
     color: "rgba(0,0,0,0.87)",
     fontSize: "14px",
     letterSpacing: "1px",
@@ -50,5 +51,9 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("850")]: {
       width: "100%",
     },
+  },
+  logo: {
+    width: 50,
+    height: 50,
   },
 }));

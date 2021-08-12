@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { Container } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import CinemaBox from "./cinema/cinema.component";
@@ -11,8 +11,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import SideBar from "./side-bar/side-bar";
-// import Typography from "@material-ui/core/Typography";
-// import Hour from './Hour/Hour.component'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,8 +44,14 @@ function a11yProps(index) {
 function CinemaTime() {
   const classes = useStyles();
   const theme = useTheme();
-  const [value, setValue] = React.useState(new Date().getDay());
+  const search = new URLSearchParams(window.location.search);
+  const dateParts = search.get("date").split("/");
+  const day = dateParts
+    ? new Date(dateParts[2], dateParts[1] - 1, dateParts[0]).getDay()
+    : new Date().getDay();
+  const [value, setValue] = useState(day);
   const lichChieu = useSelector((state) => state.movie.movieDetail.lichChieu);
+  const [state, setState] = useState();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -66,6 +70,26 @@ function CinemaTime() {
         {...a11yProps({ index })}
       />
     );
+  };
+
+  const handleSidebar = (value) => {
+    console.log(value);
+    setState(value);
+  };
+
+  const checkState = (array) => {
+    const arrayTemp = array.filter((item) => {
+      let temp = false;
+      for (let [key, value] of Object.entries(state)) {
+        if (key === item.thongTinRap.tenHeThongRap && value) {
+          temp = true;
+          break;
+        }
+      }
+      return temp ? item : "";
+    });
+    if (arrayTemp.length > 0) return arrayTemp;
+    return array;
   };
 
   const renderCinema = () => {
@@ -105,8 +129,9 @@ function CinemaTime() {
 
     const result = [];
     let index = -1;
-    for (const [key, array] of Object.entries(movieArray)) {
+    for (let [key, array] of Object.entries(movieArray)) {
       index++;
+      if (state) array = checkState(array);
       result.push(
         <TabPanel value={value} key={key} index={index} dir={theme.direction}>
           <CinemaBox array={array} />
@@ -149,7 +174,7 @@ function CinemaTime() {
         <Box boxShadow={10} className={classes.container}>
           {renderCinema()}
         </Box>
-        <SideBar />
+        <SideBar handleSidebar={handleSidebar} />
       </Container>
     </div>
   );

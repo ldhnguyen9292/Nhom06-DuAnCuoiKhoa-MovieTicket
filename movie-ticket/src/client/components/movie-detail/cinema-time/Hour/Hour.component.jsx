@@ -63,6 +63,12 @@ function Hour(props) {
   const open = Boolean(anchorEl);
 
   const handleClick = () => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (!userInfo) {
+      alert("Vui lòng đăng nhập để thực hiện tính năng này");
+      return;
+    }
+
     localStorage.setItem("userBooking", JSON.stringify(cinema));
     history.push(`/movie/seat-booking`);
   };

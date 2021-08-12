@@ -5,8 +5,10 @@ const color = "rgba(255,255,255,0.38)";
 export const useStyles = makeStyles((theme) => ({
   root: {
     background: "#333545",
-    paddingTop: 40,
-    paddingBottom: 100,
+    padding: "4vw 0 10vw",
+    [theme.breakpoints.up("1200")]: {
+      padding: "40px 0",
+    },
     color: color,
     textTransform: "uppercase",
     textAlign: "center",
@@ -16,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
     padding: "0 5%",
   },
   seat: {
-    width: "8vw",
+    width: "50px",
     height: "25px",
     fontSize: 11,
     textAlign: "center",
