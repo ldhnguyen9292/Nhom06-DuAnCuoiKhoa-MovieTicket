@@ -16,6 +16,7 @@ function HeaderUser(props) {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const avatar = JSON.parse(localStorage.getItem("avatar"));
   const isLogin = useSelector((state) => state.user.isLogin);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
@@ -29,6 +30,7 @@ function HeaderUser(props) {
     localStorage.clear();
     dispatch({ type: PUT_USER_LOGIN_STATUS, payload: false });
     setAnchorEl(null);
+    history.push(`/`);
   };
 
   const handleClick = (event) => {
@@ -82,7 +84,15 @@ function HeaderUser(props) {
           onClick={handleClick}
           className={classes.userMenu}
         >
-          <AccountCircle />
+          {avatar ? (
+            <img
+              src={`data:image/png;base64,${avatar.data}`}
+              alt="avatar"
+              style={{ width: 25, height: 25, borderRadius: "50%" }}
+            />
+          ) : (
+            <AccountCircle />
+          )}
           {renderUserInfo()}
         </IconButton>
         <IconButton aria-label="show 4 new mails" color="inherit">

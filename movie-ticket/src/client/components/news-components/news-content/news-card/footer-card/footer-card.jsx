@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Grid, CardMedia } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
@@ -11,6 +11,8 @@ import MessBox from "./mess-box/mess-box";
 
 function FooterCard(props) {
   const classes = useStyles();
+  const avatar = JSON.parse(localStorage.getItem("avatar"));
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const [open, setOpen] = useState(false);
   const { id } = props;
   const [commentArray, setCommentArray] = useState([]);
@@ -50,16 +52,15 @@ function FooterCard(props) {
       );
     }
 
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     return (
       <div className={classes.messBox}>
         <Grid container alignItems="center" wrap="nowrap">
           <Grid item className={classes.avatarBox}>
-            {userInfo.hinhAnh ? (
-              <CardMedia
-                component="img"
-                src={userInfo.hinhAnh}
-                className={classes.messAvatar}
+            {avatar ? (
+              <img
+                src={`data:image/png;base64,${avatar.data}`}
+                alt="avatar"
+                style={{ width: 25, height: 25, borderRadius: "50%" }}
               />
             ) : (
               <AccountCircleIcon />
@@ -91,12 +92,9 @@ function FooterCard(props) {
   const handleChange = (event) => {
     if (event.key === "Enter") {
       let { soBinhLuan, mangBinhLuan } = commentArray;
-      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const maThanhVien = userInfo.taiKhoan;
       const ten = userInfo.hoTen;
-      const hinhDaiDien =
-        userInfo.hinhAnh ||
-        "https://anh.eva.vn//upload/3-2013/images/2013-08-20/1376967060-14.jpg";
+      const hinhDaiDien = avatar.filename;
       const ngayBinhLuan = new Date();
       soBinhLuan += 1;
       mangBinhLuan.push({
