@@ -21,6 +21,12 @@ function TopHeader(props) {
 
   const handleSubmit = () => {
     const chairChosen = chairs?.filter((chair) => chair.daChon);
+    const daDatIndex = chairChosen.findIndex((chair) => chair.daDat);
+    if (daDatIndex !== -1) {
+      alert(`Ghế ${chairChosen[daDatIndex].stt} đã được đặt`);
+      return;
+    }
+
     localStorage.setItem("ticket", JSON.stringify(chairChosen));
     history.push("/movie/booking-summary");
   };

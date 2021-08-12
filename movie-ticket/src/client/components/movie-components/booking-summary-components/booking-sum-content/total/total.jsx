@@ -13,10 +13,10 @@ function Total() {
   const [open, setOpen] = useState(false);
   const [rules, setRules] = useState(false);
   const ticket = JSON.parse(localStorage.getItem("ticket"));
-  const donate = JSON.parse(localStorage.getItem("donate"));
   const mongoUserInfo = JSON.parse(localStorage.getItem("mongoUserInfo"));
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  const payMethod = JSON.parse(localStorage.getItem("payMethod"));
+  let payMethod = JSON.parse(localStorage.getItem("payMethod"));
+  let donate = JSON.parse(localStorage.getItem("donate"));
   const price = ticket.reduce((sum, t) => sum + t.giaVe, 0);
   const [voucher, setVoucher] = useState(0);
 
@@ -76,8 +76,8 @@ function Total() {
   };
 
   const sumTotal = () => {
-    const bonus = price * payMethod.fee;
-    const d = donate.status ? donate.fee : 0;
+    const bonus = payMethod ? Math.round(price * payMethod.fee/100) : 0;
+    const d = donate && donate.status ? donate.fee : 0;
     let total = price + d + bonus - voucher;
     let temp = voucher > 0 ? 0 : mongoUserInfo.khuyenMai;
     if (total < 0) {
@@ -160,7 +160,7 @@ function Total() {
           <></>
         )}
 
-        {donate.status ? (
+        {donate && donate.status ? (
           <>
             <Grid item xs={6} className={classes.textLeft}>
               <p>Tiền donate</p>

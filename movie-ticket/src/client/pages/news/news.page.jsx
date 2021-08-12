@@ -6,7 +6,6 @@ import NewsContent from "../../components/news-components/news-content/news-cont
 import NewsSidebar from "../../components/news-components/news-sidebar/news-sidebar";
 import { callAPIactions } from "../../../store/actions/mock-api-main.actions";
 import { GET_NEWS_LIST } from "./../../../store/constants/news.contants";
-import LoadingComponent from "../../components/loading/loading.component";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -44,14 +43,13 @@ function News() {
     return () => setLoading({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q, page, limit, keySearch, key, value]);
-
-  if (loading) return <LoadingComponent />;
+  
   return (
     <div>
       <TopHeader title="Tin tức" />
       <Grid container className={classes.root}>
         <Grid item xs={12} md={8}>
-          <NewsContent />
+          <NewsContent loading={loading} />
         </Grid>
         <Grid item xs={12} md={4}>
           <NewsSidebar />

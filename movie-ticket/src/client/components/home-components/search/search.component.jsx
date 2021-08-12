@@ -98,6 +98,10 @@ function SearchHome() {
     event.preventDefault();
     setSearchList(initialSearchList);
     const { city, date, cinema, maPhim } = searchList;
+    if (!maPhim || maPhim === 0) {
+      alert("Vui lòng chọn phim");
+      return;
+    }
     history.push({
       pathname: `/movie/movie-detail/${maPhim}`,
       search: `?city=${city}&date=${date}&cinema=${cinema}`,

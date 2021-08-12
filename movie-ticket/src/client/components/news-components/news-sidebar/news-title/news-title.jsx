@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { memo } from "react";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -28,4 +28,4 @@ function NewsTitles(props) {
   return <p className={classes.title}>{title}</p>;
 }
 
-export default NewsTitles;
+export default memo(NewsTitles);

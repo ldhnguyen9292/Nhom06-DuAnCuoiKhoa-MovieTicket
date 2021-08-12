@@ -7,22 +7,32 @@ export const useStyles = makeStyles((theme) => ({
     background: "#2B2D3D",
     color: color,
   },
+  container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    maxWidth: 1200,
+  },
   topLeft: {
     height: "100%",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    [theme.breakpoints.up("md")]: {
-      justifyContent: "flex-start",
+    "& p": {
+      fontSize: "3vw",
+      [theme.breakpoints.up("760")]: {
+        fontSize: 20,
+      },
     },
   },
   backIcon: {
-    padding: 20,
+    padding: "2vw",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    cursor: "pointer",
     "& svg": {
-      width: 50,
+      width: "7vw",
+      maxWidth: 50,
       background: "#3f414f",
       fill: color,
       padding: 5,
@@ -34,7 +44,7 @@ export const useStyles = makeStyles((theme) => ({
     "& p": {
       margin: "5px auto",
     },
-    padding: 10,
+    padding: "1vw",
   },
   text: {
     background: "#3f414f",
