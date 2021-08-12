@@ -29,7 +29,7 @@ function DanhGiaFilm() {
     return result.map((element, i) => {
       let star = [];
       for (let index = 0; index < 5 - i; index++) {
-        star.push(<StarIcon className={classes.starIcon} />);
+        star.push(<StarIcon key={index} className={classes.starIcon} />);
       }
       return (
         <li key={i} className={classes.ratingItem}>

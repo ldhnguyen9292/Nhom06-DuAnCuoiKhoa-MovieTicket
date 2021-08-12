@@ -54,7 +54,6 @@ function SearchHome() {
       imgUrl: dateIcon,
       helper: { id: "dateHelper", text: "Chọn ngày" },
       option: [
-        { text: "Chọn ngày" },
         { text: format("dd/MM/yyyy", today) },
         { text: format("dd/MM/yyyy", new Date(today.getTime() + 86400000)) },
         {
@@ -81,7 +80,6 @@ function SearchHome() {
 
   const handleMoreChange = (id, value) => {
     const temp = { [id]: value };
-    console.log(temp);
     setSearchList({ ...searchList, ...temp });
   };
 

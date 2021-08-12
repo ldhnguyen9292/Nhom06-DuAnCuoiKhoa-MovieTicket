@@ -11,7 +11,7 @@ const cityList = [
   { key: "hn", label: "Hà Nội" },
 ];
 
-function SideBar() {
+function SideBar(props) {
   const classes = useStyles();
   const search = new URLSearchParams(window.location.search);
   const cinemaList = useSelector((state) => state.cinema.cinemaList);
@@ -21,6 +21,10 @@ function SideBar() {
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
+    props.handleSidebar({
+      ...state,
+      [event.target.name]: event.target.checked,
+    });
   };
 
   const renderCheckBox = (key, label) => {

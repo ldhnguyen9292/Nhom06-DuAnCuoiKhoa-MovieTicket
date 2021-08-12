@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
@@ -10,11 +10,13 @@ import FB from "./../../../assets/images/btn-FB.png";
 import GG from "./../../../assets/images/btn-Google.png";
 import { useForm } from "react-hook-form";
 import { postUserLogInAction } from "../../../store/actions/user.action";
+import LoadingComponent from "../loading/loading.component";
 
 function SignIn() {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState();
   const {
     register,
     handleSubmit,
@@ -27,7 +29,9 @@ function SignIn() {
   };
 
   const onSubmit = (data) => {
+    setLoading(true);
     postUserLogInAction(data, history, dispatch);
+    setLoading(false);
   };
 
   const renderForm = () => {
@@ -71,6 +75,7 @@ function SignIn() {
     history.push("/registration");
   };
 
+  if (loading) return <LoadingComponent />;
   return (
     <div className={classes.root}>
       <div className={classes.Box}>

@@ -27,13 +27,7 @@ function TopHeader(props) {
 
   return (
     <div className={classes.root}>
-      <Grid
-        container
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-        }}
-      >
+      <Grid className={classes.container}>
         <Grid item xs={12} sm={4}>
           <Grid container alignItems="center" className={classes.topLeft}>
             <Grid item className={classes.backIcon} onClick={handleBackButton}>
