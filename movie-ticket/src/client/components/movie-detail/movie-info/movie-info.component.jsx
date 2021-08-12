@@ -48,7 +48,10 @@ function MovieInfoBooking(props) {
             <div className={classes.contentBox}>
               <div className={classes.left}>
                 <div className={classes.imgBox}>
-                  <img src={hinhAnh} alt={"Hình đại diện"} />
+                  <img
+                    src={hinhAnh?.replace("https", "http")}
+                    alt={"Hình đại diện"}
+                  />
                   <div className={classes.btnBox}>
                     <Button onClick={handleClose} className={classes.btn}>
                       <ArrowIcon />

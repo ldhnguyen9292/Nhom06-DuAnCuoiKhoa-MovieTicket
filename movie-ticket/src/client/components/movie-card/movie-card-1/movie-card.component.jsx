@@ -50,7 +50,10 @@ function CardMovie(props) {
   return (
     <Card className={classes.root}>
       <div className={classes.top}>
-        <CardMedia className={classes.imgSetting} image={movie.hinhAnh} />
+        <CardMedia
+          className={classes.imgSetting?.replace("https", "http")}
+          image={movie.hinhAnh}
+        />
         <div className={classes.topHover}>
           <button
             className={clsx(classes.btnSetting, classes.trailer)}
