@@ -1,94 +1,89 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
-    bg: {
-        backgroundColor: 'white',
-        padding: '10px 0 30px 0',
+  bg: {
+    backgroundColor: "white",
+    padding: "10px 0 30px 0",
+  },
+  root: {
+    margin: "2vw auto",
+    maxWidth: 1200,
+    maxHeight: 800,
+  },
+  container: {
+    height: "60vw",
+    maxHeight: 600,
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+
+    gap: "2vw",
+  },
+  leftBox: {
+    width: "50%",
+    height: "100%",
+  },
+  rightBox: {
+    width: "50%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  rightTop: { width: "100%", height: "45%" },
+  rightBot: { width: "100%", height: "45%" },
+  paper: {
+    padding: "0",
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  title: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "2vw",
+  },
+  h2: {
+    fontSize: "5vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: 32,
     },
-    root: {
-        flexGrow: 1,
-        maxWidth: '1230px',
-        '& .MuiGrid-container': {
-            justifyContent: 'center',
-        },
-        justifyContent: 'center',
-        margin: '50px auto',
+    marginBottom: "5px",
+  },
+  fade: {
+    height: "2px",
+    background:
+      "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
+  },
+  btnBox: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "20px",
+  },
+  btnView: {
+    position: "relative",
+    borderRadius: "10px",
+    border: "1px solid #ddd",
+    height: "7vw",
+    width: "20vw",
+    maxHeight: 55,
+    maxWidth: 150,
+    fontSize: "3vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: 20,
     },
-    paper: {
-        padding: '0',
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
+    color: "#b446ff",
+    transition: "all 0.5s",
+    background: "#ddd",
+    backgroundImage:
+      "linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))",
+    backgroundPosition: "50% 50%",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "100% 0",
+    "&:hover": {
+      backgroundSize: "100% 100%",
+      color: "white",
     },
-    title: {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '30px',
-    },
-    h2: {
-        fontSize: '32px',
-        // width: '210px',
-        marginBottom: '5px',
-    },
-    fade: {
-        // width: '210px',
-        height: '2px',
-        background: 'linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))',
-    },
-    btnBox: {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: '20px',
-    },
-    btnView: {
-        position: 'relative',
-        width: '150px',
-        borderRadius: '10px',
-        overflow: 'hidden',
-        border: '1px solid #ddd',
-        height: '55px',
-        color: 'white',
-        // background: 'linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))',
-        '&:hover': {
-            '& $btnViewBefore': {
-                height: '0',
-            },
-            '& $btnViewAfter': {
-                height: '0',
-            },
-            '& $btnViewContent': {
-                color: '#b446ff',
-            },
-        }
-    },
-    btnViewBefore: {
-        position: 'absolute',
-        width: '150px',
-        height: '50%',
-        backgroundColor: 'red',
-        background: 'linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))',
-        top: '0px',
-        transition: 'all 0.3s',
-    },
-    btnViewAfter: {
-        position: 'absolute',
-        width: '150px',
-        height: '50%',
-        backgroundColor: 'red',
-        background: 'linear-gradient(to right, #4c46e6, #6d68fe, #b446ff, rgb(151, 0, 255))',
-        bottom: '0px',
-        transition: 'all 0.3s',
-    },
-    btnViewContent: {
-        position: 'absolute',
-        width: '150px',
-        height: '100%',
-        zIndex: '100',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: 'white',
-        fontSize: '16px',
-    },
+  },
 }));

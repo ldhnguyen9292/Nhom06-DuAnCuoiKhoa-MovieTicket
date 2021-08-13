@@ -40,29 +40,38 @@ function Newscard(props) {
       </div>
       <div className={classes.right}>
         <div className={classes.content}>
-          <p
-            underline="none"
-            href="#"
-            className={classes.link}
-            onClick={nextPage}
-          >
-            {newsItem.tenBai}
-          </p>
-          <p className={classes.day}>
-            {format("dd/MM/yyyy", new Date(newsItem.ngayDang))}
-          </p>
-          <div className={classes.p}>{parse(newsItem.noiDung)}</div>
-          {comment ? (
-            <div>
-              <Button className={classes.btn} onClick={nextPage}>
-                <ThumbUpIcon className={classes.icon} /> {comment.soLike} Thích
-              </Button>
-              <Button className={classes.btn} onClick={nextPage}>
-                <QuestionAnswerIcon className={classes.icon} />{" "}
-                {comment.soBinhLuan} Bình Luận
-              </Button>
-            </div>
-          ) : null}
+          <div>
+            <p
+              underline="none"
+              href="#"
+              className={classes.link}
+              onClick={nextPage}
+            >
+              {newsItem.tenBai}
+            </p>
+            <p className={classes.day}>
+              {format("dd/MM/yyyy", new Date(newsItem.ngayDang))}
+            </p>
+            <div className={classes.p}>{parse(newsItem.noiDung)}</div>
+          </div>
+          <div>
+            {comment ? (
+              <div className={classes.commentBox}>
+                <Button className={classes.btn} onClick={nextPage}>
+                  <ThumbUpIcon className={classes.icon} />
+                  <span className={classes.comText}>
+                    {comment.soLike} Thích
+                  </span>
+                </Button>
+                <Button className={classes.btn} onClick={nextPage}>
+                  <QuestionAnswerIcon className={classes.icon} />{" "}
+                  <span className={classes.comText}>
+                    {comment.soBinhLuan} Bình Luận
+                  </span>
+                </Button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </Box>

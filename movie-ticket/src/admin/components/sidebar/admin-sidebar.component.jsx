@@ -20,9 +20,9 @@ function AdminSidebar() {
       listItems: [
         { text: "Users" },
         { text: "Movies" },
-        { text: "Cinemas" },
         { text: "Carousels" },
         { text: "News" },
+        { text: "ShowTimes" },
       ],
     },
   ];

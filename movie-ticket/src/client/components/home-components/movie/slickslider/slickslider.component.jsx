@@ -21,7 +21,6 @@ export default function SlickSlider(props) {
 
   const render = () => {
     const settings = {
-      dots: false,
       infinite: true,
       speed: 500,
       rows: 2,
@@ -29,14 +28,14 @@ export default function SlickSlider(props) {
       autoplay: true,
       autoplaySpeed: 4000,
       initialSlide: 0,
-      // arrows: false,
+      arrows: false,
+      dots: false,
       responsive: [
         {
           breakpoint: 1200,
           settings: {
             slidesPerRow: 3,
             infinite: true,
-            dots: true,
           },
         },
         {

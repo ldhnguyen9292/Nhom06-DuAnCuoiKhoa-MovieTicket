@@ -3,6 +3,7 @@ import axios from "axios";
 const url = "https://moveticket-mongodb.herokuapp.com/comment";
 
 const initialData = {
+  news_id: "",
   soLike: 0,
   mangLike: [],
   soBinhLuan: 0,
@@ -22,12 +23,12 @@ export const commentListByIdAction = async (method, id, data) => {
   }
 };
 
-export const postCommentAction = async (data = initialData) => {
+export const postCommentAction = async (news_id) => {
   try {
     const res = await axios({
       method: "POST",
       url: `${url}`,
-      data,
+      data: { ...initialData, news_id },
     });
     return res.data;
   } catch (error) {

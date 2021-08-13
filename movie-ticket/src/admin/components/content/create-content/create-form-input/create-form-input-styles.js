@@ -79,6 +79,24 @@ export const useStyles = makeStyles(() => ({
       color: "#009688",
     },
   },
+  dateTime: {
+    margin: 0,
+    border: "1px solid #1b2e4b !important",
+    borderRadius: 6,
+    background: "#1b2e4b !important",
+    padding: 10,
+    width: "100%",
+    "& label": {
+      color: "#506690 !important",
+    },
+    "& input": {
+      color: "#009688 !important",
+      fontSize: 14,
+    },
+    "& svg": {
+      color: "#009688 !important",
+    },
+  },
   textEditor: {
     color: "#009688",
     "& img": {
