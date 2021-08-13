@@ -33,12 +33,12 @@ function TableBottom(props) {
   };
 
   const handleDelete = (row) => {
-    let id = row._id ? row._id : row.taiKhoan ? row.taiKhoan : row.maPhim;
+    let id = row.maPhim ? row.maPhim : row.taiKhoan ? row.taiKhoan : row._id;
     props.handleDelete(id);
   };
 
   const handleEdit = (row) => {
-    let id = row._id ? row._id : row.taiKhoan;
+    let id = row.maPhim ? row.maPhim : row.taiKhoan ? row.taiKhoan : row._id;
     props.handleEdit(id);
   };
 

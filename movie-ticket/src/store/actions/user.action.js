@@ -36,8 +36,7 @@ const userAction = async (data, method, query, token) => {
     });
     return res;
   } catch (error) {
-    console.log(error);
-    return error.response;
+    alert(error.response.data);
   }
 };
 
@@ -50,7 +49,7 @@ const mongoUserAction = async (data, method, query) => {
     });
     return res;
   } catch (error) {
-    return error.response;
+    console.log(error);
   }
 };
 
@@ -94,7 +93,7 @@ export const postUserLogInAction = async (data, history, dispatch) => {
 
 export const postUserSignUpAction = async (data, history) => {
   const res = await userAction(data, "POST", "DangKy");
-  if (res.status === 200) {
+  if (res && res.status === 200) {
     await mongoUserAction(data, "POST", "");
     const { taiKhoan, matKhau, email, soDt, hoTen } = res.data;
     const title = "Đã đăng ký thành công tài khoản Movie Ticket";
@@ -118,7 +117,6 @@ export const postUserSignUpAction = async (data, history) => {
     };
     emailService.sendEmail("template_12xtfoh", dataUp);
     alert("Bạn đã đăng ký thành công. Thông tin đã được gửi qua mail của bạn.");
-    // await postUserLogInAction({ taiKhoan, matKhau }, history);
     history.goBack();
   }
 };

@@ -66,9 +66,9 @@ export default function SlickSlider(props) {
         </Slider>
         <Container className={classes.arrowslick}>
           <div className={classes.btngroup} variant="contained" color="primary">
-            <Button className={classes.btn} onClick={() => prev()}>
+            <p className={classes.btn} onClick={() => prev()}>
               Trước
-            </Button>
+            </p>
             <Button className={classes.btnView}>
               <div className={classes.btnViewBefore} />
               <NavLink to="/movie" className={classes.btnViewContent}>
@@ -76,9 +76,9 @@ export default function SlickSlider(props) {
               </NavLink>
               <div className={classes.btnViewAfter} />
             </Button>
-            <Button className={classes.btn} onClick={() => next()}>
+            <p className={classes.btn} onClick={() => next()}>
               Sau
-            </Button>
+            </p>
           </div>
         </Container>
       </div>

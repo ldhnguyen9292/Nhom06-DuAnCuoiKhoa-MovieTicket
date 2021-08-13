@@ -149,7 +149,7 @@ function MovieManagement() {
     const temp = result.slice(start, end);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     return temp || result;
-  }, [keys, page, pageSize, keySearch, sort, order]);
+  }, [page, pageSize, keySearch, sort, order, movieList]);
 
   if (loading) <LoadingComponent />;
   return (

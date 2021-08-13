@@ -50,8 +50,8 @@ function CardMovie2(props) {
     <Grid container className={classes.root}>
       <Grid item xs={12} sm={4} className={classes.left}>
         <CardMedia
-          className={classes.imgSetting?.replace("https", "http")}
-          image={movie.hinhAnh}
+          className={classes.imgSetting}
+          image={movie.hinhAnh?.replace("http", "https")}
         />
       </Grid>
       <Grid item xs={12} sm={8}>

@@ -82,7 +82,7 @@ function CreateContent(props) {
     if (isEdit) {
       setEdit(false);
       await dispatch(putData(dbName, data));
-      await dispatch(getDataList());
+      getDataList();
     } else {
       handleCallAPI(data);
     }

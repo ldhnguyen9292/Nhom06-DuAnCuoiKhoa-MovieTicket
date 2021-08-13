@@ -69,7 +69,7 @@ function CinemaBox(props) {
             <div className={classes.left}>
               {i > -1 ? (
                 <img
-                  src={cinemaList[i].logo?.replace("https", "http")}
+                  src={cinemaList[i].logo?.replace("http", "https")}
                   alt="hình logo"
                   className={classes.logo}
                 />

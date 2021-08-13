@@ -49,7 +49,7 @@ function MovieInfoBooking(props) {
               <div className={classes.left}>
                 <div className={classes.imgBox}>
                   <img
-                    src={hinhAnh?.replace("https", "http")}
+                    src={hinhAnh?.replace("http", "https")}
                     alt={"Hình đại diện"}
                   />
                   <div className={classes.btnBox}>

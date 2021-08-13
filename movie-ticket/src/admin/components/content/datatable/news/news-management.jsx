@@ -40,7 +40,7 @@ const arrayInput = [
     name: "trailer",
     placeHolder: "Nhập URL trailer",
     width: 50,
-    validation: { required: "Vui lòng link trailer" },
+    validation: "",
   },
   {
     type: "text",

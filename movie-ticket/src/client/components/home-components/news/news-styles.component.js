@@ -15,16 +15,15 @@ export const useStyles = makeStyles((theme) => ({
     maxHeight: 600,
     width: "100%",
     display: "flex",
-    justifyContent: "center",
-
+    justifyContent: "space-between",
     gap: "2vw",
   },
   leftBox: {
-    width: "50%",
+    width: "48%",
     height: "100%",
   },
   rightBox: {
-    width: "50%",
+    width: "48%",
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -70,8 +69,8 @@ export const useStyles = makeStyles((theme) => ({
     maxHeight: 55,
     maxWidth: 150,
     fontSize: "3vw",
-    [theme.breakpoints.up("760")]: {
-      fontSize: 20,
+    [theme.breakpoints.up("600")]: {
+      fontSize: 16,
     },
     color: "#b446ff",
     transition: "all 0.5s",

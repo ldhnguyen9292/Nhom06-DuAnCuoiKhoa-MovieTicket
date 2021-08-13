@@ -6,7 +6,6 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     zIndex: 2,
     height: 104,
-    padding: 10,
   },
   top: {
     background: "#060818",

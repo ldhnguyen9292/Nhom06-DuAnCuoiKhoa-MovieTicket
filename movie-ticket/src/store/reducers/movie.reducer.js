@@ -1,6 +1,7 @@
 import {
   GET_CHAIR_LIST,
   GET_COMING_SOON,
+  GET_MONGO_LIST,
   GET_MOVIE_DETAIL,
   GET_MOVIE_DETAIL_MONGO,
   GET_MOVIE_LIST,
@@ -10,6 +11,7 @@ import {
 
 const initialState = {
   movieList: [],
+  mongoList: [],
   comingSoon: [],
   movieDetail: {},
   mongoMovieDetail: {},
@@ -31,6 +33,10 @@ export const movieReducer = (state = initialState, action) => {
   switch (type) {
     case GET_MOVIE_LIST:
       state.movieList = payload;
+      state.movieKeys.arrayLength = payload.length;
+      return { ...state };
+    case GET_MONGO_LIST:
+      state.mongoList = payload.data;
       state.movieKeys.arrayLength = payload.length;
       return { ...state };
     case GET_COMING_SOON:
