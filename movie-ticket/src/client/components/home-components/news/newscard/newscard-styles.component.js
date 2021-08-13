@@ -2,48 +2,41 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    height: "240px",
-    width: "555px",
+    height: "100%",
+    width: "100%",
     display: "flex",
-    margin: "30px",
     borderRadius: "10px",
     overflow: "hidden",
     "&:hover": {
       "& $img": {
-        transform: "scale(1.2)",
+        transform: "scale(1.1)",
       },
     },
   },
   left: {
-    height: "240px",
-    width: "240px",
-    overflow: "hidden",
-    [theme.breakpoints.down("600")]: {
-      width: "0px",
-    },
+    height: "100%",
+    width: "40%",
   },
   img: {
-    height: "240px",
-    width: "240px",
-    transition: "0.5s",
+    height: "100%",
+    width: "100%",
   },
   right: {
-    height: "240px",
-    width: "315px",
-    [theme.breakpoints.down("600")]: {
-      width: "100%",
-    },
+    height: "100%",
+    width: "60%",
   },
   content: {
-    height: "240px",
-    width: "315px",
-    padding: "20px",
-    [theme.breakpoints.down("600")]: {
-      width: "100%",
-    },
+    height: "100%",
+    width: "100%",
+    padding: "1vw",
+    [theme.breakpoints.up("980")]: { padding: "2vw" },
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   link: {
-    fontSize: "20px",
+    fontSize: "3vw",
+    [theme.breakpoints.up("760")]: { fontSize: 20 },
     fontWeight: "600",
     color: "#333",
     transition: "0.25s",
@@ -58,10 +51,16 @@ export const useStyles = makeStyles((theme) => ({
   },
   day: {
     color: theme.palette.primary.main,
+    padding: "1vw 0",
+    margin: 0,
+    fontSize: "2vw",
+    [theme.breakpoints.up("760")]: { fontSize: 20 },
   },
   p: {
     color: "#707070",
-    height: 60,
+    height: "5vw",
+    fontSize: "2vw",
+    [theme.breakpoints.up("760")]: { fontSize: 16, height: 60 },
     overflow: "hidden",
     "& p, h2": {
       margin: 0,
@@ -75,14 +74,28 @@ export const useStyles = makeStyles((theme) => ({
       right: 0,
     },
   },
+  commentBox: {
+    display: "flex",
+    alignItems: "center",
+  },
   btn: {
     width: "50%",
     textTransform: "none",
     color: "#707070",
-    marginTop:20,
+    marginTop: "1vw",
   },
   icon: {
     color: theme.palette.primary.main,
-    marginRight: 5,
+    fontSize: "3vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: 18,
+    },
+  },
+  comText: {
+    fontSize: "2vw",
+    marginLeft: "1vw",
+    [theme.breakpoints.up("760")]: {
+      fontSize: 18,
+    },
   },
 }));

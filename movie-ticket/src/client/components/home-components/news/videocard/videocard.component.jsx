@@ -38,13 +38,15 @@ function Videocard(props) {
 
     for (let index = 0; index < 5; index++) {
       if (score >= 2) {
-        result.push(<StarIcon fontSize="small" key={index} />);
+        result.push(<StarIcon className={classes.starIcon} key={index} />);
         score -= 2;
       } else if (score > 0) {
-        result.push(<StarHalfIcon fontSize="small" key={index} />);
+        result.push(<StarHalfIcon className={classes.starIcon} key={index} />);
         score = 0;
       } else {
-        result.push(<StarBorderIcon fontSize="small" key={index} />);
+        result.push(
+          <StarBorderIcon className={classes.starIcon} key={index} />
+        );
       }
     }
 
@@ -96,32 +98,38 @@ function Videocard(props) {
           </div>
         ) : null}
         <div className={classes.contentBox}>
-          <p className={classes.p}>{newsItem.theLoai}</p>
-          <div className={classes.headContent}>
-            <p className={classes.p}>Đánh giá: </p>
-            {renderStar()}
-          </div>
-          <p className={classes.h2}>{newsItem.tenBai}</p>
-          {newsItem.ngayCongChieu ? (
-            <p className={classes.p}>
-              Ngày công chiếu:{" "}
-              {format("dd/MM/yyyy", new Date(newsItem.ngayCongChieu))}
-            </p>
-          ) : null}
-          {comment ? (
-            <div onClick={nextPage}>
-              <Button className={classes.btn}>
-                <ThumbUpIcon className={classes.icon}></ThumbUpIcon>{" "}
-                {comment.soLike} Thích
-              </Button>
-              <Button className={classes.btn}>
-                <QuestionAnswerIcon
-                  className={classes.icon}
-                ></QuestionAnswerIcon>{" "}
-                {comment.soBinhLuan} Bình Luận
-              </Button>
+          <div>
+            <p className={classes.p}>{newsItem.theLoai}</p>
+            <div className={classes.headContent}>
+              <p className={classes.p}>Đánh giá: </p>
+              {renderStar()}
             </div>
-          ) : null}
+            <p className={classes.h2}>{newsItem.tenBai}</p>
+            {newsItem.ngayCongChieu ? (
+              <p className={classes.p}>
+                Ngày công chiếu:{" "}
+                {format("dd/MM/yyyy", new Date(newsItem.ngayCongChieu))}
+              </p>
+            ) : null}
+          </div>
+          <div>
+            {comment ? (
+              <div onClick={nextPage} className={classes.commentBox}>
+                <div className={classes.btn}>
+                  <ThumbUpIcon className={classes.icon} />
+                  <span className={classes.comText}>
+                    {comment.soLike} Thích
+                  </span>
+                </div>
+                <div className={classes.btn}>
+                  <QuestionAnswerIcon className={classes.icon} />
+                  <span className={classes.comText}>
+                    {comment.soBinhLuan} Bình Luận
+                  </span>
+                </div>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </Box>

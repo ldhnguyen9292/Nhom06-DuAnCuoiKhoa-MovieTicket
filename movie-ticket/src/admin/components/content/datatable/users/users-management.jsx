@@ -12,6 +12,7 @@ import {
   deleteUserAction,
   postAdminSignUpAction,
 } from "../../../../../store/actions/user.action";
+import LoadingComponent from "../../../../../client/components/loading/loading.component";
 
 const valid = {
   required: "Vui lòng không để trống",
@@ -84,23 +85,23 @@ function UsersManagement() {
   const array = useSelector((state) => state.user.userList);
   const keys = useSelector((state) => state.user.userKeys);
   let { page, pageSize, keySearch, sort, order } = keys;
+  const [loading, setLoading] = useState();
 
   const handleCallAPI = async (urlExpand) => {
+    setLoading(true);
     await dispatch(getUserListAction(urlExpand));
+    setLoading(false);
   };
 
   useEffect(() => {
-    const urlExpand = `LayDanhSachNguoiDungPhanTrang?MaNhom=GP06&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
-    handleCallAPI(urlExpand);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, pageSize]);
-
-  useEffect(() => {
     const tuKhoa = keySearch === "" ? "" : `&tuKhoa=${keySearch}`;
-    const urlExpand = `TimKiemNguoiDung?MaNhom=GP06${tuKhoa}&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
+    let urlExpand = `LayDanhSachNguoiDungPhanTrang?MaNhom=GP06&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
+    if (keySearch)
+      urlExpand = `TimKiemNguoiDung?MaNhom=GP06${tuKhoa}&soTrang=${page}&soPhanTuTrenTrang=${pageSize}`;
     handleCallAPI(urlExpand);
+    return () => setLoading({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keySearch]);
+  }, [page, pageSize, keySearch]);
 
   const handleDelete = async (id) => {
     await deleteUserAction(id);
@@ -140,7 +141,6 @@ function UsersManagement() {
         }
         return 0;
       });
-      console.log(userList);
       if (order === "desc") {
         userList.reverse();
       }
@@ -148,6 +148,7 @@ function UsersManagement() {
     return userList;
   }, [array, sort, order]);
 
+  if (loading) <LoadingComponent />;
   return (
     <>
       <FormProvider {...methods}>

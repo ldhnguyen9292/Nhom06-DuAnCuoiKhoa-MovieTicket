@@ -4,6 +4,7 @@ import CreateFormInput from "./create-form-input/create-form-input";
 import CreateTable from "./create-table/create-table";
 import { useForm, FormProvider } from "react-hook-form";
 import { useStyles } from "./create-content-styles";
+import LoadingComponent from "../../../../client/components/loading/loading.component";
 
 function CreateContent(props) {
   const classes = useStyles();
@@ -29,17 +30,24 @@ function CreateContent(props) {
   const methods = useForm();
   const { setValue, setFocus } = methods;
   const [isEdit, setEdit] = useState(false);
+  const [loading, setLoading] = useState();
 
-  const getDataList = () => {
-    return getList(
-      dbName,
-      typeGetList,
-      `?q=${keySearch}&page=${page}&limit=${pageSize}&sort=${sort}&order=${order}`
+  const getDataList = async () => {
+    setLoading(true);
+    const res = await dispatch(
+      getList(
+        dbName,
+        typeGetList,
+        `?q=${keySearch}&page=${page}&limit=${pageSize}&sort=${sort}&order=${order}`
+      )
     );
+    setLoading(false);
+    return res;
   };
 
   useEffect(() => {
-    dispatch(getDataList());
+    getDataList();
+    return () => setLoading({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keys]);
 
@@ -48,6 +56,7 @@ function CreateContent(props) {
       dispatch(
         putKey(typePutKey, { keySearch: "", page: 1, sort: "", order: "" })
       );
+      setLoading({});
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -82,9 +91,7 @@ function CreateContent(props) {
 
   const cacheArrayInput = useMemo(() => arrayInput, [arrayInput]);
 
-  if (array.length === 0) {
-    return <p>Lỗi rồi</p>;
-  }
+  if (loading) <LoadingComponent />;
 
   return (
     <div>

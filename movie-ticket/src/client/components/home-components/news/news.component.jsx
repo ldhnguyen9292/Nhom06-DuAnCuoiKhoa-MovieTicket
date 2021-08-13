@@ -35,25 +35,27 @@ function NewsComponent() {
         <div className={classes.title}>
           <div>
             <h2 className={classes.h2}>TIN MỚI</h2>
-            <div className={classes.fade}></div>
+            <div className={classes.fade} />
           </div>
         </div>
         {newsList.length > 0 ? (
-          <Grid container spacing={1}>
-            <Grid container item lg={12} xl={6} spacing={3}>
+          <Grid className={classes.container}>
+            <Grid className={classes.leftBox}>
               {renderVideoOrNews(newsList[0])}
             </Grid>
-            <Grid container item lg={12} xl={6} spacing={3}>
-              {renderVideoOrNews(newsList[1])}
-              {renderVideoOrNews(newsList[2])}
+            <Grid className={classes.rightBox}>
+              <div className={classes.rightTop}>
+                {renderVideoOrNews(newsList[1])}
+              </div>
+              <div className={classes.rightBot}>
+                {renderVideoOrNews(newsList[2])}
+              </div>
             </Grid>
           </Grid>
         ) : null}
         <div className={classes.btnBox}>
           <Button className={classes.btnView} onClick={pushNewsPage}>
-            <div className={classes.btnViewBefore}></div>
             <div className={classes.btnViewContent}>Xem thêm</div>
-            <div className={classes.btnViewAfter}></div>
           </Button>
         </div>
       </Container>

@@ -122,6 +122,33 @@ export const postTicketBookingAction = async (data, token) => {
   }
 };
 
+export const postMovieAction = async (data, token) => {
+  try {
+    await axios({
+      url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim",
+      method: "POST",
+      data,
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    alert("Tạo thành công");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteMovieAction = async (maPhim, token) => {
+  try {
+    const res = await axios({
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    alert(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //MongoDB
 export const getMovieDetailMongoAction = (maPhim) => {
   return async (dispatch) => {

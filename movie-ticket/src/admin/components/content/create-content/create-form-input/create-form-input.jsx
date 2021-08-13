@@ -6,6 +6,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
+import TextField from "@material-ui/core/TextField";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import clsx from "clsx";
@@ -122,6 +123,27 @@ function CreateFormInput(props) {
     );
   };
 
+  const createDateTime = (object) => {
+    const { name, validation } = object;
+    return (
+      <div>
+        <TextField
+          id={"datetime-local" + name}
+          label="Time Picker"
+          type="datetime-local"
+          className={classes.dateTime}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          {...register(name, { ...validation })}
+        />
+        {errors[name] && (
+          <p className={classes.error}>{errors[name].message}</p>
+        )}
+      </div>
+    );
+  };
+
   const createTextEditor = (object) => {
     const { name } = object;
     return (
@@ -153,6 +175,8 @@ function CreateFormInput(props) {
         return createRadio(object);
       case "date":
         return createDate(object);
+      case "dateTime":
+        return createDateTime(object);
       case "textEditor":
         return createTextEditor(object);
       default:

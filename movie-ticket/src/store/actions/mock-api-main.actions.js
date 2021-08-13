@@ -24,12 +24,12 @@ const getListAction = (name, type, querParams) => {
 const postNewItemAction = (name, data) => {
   return async () => {
     try {
-      await axios({
+      const res = await axios({
         method: "POST",
         url: `${url}/${name}`,
         data,
       });
-      await postCommentAction();
+      await postCommentAction(res.data.insertedId);
     } catch (error) {
       console.log(error);
     }

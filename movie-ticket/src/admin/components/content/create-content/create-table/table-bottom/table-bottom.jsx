@@ -33,7 +33,7 @@ function TableBottom(props) {
   };
 
   const handleDelete = (row) => {
-    let id = row._id ? row._id : row.taiKhoan;
+    let id = row._id ? row._id : row.taiKhoan ? row.taiKhoan : row.maPhim;
     props.handleDelete(id);
   };
 
