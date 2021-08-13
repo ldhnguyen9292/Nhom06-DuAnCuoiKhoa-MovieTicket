@@ -8,6 +8,7 @@ import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import { useStyles } from "./footer-card-styles";
 import { commentListByIdAction } from "../../../../../../store/actions/comment.action";
 import MessBox from "./mess-box/mess-box";
+import LoadingComponent from "../../../../loading/loading.component";
 
 function FooterCard(props) {
   const classes = useStyles();
@@ -16,11 +17,18 @@ function FooterCard(props) {
   const [open, setOpen] = useState(false);
   const { id } = props;
   const [commentArray, setCommentArray] = useState([]);
+  const [loading, setLoading] = useState();
 
   const getCommentArray = async () => {
-    const res = await commentListByIdAction("GET", id);
-    if (res) {
-      setCommentArray(res);
+    try {
+      setLoading(true);
+      const res = await commentListByIdAction("GET", id);
+      if (res) {
+        setCommentArray(res);
+      }
+      setLoading(false);
+    } catch (error) {
+      alert(error.response.data);
     }
   };
 
@@ -31,6 +39,10 @@ function FooterCard(props) {
 
   useEffect(() => {
     getCommentArray();
+    return () => {
+      setLoading({});
+      setCommentArray({});
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -138,6 +150,7 @@ function FooterCard(props) {
     }
   };
 
+  if (loading) <LoadingComponent />;
   return (
     <div className={classes.root}>
       <div className={classes.footer}>

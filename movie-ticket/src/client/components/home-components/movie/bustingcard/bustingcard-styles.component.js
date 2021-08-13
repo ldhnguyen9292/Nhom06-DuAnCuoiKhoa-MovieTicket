@@ -9,7 +9,8 @@ export const useStyles = makeStyles((theme) => ({
     position: "relative",
     "&:hover": {
       "& $overlay": {
-        height: "300px",
+        height: "40vw",
+        maxHeight: "300px",
         width: "100%",
         top: "0",
         transform: "translate(-50%, 0)",
@@ -24,13 +25,13 @@ export const useStyles = makeStyles((theme) => ({
     margin: "30px",
   },
   imgbox: {
-    height: "300px",
     width: "265px",
     overflow: "hidden",
     position: "relative",
   },
   img: {
-    height: "300px",
+    height: "40vw",
+    maxHeight: "300px",
     width: "100%",
   },
   contentbox: {
@@ -44,7 +45,10 @@ export const useStyles = makeStyles((theme) => ({
     padding: 5,
   },
   title: {
-    fontSize: "18px",
+    fontSize: "3vw",
+    [theme.breakpoints.up(600)]: {
+      fontSize: "18px",
+    },
     color: "#b446ff",
     fontWeight: "bold",
     whiteSpace: "nowrap",
@@ -53,7 +57,10 @@ export const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   link: {
-    fontSize: "18px",
+    fontSize: "3vw",
+    [theme.breakpoints.up(600)]: {
+      fontSize: "18px",
+    },
     fontWeight: "bold",
     "&:hover": {
       textDecoration: "none",
@@ -62,7 +69,10 @@ export const useStyles = makeStyles((theme) => ({
   },
   type: {
     color: "#707070",
-    fontSize: "16px",
+    fontSize: "2.8vw",
+    [theme.breakpoints.up(600)]: {
+      fontSize: "16px",
+    },
     margin: "10px 0",
     whiteSpace: "nowrap",
     overflow: "hidden",
@@ -70,11 +80,17 @@ export const useStyles = makeStyles((theme) => ({
   },
   p: {
     color: "#707070",
-    fontSize: "16px",
+    fontSize: "2.8vw",
+    [theme.breakpoints.up(600)]: {
+      fontSize: "16px",
+    },
     margin: "10px 0",
   },
   icongroup: {
-    fontSize: "14px",
+    fontSize: "2.8vw",
+    [theme.breakpoints.up(600)]: {
+      fontSize: "16px",
+    },
     color: "#b446ff",
   },
   right: {
@@ -117,7 +133,8 @@ export const useStyles = makeStyles((theme) => ({
     width: "150px",
     transform: "translate(-50%)",
     left: "50%",
-    height: "300px",
+    height: "40vw",
+    maxHeight: "300px",
     top: "0px",
     display: "flex",
     alignItems: "center",

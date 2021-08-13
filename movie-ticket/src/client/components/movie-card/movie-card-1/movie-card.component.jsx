@@ -51,8 +51,8 @@ function CardMovie(props) {
     <Card className={classes.root}>
       <div className={classes.top}>
         <CardMedia
-          className={classes.imgSetting?.replace("https", "http")}
-          image={movie.hinhAnh}
+          className={classes.imgSetting}
+          image={movie.hinhAnh?.replace("http", "https")}
         />
         <div className={classes.topHover}>
           <button

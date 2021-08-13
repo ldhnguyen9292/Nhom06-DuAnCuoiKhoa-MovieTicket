@@ -8,7 +8,7 @@ function TopMovie() {
   return (
     <div className={classes.root}>
       <div className={classes.left}>
-        <img src={Image} alt={"Hình top movie"} />
+        <img src={Image?.replace("http", "https")} alt={"Hình top movie"} />
         <h3>Phim sắp chiếu</h3>
       </div>
       <div className={classes.right}>

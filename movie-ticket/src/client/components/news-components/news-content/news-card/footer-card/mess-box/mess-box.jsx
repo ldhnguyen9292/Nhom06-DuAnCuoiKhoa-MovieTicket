@@ -58,7 +58,7 @@ function MessBox(props) {
         </>
       );
     },
-    [avatar]
+    [avatar, classes.messAvatar]
   );
 
   return (

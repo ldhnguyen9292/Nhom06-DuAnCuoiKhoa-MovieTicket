@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
       display: "block",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "10px 30px",
+      padding: "2vw 6vw",
     },
   },
   copyRight: {
@@ -35,6 +35,9 @@ export const useStyles = makeStyles((theme) => ({
     },
     "& p": {
       margin: 0,
+      [theme.breakpoints.down("600")]: {
+        fontSize: "2.8vw",
+      },
     },
   },
   right: {
@@ -43,6 +46,9 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     alignItems: "center",
     padding: "15px 0",
+    [theme.breakpoints.down("600")]: {
+      fontSize: "2.8vw",
+    },
     [theme.breakpoints.down("md")]: {
       width: "100%",
       justifyContent: "space-around",

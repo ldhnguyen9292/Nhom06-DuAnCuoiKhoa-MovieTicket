@@ -4,10 +4,10 @@ export const useStyles = makeStyles((theme) => ({
   headerLeft: {
     width: 300,
     padding: 20,
-    fontSize: '20px',
+    fontSize: "20px",
     [theme.breakpoints.down("md")]: {
-      padding: '20px 10px',
-      fontSize: '20px',
+      padding: "20px 10px",
+      fontSize: "20px",
     },
   },
   logo: {
@@ -21,6 +21,7 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     fontWeight: "bold",
     transform: "scale(1.2)",
+    outline: "none",
     [theme.breakpoints.up("md")]: {
       padding: "0 15px",
       "& span": {

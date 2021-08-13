@@ -3,13 +3,8 @@ import Image from "./../../../../assets/images/newslater-bg01.png";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    height: "345px",
     zIndex: "100",
     width: "100%",
-    position: "absolute",
-    [theme.breakpoints.down("sm")]: {
-      height: "270px",
-    },
   },
   container: {
     maxWidth: "1200px",
@@ -29,7 +24,8 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    height: "50px",
+    maxHeight: "48px",
+    height: "5vw",
     margin: "50px 0 20px",
     [theme.breakpoints.down("sm")]: {
       margin: "30px 0 20px",
@@ -39,7 +35,8 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: "25px",
     border: "0.25px solid #ccc",
     width: "560px",
-    height: "50px",
+    maxHeight: "48px",
+    height: "5vw",
     display: "flex",
     [theme.breakpoints.down("sm")]: {
       width: "400px",
@@ -47,7 +44,8 @@ export const useStyles = makeStyles((theme) => ({
   },
   input: {
     width: "73%",
-    height: "50px",
+    maxHeight: "48px",
+    height: "5vw",
     backgroundColor: "transparent",
     border: "none",
     fontSize: "18px",
@@ -59,18 +57,19 @@ export const useStyles = makeStyles((theme) => ({
       fontWeight: "100",
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: "14px",
+      fontSize: "2.8vw",
       width: "65%",
     },
   },
   button: {
     width: "27%",
     borderRadius: "30px",
-    height: "48px",
+    maxHeight: "48px",
+    height: "4.6vw",
     background:
       "-webkit-linear-gradient(169deg, #5560ff 17%, #aa52a1 63%, #ff4343 100%)",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "14px",
+      fontSize: "3vw",
       width: "35%",
     },
   },
@@ -80,19 +79,19 @@ export const useStyles = makeStyles((theme) => ({
     letterSpacing: "1px",
     marginBottom: "10px",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "16px",
+      fontSize: "3vw",
     },
   },
   h2: {
     fontSize: "36px",
     marginTop: "0px",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "24px",
+      fontSize: "4vw",
     },
   },
   p: {
     [theme.breakpoints.down("sm")]: {
-      fontSize: "12px",
+      fontSize: "2.8vw",
     },
   },
 }));

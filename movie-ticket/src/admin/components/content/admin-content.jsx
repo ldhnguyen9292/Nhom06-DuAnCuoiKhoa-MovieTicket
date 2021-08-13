@@ -43,7 +43,12 @@ function AdminContent() {
           import("./datatable/movies/movies-management.jsx")
         );
         break;
-      case "ShowTimes":
+      case "Movie Detail":
+        Content = lazy(() =>
+          import("./datatable/movie-detail/movie-detail-management.jsx")
+        );
+        break;
+      case "Show Times":
         Content = lazy(() =>
           import("./datatable/show-times/show-times-management.jsx")
         );
