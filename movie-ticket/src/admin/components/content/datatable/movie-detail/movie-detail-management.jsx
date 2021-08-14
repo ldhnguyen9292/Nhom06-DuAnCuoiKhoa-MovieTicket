@@ -11,7 +11,7 @@ import { callAPIactions } from "./../../../../../store/actions/mock-api-main.act
 
 const arrayInput = [
   {
-    type: "text",
+    type: "number",
     name: "maPhim",
     placeHolder: "Mã phim",
     width: 25,
@@ -108,6 +108,7 @@ function MovieDetailManagement() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState();
   const [group, setGroup] = useState("GP06");
+  const [movieCode, setMovieCode] = useState(0);
 
   const callAPI = async () => {
     setLoading(true);
@@ -131,10 +132,7 @@ function MovieDetailManagement() {
           id="movieName"
           name="movieName"
           style={{ marginRight: 10 }}
-          onClick={(event) => {
-            const value = event.target.value;
-            document.getElementsByName("maPhim")[0].value = value;
-          }}
+          onClick={(event) => setMovieCode(event.target.value)}
         >
           {movieList?.map((m) => (
             <option key={m.maPhim} value={m.maPhim}>
@@ -142,6 +140,7 @@ function MovieDetailManagement() {
             </option>
           ))}
         </select>
+        <span style={{ marginRight: 10 }}>Mã phim: {movieCode}</span>
       </>
     );
   };

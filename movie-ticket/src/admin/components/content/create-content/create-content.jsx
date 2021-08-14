@@ -63,12 +63,12 @@ function CreateContent(props) {
 
   const handleCallAPI = async (data) => {
     await dispatch(postNew(dbName, data));
-    dispatch(getDataList());
+    getDataList();
   };
 
   const handleDelete = async (id) => {
     await dispatch(actionsByID(dbName, "DELETE", id));
-    dispatch(getDataList());
+    getDataList();
   };
 
   const handleEdit = async (id) => {
@@ -79,12 +79,22 @@ function CreateContent(props) {
   };
 
   const onSubmit = async (data, e) => {
+    let d = data;
     if (isEdit) {
       setEdit(false);
-      await dispatch(putData(dbName, data));
+      if (arrayText === "mongoList") {
+        const index = array.findIndex((v) => v.maPhim === d.maPhim);
+        d = {
+          ...data,
+          scoreArray: array[index].scoreArray,
+        };
+      }
+      await dispatch(putData(dbName, d));
       getDataList();
     } else {
-      handleCallAPI(data);
+      const value = Math.floor(Math.random() * 11);
+      d = { ...d, scoreArray: [value] };
+      handleCallAPI(d);
     }
     e.target.reset();
   };
