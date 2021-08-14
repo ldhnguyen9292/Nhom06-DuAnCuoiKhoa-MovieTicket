@@ -84,8 +84,8 @@ function CinemaBox(props) {
                   <img src={ticket} alt={"Hình đại diện"} />
                   <img src={fastFood} alt={"Hình đại diện"} />
                   <img src={bill} alt={"Hình đại diện"} />
-                  <span> Ngày: {timeA}</span>
                 </div>
+                <span style={{ padding: "10px 0 0 5px" }}> Ngày: {timeA}</span>
               </div>
             </div>
             <div className={classes.right}>{renderCinemaTime()}</div>

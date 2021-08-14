@@ -93,13 +93,12 @@ function CinemaTime() {
     // Not found
     let isChecked = false;
     for (let [key, value] of Object.entries(state)) {
-      if (key !== true && value) {
+      if (key && value) {
         isChecked = true;
         break;
       }
     }
     if (isChecked) return [];
-    console.log(isChecked);
 
     return array;
   };

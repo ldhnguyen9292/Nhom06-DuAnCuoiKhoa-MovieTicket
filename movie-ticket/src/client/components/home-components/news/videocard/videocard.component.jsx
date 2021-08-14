@@ -112,9 +112,9 @@ function Videocard(props) {
               </p>
             ) : null}
           </div>
-          <div>
+          <div >
             {comment ? (
-              <div onClick={nextPage} className={classes.commentBox}>
+              <div onClick={nextPage} className={classes.commentBox} onClick={nextPage}>
                 <div className={classes.btn}>
                   <ThumbUpIcon className={classes.icon} />
                   <span className={classes.comText}>

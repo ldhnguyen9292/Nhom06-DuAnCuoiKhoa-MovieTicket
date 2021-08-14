@@ -18,6 +18,11 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     alignItems: "center",
+    [theme.breakpoints.down("600")]: {
+      flexDirection: "column",
+      justifyContent: "flex-star",
+      alignItems: "flex-start",
+    },
     color: "rgba(0,0,0,0.87)",
     fontSize: "14px",
     letterSpacing: "1px",
