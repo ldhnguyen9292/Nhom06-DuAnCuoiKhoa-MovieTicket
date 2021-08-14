@@ -97,7 +97,7 @@ function UserInfoComponent() {
   const uploadImage = () => {
     return (
       <>
-        <div style={{display:"flex"}}>
+        <div style={{ display: "flex" }}>
           <label htmlFor="file" className={classes.fileButton}>
             {image ? image : "Chọn hình đại diện"}
           </label>
@@ -124,9 +124,13 @@ function UserInfoComponent() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const anhDaiDien = imageUpload ? imageUpload.filename : avatarUser.filename;
+    const { lichSuDatVe } = mongoUserInfo;
     formData.append("anhDaiDien", anhDaiDien);
-    const data = JSON.stringify(Object.fromEntries(formData));
-    await putClientUpdateUserInfoAction(JSON.parse(data), taiKhoan);
+    let data = JSON.stringify(Object.fromEntries(formData));
+    data = JSON.parse(data);
+    data = { ...data, lichSuDatVe };
+    console.log(data);
+    await putClientUpdateUserInfoAction(data, taiKhoan);
   };
 
   return (

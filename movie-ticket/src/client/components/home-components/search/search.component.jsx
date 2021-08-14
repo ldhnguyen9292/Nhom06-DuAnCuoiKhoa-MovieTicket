@@ -154,7 +154,7 @@ function SearchHome() {
         <ul className={classes.ul}>
           {body.map((v) => (
             <li
-              key={v.tenphim}
+              key={v.tenPhim}
               className={classes.li}
               onClick={() => handlePopperClick(v.tenPhim, v.maPhim)}
             >

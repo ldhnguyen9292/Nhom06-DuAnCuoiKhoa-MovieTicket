@@ -34,7 +34,7 @@ function UserHistory() {
           <td className={classes.td}>{rap}</td>
           <td className={classes.td}>
             {ticket.map((t) => (
-              <span>{t.stt + " "}</span>
+              <span key={t.stt}>{t.stt + " "}</span>
             ))}
           </td>
           <td className={classes.td}>{ticket.length}</td>

@@ -23,6 +23,7 @@ export const getRoomListAction = (maHeThongRap) => {
         method: "GET",
       });
       dispatch({ type: GET_ROOM_LIST, payload: res.data });
+      return res.data;
     } catch (error) {
       console.log(error);
     }
