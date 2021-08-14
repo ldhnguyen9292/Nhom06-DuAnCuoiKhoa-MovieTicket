@@ -74,7 +74,6 @@ function CinemaTime() {
   };
 
   const handleSidebar = (value) => {
-    console.log(value);
     setState(value);
   };
 
@@ -90,6 +89,18 @@ function CinemaTime() {
       return temp ? item : "";
     });
     if (arrayTemp.length > 0) return arrayTemp;
+
+    // Not found
+    let isChecked = false;
+    for (let [key, value] of Object.entries(state)) {
+      if (key !== true && value) {
+        isChecked = true;
+        break;
+      }
+    }
+    if (isChecked) return [];
+    console.log(isChecked);
+
     return array;
   };
 
