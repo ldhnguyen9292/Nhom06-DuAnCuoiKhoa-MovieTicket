@@ -15,9 +15,9 @@ function SideBar(props) {
   const classes = useStyles();
   const search = new URLSearchParams(window.location.search);
   const cinemaList = useSelector((state) => state.cinema.cinemaList);
-  const city = search.get("city") || false;
-  const cinema = search.get("cinema") || false;
-  const [state, setState] = useState({ [city]: true, [cinema]: true });
+  const city = search.get("city") || "";
+  const cinema = search.get("cinema") || "";
+  const [state, setState] = useState({ [city]: true, [cinema]: true } || "");
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
@@ -33,7 +33,7 @@ function SideBar(props) {
         key={key}
         control={
           <Checkbox
-            checked={state[label]}
+            checked={Boolean(state[label])}
             onChange={handleChange}
             name={label}
             color="primary"

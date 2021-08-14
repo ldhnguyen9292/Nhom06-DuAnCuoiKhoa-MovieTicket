@@ -29,9 +29,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   buttonBox: {
     position: "absolute",
-    top: 0,
+    top: "10%",
     left: 0,
-    height: "100%",
+    height: "80%",
     width: "100%",
     display: "flex",
     justifyContent: "center",
@@ -112,6 +112,7 @@ export const useStyles = makeStyles((theme) => ({
   commentBox: {
     display: "flex",
     alignItems: "center",
+    cursor: "pointer",
   },
   btn: {
     maxWidth: "150px",

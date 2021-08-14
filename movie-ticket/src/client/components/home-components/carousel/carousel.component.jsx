@@ -28,7 +28,7 @@ function CarouselComponent() {
       pathname = `/news`;
       search = `?key=_id=&value=${slider.maLienKet}`;
     } else if (slider.loai === "phimBomTan") {
-      pathname = `/movie/movie-detail:maPhim=${slider.maLienKet}`;
+      pathname = `/movie/movie-detail/${slider.maLienKet}`;
     }
     history.push({ pathname, search });
   };

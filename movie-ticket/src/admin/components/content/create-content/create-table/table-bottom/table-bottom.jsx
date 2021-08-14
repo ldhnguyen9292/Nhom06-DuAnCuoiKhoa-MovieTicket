@@ -122,7 +122,15 @@ function TableBottom(props) {
     );
   };
 
-  return <>{array ? renderBottom() : <p>Không tìm thấy kết quả</p>}</>;
+  return (
+    <>
+      {array && array.length > 0 ? (
+        renderBottom()
+      ) : (
+        <p>Không tìm thấy kết quả</p>
+      )}
+    </>
+  );
 }
 
 export default memo(TableBottom);

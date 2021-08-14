@@ -26,7 +26,7 @@ function DanhGiaFilm() {
       if (8 < score && score <= 10) result[0] += 1;
       return score;
     });
-    return result.map((element, i) => {
+    return result?.map((element, i) => {
       let star = [];
       for (let index = 0; index < 5 - i; index++) {
         star.push(<StarIcon key={index} className={classes.starIcon} />);
