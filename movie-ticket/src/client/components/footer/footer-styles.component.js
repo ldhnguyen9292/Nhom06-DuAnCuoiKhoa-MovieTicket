@@ -14,12 +14,14 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     flexDirection: "column",
     gap: 10,
+    alignItems: "center",
   },
   top: {
     position: "relative",
-    marginTop: 20,
+    // marginTop: 20,
     zIndex: 3,
     maxWidth: 1200,
+    margin: "20px auto 0",
   },
   bot: {
     position: "relative",
